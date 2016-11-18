@@ -1,0 +1,16 @@
+{
+  "name": "chatApp",
+  "description": "Basic Application",
+  "main": "",
+  "authors": [
+    "Eu"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "angular": "^1.4.1",
+    "angular-ui-router": "^0.3.1",
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "angular-mocks": "^1.4.1"
+  }
+}

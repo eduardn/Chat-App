@@ -1,0 +1,115 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    background-color: #F7F7F7;
+}
+.whitespace {
+    background-color: #FFFFFF;
+    padding: 10px 60px;
+}
+hr {
+    margin: auto;
+}
+.container-fluid {
+    width: 95%;
+}
+.btn-danger {
+    float: right;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    padding: 10px 25px;
+}
+.pull-right {
+    float: right;
+}
+.green {
+    color: #069E4C;
+}
+.yellow {
+    color: #EBCF00;
+}
+.grey {
+    color: #BFB1A0;
+}
+thead {
+    color: #999999;
+    background-color: #EDEDED;
+}
+.table th {
+    text-align: center;
+}
+.table td {
+    color: #999999;
+}
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+    outline: 0;
+}
+.btn-default {
+    color: #999999;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    padding: 10px 25px;
+}
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+    color: #FFFFFF;
+    background-color: #525252;
+    border-color: #525252;
+}
+
+/*
+li:first-child> a::before {
+    font-family: FontAwesome;
+    content: "\f007";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+li:first-child> a {
+    position: relative;
+    padding-left: 15px;
+}
+*/
+
+.navbar-default {
+    background-color: #0081A7;
+    border-radius: 0px;
+    background-color: #0081a7;
+    border-bottom-width: 1px;
+    margin-bottom: 0px;
+}
+.navbar-default .navbar-nav>li>a {
+    color: #ffffff;
+    background-color: #0081a7;
+}
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+    color: #ffffff;
+    background-color: #0586ad;
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+    color: #ffffff;
+    background-color: #005e7a;
+}
+p {
+    float: left;
+    padding: 8px;
+    color: #999999;
+}
+.form-group {
+    float: left;
+    width: auto;
+}
+.btn-sm {
+    float: right;
+}
+.exportbar {
+    padding: 10px 30px 45px 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #d2cece;
+    border-radius: 3px;
+}
+.btn-sm {
+    background-color: #525252;
+    color: #ffffff;
+    padding: 8px 15px;
+}

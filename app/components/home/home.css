@@ -1,0 +1,4 @@
+.wrapper:hover #addCustomerForm{
+    transition: 1s;
+    left:0;
+}

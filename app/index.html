@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Chat App</title>
+
+        <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyBGBq4NYzKgiKYKoBcELZcerVWFnAEcGiw",
+                authDomain: "chatapp-1c1e4.firebaseapp.com",
+                databaseURL: "https://chatapp-1c1e4.firebaseio.com",
+                storageBucket: "chatapp-1c1e4.appspot.com",
+                messagingSenderId: "1045025279144"
+            };
+            firebase.initializeApp(config);
+        </script>
+
+        <script src="../bower_components/angular/angular.min.js"></script>
+        <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script src="../node_modules/angularfire/dist/angularfire.min.js"></script>
+        <script src="app.js"></script>
+        <script src="components/home/home.controller.js"></script>
+        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="components/chat/chat.controller.js"></script>
+
+
+
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="components/home/home.css">
+
+
+    </head>
+    <body ng-app="chatApp">
+
+        <div ui-view>
+
+        </div>
+
+    </body>
+</html>
