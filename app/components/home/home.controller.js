@@ -7,20 +7,33 @@
     angular.module('chatApp')
         .controller('HomeController',HomeController);
 
-    HomeController.$inject=['$scope', '$state','$rootScope', '$stateParams', '$firebaseObject'];
+    HomeController.$inject=['$scope', '$state','$rootScope', '$stateParams', 'loginService', '$localStorage'];
 
-    function HomeController($scope, $state, $rootScope, $stateParams, $firebaseObject){
+    function HomeController($scope, $state, $rootScope, $stateParams, loginService, $localStorage){
 
         var database = firebase.database();
 
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
 
-        $scope.name = "";
+        $scope.username = "";
 
         $scope.login = function(username){
-            console.log("Username: ", username);
-            $state.go('chat');
+            if(username){
+                // loginService.setUsername(username);
+
+                $scope.$storage = $localStorage.$default({
+                    loggedUsername: username
+                });
+
+                console.log("Username: ", username);
+
+                console.log("LocalStorage: ", $scope.$storage.loggedUsername);
+                $state.go('chat');
+            } else {
+                $scope.loginError = true;
+            }
+
         };
 
         database.ref('/users').once('value').then(function(snap){

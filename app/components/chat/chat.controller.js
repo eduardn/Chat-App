@@ -7,15 +7,22 @@
     angular.module('chatApp')
         .controller('ChatController',ChatController);
 
-    ChatController.$inject=['$scope', '$state'];
+    ChatController.$inject=['$scope', '$state', 'loginService', '$localStorage'];
 
-    function ChatController($scope, $state){
+    function ChatController($scope, $state,loginService, $localStorage){
 
-        $scope.name = "";
+        $scope.$storage = $localStorage.$default();
+
+        $scope.username = $scope.$storage.loggedUsername;
+
+
+
+        console.log("loggedUsername: ", $scope.username)
 
         $scope.logout = function(){
             console.log("Logged out");
             $state.go('home');
+            $scope.$storage = $localStorage.$reset();
         }
 
 
