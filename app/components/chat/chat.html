@@ -13,7 +13,7 @@
     <div class="col-sm-5">
       <h4>User Area + Available chat rooms</h4>
         <ul ng-repeat="room in activeRooms">
-           <li>{{room}}-<button class="btn btn-success">Join this ROOM</button></li>
+           <li>{{room}}-<button class="btn btn-success" ng-click="joinRoom(room)">Join this ROOM</button></li>
         </ul>
     </div>
 

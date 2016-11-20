@@ -69,9 +69,7 @@
                             "text" : "1st Message"
                         },
                         "roomName" : roomName,
-                        "users" : {
-                            "name" :$scope.userName
-                        }
+                        "users" : {}
                 });
         /*
         *Call again function to
@@ -81,6 +79,25 @@
         listRooms();
         }
 
+        /*
+        *Join a room as
+        *user, from the available rooms
+        */
+        $scope.joinRoom = function(room){
+            firebase.database().ref('rooms/'+ room +'/users/').push($scope.userName);
+        }
+        /*TESTING DATA FOR ROOM USERS
+
+           firebase.database().ref('rooms/'+ 'room2' +'/users/').once('value').then(function(snapshot) {
+                var data = snapshot.val();
+                console.log(data);
+
+                for(var key in data ){
+                    console.log(data[key]);
+                }
+
+            });
+            */
 
     }
 })();
