@@ -11,8 +11,14 @@
 
 <div class="row">
     <div class="col-sm-2">
-      User Area + Available chat rooms
+      <div>{{roomsNames.length}} available chat rooms</div>
+    <ul class="list-group" ng-if="roomsNames">
+        <li class="list-group-item"  ng-repeat="room in roomsNames" >
+                {{room}}
+        </li>
+    </ul>
     </div>
+
 
     <div class="col-sm-8">
         Chat Messages
