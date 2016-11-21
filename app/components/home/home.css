@@ -1,0 +1,15 @@
+body{
+    background: #A2DED0;
+}
+
+.container{
+    display: inline;
+    position: fixed;
+    top: 50%;
+    left: 40%;
+}
+
+
+.login {
+
+}

@@ -1,0 +1,25 @@
+
+<div class="container">
+    <div class="row">
+        <div role="alert">
+            <span class="error" ng-show="loginError">
+                Username Required!</span>
+        </div>
+        <div class="login">
+            <form class="form-inline" name="loginForm">
+                <div class="form-group">
+                    <input type="text" name="username" ng-model="username" class="form-control" placeholder="Username" required/>
+                </div>
+
+            </form>
+
+            <button class="btn btn-success btn-md" ng-click="login(username)"> <i class="fa fa-hand-o-right"></i> Log in</button>
+        </div>
+
+        <div class="welcome">
+            Hello {{username}}
+        </div>
+    </div>
+
+</div>
+

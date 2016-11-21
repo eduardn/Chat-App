@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-sm-3">
+        <h4> Hello {{userName}}</h4>
+    </div>
+
+    <div class="col-sm-offset-7 col-sm-2">
+        <button class="btn btn-default" ng-click="logout()">LogOutssss</button>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-sm-5">
+        <h4>User Area + Available chat rooms</h4>
+        <ul ng-repeat="room in activeRooms">
+            <li>{{room}}-<button class="btn btn-success" ng-click="joinRoom(room)">Join this ROOM</button></li>
+        </ul>
+    </div>
+
+    <div class="col-sm-3">
+        <h4> Chat Messages</h4>
+    </div>
+
+    <div class="col-sm-4">
+        <h4> Users in chat</h4>
+    </div>
+</div>
+<div class="row">
+    <create-Room></create-room>
+</div>
+
+<div class="col-sm-4 col-sm-offset-5">
+    <div>
+        <textarea name="" id="txt" cols="30" rows="10"></textarea>
+        <input type="text" />
+        <button>Submit</button>
+    </div>
+</div>
