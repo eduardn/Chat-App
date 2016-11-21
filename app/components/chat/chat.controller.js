@@ -45,6 +45,7 @@
                         $scope.roomsNames.push($scope.rooms[key].roomName);
                     }
                     console.log($scope.roomsNames);
+                    
                 }, 5);
             });
         }
@@ -86,6 +87,7 @@
             roomName = $scope.roomNameCreate;
             console.log(roomName);
             firebase.database().ref('rooms/' + roomName).set({
+                "count": 0,
                 "messageObj": {
                     "data": "18/11/2016",
                     "sender": $scope.userName,
