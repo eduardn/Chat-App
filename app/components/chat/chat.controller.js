@@ -108,6 +108,7 @@
          */
         $scope.joinRoom = function(room) {
                 firebase.database().ref('rooms/' + room + '/users/').push($scope.userName);
+               alert("user has joined");
             }
             /*TESTING DATA FOR ROOM USERS
 
