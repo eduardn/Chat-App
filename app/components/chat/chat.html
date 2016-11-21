@@ -4,44 +4,42 @@
         <h4> Hello, {{userName}} !</h4>
     </div>
     <div class="col-sm-offset-7 col-sm-2">
-        <button class="btn btn-default" ng-click="logout()">LogOut</button>
+        <button class="btn btn-default btn-xs" ng-click="logout()">Log Out <i class="fa fa-sign-out" aria-hidden="true"></i> </button>
     </div>
 
 </div>
 
 <div class="row">
-    <!-- ACETEAM CODE 
-         <div class="col-sm-5">
-        <h4>User Area + Available chat rooms</h4>
-        <ul ng-repeat="room in activeRooms">
-            <li>{{room}}-<button class="btn btn-success" ng-click="joinRoom(room)">Join this ROOM</button></li>
-        </ul>
-    </div>
-
-    <div class="col-sm-3">
-        <h4> Chat Messages</h4>-->
 
 
-    <div class="col-sm-6">
+    <div class="col-sm-2" class="container-fluid">
         <div> {{roomsNames.length}} available chat rooms:</div>
         <ul class="list-group" ng-if="rooms">
             <li class="list-group-item" ng-repeat="key in rooms">
                 {{key.roomName}}
-                <span class="badge">
+                <span class="badge pull-left">
                     {{key.count}}
                 </span>
-                <button class="btn btn-default " ng-click="joinRoom(room)">Join this ROOM</button>
+                <button class="btn btn-xs bg-info pull-right" ng-click="joinRoom(key.roomName)">
+                     join  <i class="fa fa-user-plus" aria-hidden="true"></i> 
+                </button>&nbsp;&nbsp;
+
             </li>
         </ul>
     </div>
 
 
-    <div class="col-sm-7">
+    <div class="col-sm-8">
         Chat Messages
     </div>
 
-    <div class="col-sm-4">
-        <h4> Users in chat</h4>
+    <div class="col-sm-2">
+        Active users:
+        <ul class="list-group" ng-if="rooms">
+            <li class="list-group-item" ng-repeat="key in rooms">
+                {{key.users.name}}
+            </li>
+        </ul>
     </div>
 </div>
 <div class="row">

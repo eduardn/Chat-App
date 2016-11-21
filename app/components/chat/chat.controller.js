@@ -38,17 +38,27 @@
         function listRooms() {
             database.ref('/rooms').once('value').then(function(snap) {
                 $scope.rooms = snap.val();
-                console.log($scope.rooms);
                 $scope.roomsNames = [];
                 $timeout(function() {
                     for (var key in $scope.rooms) {
                         $scope.roomsNames.push($scope.rooms[key].roomName);
                     }
-                    console.log($scope.roomsNames);
-                    
                 }, 5);
             });
         }
+
+        /* GAD team code */
+        function listUsers() {
+            database.ref('/rooms').once('value').then(function(snap) {
+                $scope.rooms = snap.val();
+                $timeout(function() {
+                    for (var key in $scope.rooms) {
+                        console.log(key);
+                    }
+                }, 5);
+            });
+        }
+        listUsers();
 
 
         /*
@@ -84,6 +94,7 @@
          */
 
         $scope.writeRoomData = function(roomName) {
+            console.log($scope.roomNameCreate);
             roomName = $scope.roomNameCreate;
             console.log(roomName);
             firebase.database().ref('rooms/' + roomName).set({
@@ -101,7 +112,9 @@
              *list rooms to refresh
              *interface
              */
+              $scope.roomNameCreate = null;
             listRooms();
+          
         }
 
         /*
@@ -109,8 +122,13 @@
          *user, from the available rooms
          */
         $scope.joinRoom = function(room) {
+
                 firebase.database().ref('rooms/' + room + '/users/').push($scope.userName);
-               alert("user has joined");
+                database.ref('rooms/' + room + '/count').once('value').then(function(snap) {
+                    //console.log(snap.val());
+                    // firebase.database('rooms/' + room + '/count').ref().update(updates)
+                });
+
             }
             /*TESTING DATA FOR ROOM USERS
 
