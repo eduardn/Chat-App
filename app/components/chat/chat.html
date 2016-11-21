@@ -20,8 +20,7 @@
 
     <div class="col-sm-3">
         <h4> Chat Messages</h4>-->
-
-    <div class="col-sm-2">
+    <div class="col-sm-4">
         <div>{{roomsNames.length}} available chat rooms</div>
         <ul class="list-group" ng-if="roomsNames">
             <li class="list-group-item" ng-repeat="room in roomsNames">
@@ -29,6 +28,7 @@
                 <span class="badge">
                     count
                 </span>
+                <button class="btn btn-default " ng-click="joinRoom(room)">Join this ROOM</button>
             </li>
         </ul>
     </div>
