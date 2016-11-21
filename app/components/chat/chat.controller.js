@@ -1,6 +1,7 @@
 /**
  * Created by bcojocariu on 11/3/2016.
  */
+
 (function() {
     'use strict';
 
@@ -15,8 +16,8 @@
 
     ChatController.$inject = ['$scope', '$state', 'loginService', '$localStorage', '$firebaseArray', '$firebaseObject', '$timeout', '$rootScope', '$q'];
 
-
     function ChatController($scope, $state, loginService, $localStorage, $firebaseArray, $firebaseObject, $timeout, $rootScope, $q) {
+
 
         $scope.$storage = $localStorage.$default();
         $scope.userName = $scope.$storage.loggedUsername;
@@ -27,6 +28,7 @@
             $state.go('home');
             $scope.$storage = $localStorage.$reset();
         }
+
 
 
         /*
@@ -100,6 +102,5 @@
 
                 });
                 */
-
     }
 })();
