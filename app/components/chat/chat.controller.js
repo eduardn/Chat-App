@@ -1,7 +1,3 @@
-/**
- * Created by bcojocariu on 11/3/2016.
- */
-
 (function() {
     'use strict';
 
@@ -16,12 +12,16 @@
 
     ChatController.$inject = ['$scope', '$state', 'loginService', '$localStorage', '$firebaseArray', '$firebaseObject', '$timeout', '$rootScope', '$q'];
 
+
     function ChatController($scope, $state, loginService, $localStorage, $firebaseArray, $firebaseObject, $timeout, $rootScope, $q) {
 
 
         $scope.$storage = $localStorage.$default();
         $scope.userName = $scope.$storage.loggedUsername;
-        console.log("loggedUsername: ", $scope.userName)
+        console.log("loggedUsername: ", $scope.userName);
+        $scope.name = "";
+        $scope.rooms = [];
+        $scope.roomsNames = [];
 
         $scope.logout = function() {
             console.log("Logged out");
@@ -29,33 +29,51 @@
             $scope.$storage = $localStorage.$reset();
         }
 
+        /*
+         *GAD team code
+         *list rooms
+         */
+        var database = firebase.database();
+
+        database.ref('/rooms').once('value').then(function(snap) {
+            $scope.rooms = snap.val();
+            console.log($scope.rooms);
+
+            $timeout(function() {
+                for (var key in $scope.rooms) {
+                    $scope.roomsNames.push($scope.rooms[key].roomName);
+                }
+                console.log($scope.roomsNames);
+            }, 5);
+        });
+
 
 
         /*
          * take all active rooms
          * created on database
          */
-        function listRooms() {
-            //var deferred = $q.defer();
-            firebase.database().ref('/rooms').once('value').then(function(snapshot) {
-                var room = snapshot.val();
-                console.log(room);
-                $scope.activeRooms = [];
-                $timeout(function() {
-                    for (var dataRooms in room) {
-                        $scope.activeRooms.push(room[dataRooms].roomName)
-                        console.log(room[dataRooms].roomName);
-                    }
-                }, 5);
-            });
-        }
+        /*  function listRooms() {
+              //var deferred = $q.defer();
+              firebase.database().ref('/rooms').once('value').then(function(snapshot) {
+                  var room = snapshot.val();
+                  console.log(room);
+                  $scope.activeRooms = [];
+                  $timeout(function() {
+                      for (var dataRooms in room) {
+                          $scope.activeRooms.push(room[dataRooms].roomName)
+                          console.log(room[dataRooms].roomName);
+                      }
+                  }, 5);
+              });
+          }*/
 
 
         /*
          *Call function to
          *list users
          */
-        listRooms();
+        //  listRooms();
 
         /*
          * https://firebase.google.com/docs/database/web/read-and-write
@@ -80,7 +98,7 @@
              *list rooms to refresh
              *interface
              */
-            listRooms();
+            //  listRooms();
         }
 
         /*

@@ -3,19 +3,19 @@
     <head>
         <meta charset="UTF-8">
         <title>Chat App</title>
+        <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+        <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyD_4mJEqBj73LNaSakhTmJyusbNumAXPsM",
+            authDomain: "mirc-67e54.firebaseapp.com",
+            databaseURL: "https://mirc-67e54.firebaseio.com",
+            storageBucket: "mirc-67e54.appspot.com",
+            messagingSenderId: "94467643559"
+        };
+        firebase.initializeApp(config);
+        </script>
 
-<script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyATSbWdXg84y1bAM57X_TniFpVXq0MjPEM",
-    authDomain: "mirc-b5d72.firebaseapp.com",
-    databaseURL: "https://mirc-b5d72.firebaseio.com",
-    storageBucket: "mirc-b5d72.appspot.com",
-    messagingSenderId: "431145642293"
-  };
-  firebase.initializeApp(config);
-</script>
         <script src="../bower_components/angular/angular.min.js"></script>
         <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
         <script src="../node_modules/angularfire/dist/angularfire.min.js"></script>

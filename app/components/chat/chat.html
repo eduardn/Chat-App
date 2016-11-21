@@ -10,7 +10,8 @@
 </div>
 
 <div class="row">
-    <div class="col-sm-5">
+    <!-- ACETEAM CODE 
+         <div class="col-sm-5">
         <h4>User Area + Available chat rooms</h4>
         <ul ng-repeat="room in activeRooms">
             <li>{{room}}-<button class="btn btn-success" ng-click="joinRoom(room)">Join this ROOM</button></li>
@@ -18,7 +19,23 @@
     </div>
 
     <div class="col-sm-3">
-        <h4> Chat Messages</h4>
+        <h4> Chat Messages</h4>-->
+
+    <div class="col-sm-2">
+        <div>{{roomsNames.length}} available chat rooms</div>
+        <ul class="list-group" ng-if="roomsNames">
+            <li class="list-group-item" ng-repeat="room in roomsNames">
+                {{room}}
+                <span class="badge">
+                    count
+                </span>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="col-sm-7">
+        Chat Messages
     </div>
 
     <div class="col-sm-4">
