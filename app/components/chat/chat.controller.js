@@ -38,17 +38,28 @@
         function listRooms() {
             database.ref('/rooms').once('value').then(function(snap) {
                 $scope.rooms = snap.val();
-                console.log($scope.rooms);
                 $scope.roomsNames = [];
                 $timeout(function() {
                     for (var key in $scope.rooms) {
                         $scope.roomsNames.push($scope.rooms[key].roomName);
                     }
-                    console.log($scope.roomsNames);
                     
                 }, 5);
             });
         }
+
+        /* GAD team code */
+         function listUsers() {
+                database.ref('/rooms').once('value').then(function(snap) {
+                $scope.rooms = snap.val();
+                 $timeout(function() {
+                    for (var key in $scope.rooms) {
+                       console.log(key);
+                    }
+                }, 5);
+            });
+         }
+         listUsers();
 
 
         /*
@@ -109,6 +120,7 @@
          *user, from the available rooms
          */
         $scope.joinRoom = function(room) {
+            
                 firebase.database().ref('rooms/' + room + '/users/').push($scope.userName);
             }
             /*TESTING DATA FOR ROOM USERS
