@@ -45,7 +45,7 @@
                         $scope.roomsNames.push($scope.rooms[key].roomName);
                     }
                     console.log($scope.roomsNames);
-                    
+
                 }, 5);
             });
         }
@@ -110,6 +110,11 @@
          */
         $scope.joinRoom = function(room) {
                 firebase.database().ref('rooms/' + room + '/users/').push($scope.userName);
+                database.ref('rooms/' + room + '/count').once('value').then(function(snap) {
+                    //console.log(snap.val());
+                   // firebase.database('rooms/' + room + '/count').ref().update(updates)
+                });
+
             }
             /*TESTING DATA FOR ROOM USERS
 
