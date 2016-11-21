@@ -21,7 +21,7 @@
         console.log("loggedUsername: ", $scope.userName);
         $scope.name = "";
         $scope.rooms = [];
-        $scope.roomsNames = [];
+
 
         $scope.logout = function() {
             console.log("Logged out");
@@ -35,18 +35,19 @@
          */
         var database = firebase.database();
 
-        database.ref('/rooms').once('value').then(function(snap) {
-            $scope.rooms = snap.val();
-            console.log($scope.rooms);
-
-            $timeout(function() {
-                for (var key in $scope.rooms) {
-                    $scope.roomsNames.push($scope.rooms[key].roomName);
-                }
-                console.log($scope.roomsNames);
-            }, 5);
-        });
-
+        function listRooms() {
+            database.ref('/rooms').once('value').then(function(snap) {
+                $scope.rooms = snap.val();
+                console.log($scope.rooms);
+                $scope.roomsNames = [];
+                $timeout(function() {
+                    for (var key in $scope.rooms) {
+                        $scope.roomsNames.push($scope.rooms[key].roomName);
+                    }
+                    console.log($scope.roomsNames);
+                }, 5);
+            });
+        }
 
 
         /*
@@ -73,7 +74,7 @@
          *Call function to
          *list users
          */
-        //  listRooms();
+        listRooms();
 
         /*
          * https://firebase.google.com/docs/database/web/read-and-write
@@ -98,7 +99,7 @@
              *list rooms to refresh
              *interface
              */
-            //  listRooms();
+            listRooms();
         }
 
         /*

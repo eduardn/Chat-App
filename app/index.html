@@ -1,49 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Chat App</title>
-        <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
-        <script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chat App</title>
+    <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+    <script>
         // Initialize Firebase
         var config = {
-            apiKey: "AIzaSyD_4mJEqBj73LNaSakhTmJyusbNumAXPsM",
-            authDomain: "mirc-67e54.firebaseapp.com",
-            databaseURL: "https://mirc-67e54.firebaseio.com",
-            storageBucket: "mirc-67e54.appspot.com",
-            messagingSenderId: "94467643559"
+            apiKey: "AIzaSyATSbWdXg84y1bAM57X_TniFpVXq0MjPEM",
+            authDomain: "mirc-b5d72.firebaseapp.com",
+            databaseURL: "https://mirc-b5d72.firebaseio.com",
+            storageBucket: "mirc-b5d72.appspot.com",
+            messagingSenderId: "431145642293"
         };
         firebase.initializeApp(config);
-        </script>
+    </script>
 
-        <script src="../bower_components/angular/angular.min.js"></script>
-        <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-        <script src="../node_modules/angularfire/dist/angularfire.min.js"></script>
-        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-        <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="../node_modules/angularfire/dist/angularfire.min.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
 
-        <script src="app.js"></script>
-        <script src="components/home/home.controller.js"></script>
+    <script src="app.js"></script>
+    <script src="components/home/home.controller.js"></script>
 
-        <script src="components/chat/chat.controller.js"></script>
-        <script src="components/home/loginService.js"></script>
-
-
-
-        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="styles.css">
-        <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="components/home/home.css">
+    <script src="components/chat/chat.controller.js"></script>
+    <script src="components/home/loginService.js"></script>
 
 
 
-    </head>
-    <body ng-app="chatApp">
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="components/home/home.css">
 
-        <div ui-view>
 
-        </div>
 
-    </body>
+</head>
+
+<body ng-app="chatApp">
+
+    <div ui-view>
+
+    </div>
+
+</body>
+
 </html>
