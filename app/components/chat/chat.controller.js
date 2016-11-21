@@ -1,7 +1,6 @@
 
 (function(){
     'use strict';
-   
 
     angular.module('chatApp')
         .controller('ChatController',ChatController);
@@ -23,13 +22,13 @@
 
         database.ref('/rooms').once('value').then(function(snap){
             $scope.rooms = snap.val();
+            console.log($scope.rooms);
         
             $timeout(function(){
                 for( var key in $scope.rooms){
                 $scope.roomsNames.push($scope.rooms[key].roomName);
                 }
-             console.log($scope.roomsNames);
-            },5);
+             console.log($scope.roomsNames);},5);
         });
     }
 

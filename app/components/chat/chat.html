@@ -14,13 +14,16 @@
       <div>{{roomsNames.length}} available chat rooms</div>
     <ul class="list-group" ng-if="roomsNames">
         <li class="list-group-item"  ng-repeat="room in roomsNames" >
-                {{room}}
+                {{room}} 
+                <span class="badge">
+                    count
+                </span>
         </li>
     </ul>
     </div>
 
 
-    <div class="col-sm-8">
+    <div class="col-sm-7">
         Chat Messages
     </div>
 
