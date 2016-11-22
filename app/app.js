@@ -22,6 +22,12 @@
                     controller: 'ChatController'
                 })
 
+                .state('chat.room',{
+                    url: '/chat/:roomName',
+                    templateUrl: 'components/chat-room/chat.room.html',
+                    controller: 'ChatRoomController'
+                })
+
         }])
 
 })();
