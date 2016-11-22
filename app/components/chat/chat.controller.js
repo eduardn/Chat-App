@@ -27,10 +27,11 @@
 
 
         $scope.logout = function() {
+            $scope.$storage = $localStorage.$reset();
             console.log("Logged out");
             $state.go('home');
-            $scope.$storage = $localStorage.$reset();
-        }
+
+        };
 
         /*
          *GAD team code
@@ -52,12 +53,13 @@
 
 
         /* GAD team code */
-        function listUsers() {
-            database.ref('/rooms').on('value').then(function(snap) {
+         function listUsers() {
+                database.ref('/rooms/Bogdan/users/').once('value').then(function(snap) {
                 $scope.rooms = snap.val();
-                $timeout(function() {
+                // console.log($scope.rooms);
+                 $timeout(function() {
                     for (var key in $scope.rooms) {
-                        console.log(key);
+                      // console.log($scope.rooms[key].users);
                     }
                 }, 5);
             });
@@ -95,11 +97,12 @@
              */
             $scope.roomNameCreate = null;
             listRooms();
+
         }
 
         /*
          *count users in a room
-         *and return the number 
+         *and return the number
          */
         $scope.getCount = function(users) {
             var i = 0;
@@ -122,9 +125,8 @@
                         return true
                     }
                 }
-
             });
-        }
+        };
 
 
         /*
@@ -132,10 +134,14 @@
          *user, from the available rooms
          */
         $scope.joinRoom = function(room) {
-            $scope.checkUnique();
             firebase.database().ref('rooms/' + room + '/users/').push($scope.userName);
             localStorage.setItem('roomJoined', room);
+            $scope.checkUnique();
+            $state.go('chat.room', {roomName: room});
 
+            var roomUsersRef = firebase.database().ref('rooms/' + room + '/users/');
+            roomUsersRef.on('value',function(snap){
+            })
         }
 
         /* $scope.listUsersRoom = function() {
@@ -152,5 +158,7 @@
              }
          }
          $scope.listUsersRoom();*/
+
+
     }
 })();

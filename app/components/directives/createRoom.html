@@ -1,26 +1,22 @@
 <div class="container-fluid">
-    <button type="button" class="btn btn-info bg-success" data-toggle="modal" data-target="#myModal">
+    <button type="button" class="btn btn-info purple" data-toggle="modal" data-target="#myModal">
   create new room <i class="fa fa-plus" aria-hidden="true"></i>
 </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content container-fluid">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Enter Room Name</h4>
-                </div>
-                <div class="modal-body">
-                    <input type="text" ng-model="roomNameCreate" />
-                </div>
-                <div class="modal-footer">
-                    <button type="button" ng-click="writeRoomData()" class="btn btn-default" data-dismiss="modal">Create</button>
-                </div>
-            </div>
-
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content container-fluid">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Enter Room Name</h4>
+        </div>
+        <div class="modal-body">
+          <input type="text" place-holder="room name" ng-model="roomNameCreate" required/>
+        </div>
+        <div class="modal-footer">
+          <button type="button" ng-click="writeRoomData()" class="btn btn-default" data-dismiss="modal">Create</button>
         </div>
     </div>
 </div>

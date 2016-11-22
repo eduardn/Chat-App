@@ -15,16 +15,22 @@
 
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
-
+        $scope.$storage = $localStorage.$reset();
         $scope.username = "";
 
         $scope.login = function(username){
             if(username){
-                // loginService.setUsername(username);
 
                 $scope.$storage = $localStorage.$default({
                     loggedUsername: username
                 });
+
+                //Save user to firebase
+                var newUserKey = firebase.database().ref().child('users').push().key;
+                console.log(newUserKey);
+                var updateUser = {};
+                updateUser['/users/' + newUserKey] = username;
+                firebase.database().ref().update(updateUser);
 
                 console.log("Username: ", username);
 
@@ -39,6 +45,9 @@
         database.ref('/users').once('value').then(function(snap){
             console.log(snap.val());
         });
+
+
+
     }
 
 })();
