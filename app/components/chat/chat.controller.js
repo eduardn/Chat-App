@@ -39,7 +39,7 @@
          */
         var database = firebase.database();
 
-        function listRooms() {
+        $scope.listRooms = function() {
             database.ref('/rooms').once('value').then(function(snap) {
                 $scope.rooms = snap.val();
                 $scope.roomsNames = [];
@@ -53,13 +53,13 @@
 
 
         /* GAD team code */
-         function listUsers() {
-                database.ref('/rooms/Bogdan/users/').once('value').then(function(snap) {
+        function listUsers() {
+            database.ref('/rooms/Bogdan/users/').once('value').then(function(snap) {
                 $scope.rooms = snap.val();
                 // console.log($scope.rooms);
-                 $timeout(function() {
+                $timeout(function() {
                     for (var key in $scope.rooms) {
-                      // console.log($scope.rooms[key].users);
+                        // console.log($scope.rooms[key].users);
                     }
                 }, 5);
             });
@@ -71,7 +71,7 @@
          *Call function to
          *list users
          */
-        listRooms();
+        $scope.listRooms();
 
         /*
          * https://firebase.google.com/docs/database/web/read-and-write
@@ -96,7 +96,7 @@
              *interface
              */
             $scope.roomNameCreate = null;
-            listRooms();
+            $scope.listRooms();
 
         }
 
@@ -120,11 +120,19 @@
             console.log('user in room ' + roomName);
             database.ref('rooms/' + roomName + '/users').once('value').then(function(snap) {
                 var roomUsers = snap.val();
+                var userCount = 0;
                 for (var counter in roomUsers) {
                     if ($scope.userName == roomUsers[counter]) {
-                        return true
+                        userCount = userCount + 1;
+                        console.log(userCount + "number of joined users")
                     }
                 }
+                if (userCount > 1) {
+                    return true;
+                } else {
+                    return false;
+                }
+
             });
         };
 
@@ -134,14 +142,12 @@
          *user, from the available rooms
          */
         $scope.joinRoom = function(room) {
+            $scope.checkUnique();
             firebase.database().ref('rooms/' + room + '/users/').push($scope.userName);
             localStorage.setItem('roomJoined', room);
-            $scope.checkUnique();
-            $state.go('chat.room', {roomName: room});
-
+            $state.go('chat.room', { roomName: room });
             var roomUsersRef = firebase.database().ref('rooms/' + room + '/users/');
-            roomUsersRef.on('value',function(snap){
-            })
+            roomUsersRef.on('value', function(snap) {})
         }
 
         /* $scope.listUsersRoom = function() {
