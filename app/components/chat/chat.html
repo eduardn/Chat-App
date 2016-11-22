@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-inverse" role="navigation">
             <div class="col-sm-3">
                 <img class="pull-left white logo" src="http://parastudios.de/files/chat_vector/facebook_chat.png" alt="logo"/>
@@ -7,9 +8,9 @@
                 <button class="btn btn-default btn-xs logout" ng-click="logout()">Log Out <i class="fa fa-sign-out" aria-hidden="true"></i> </button>
             </div>
 </nav>
-
 <div class="row">
     <div class="col-sm-3" class="container-fluid">
+
         <div> {{roomsNames.length}} available chat rooms:</div>
         <ul class="list-group" ng-if="rooms">
             <li class="list-group-item" ng-repeat="key in rooms">
@@ -27,8 +28,8 @@
         <create-room></create-room>
         </div>
     </div>
-    <div class="col-sm-8">
-        Chat Messages
+    <div class="col-sm-10">
+        <ui-view></ui-view>
     </div>
 
 </div>

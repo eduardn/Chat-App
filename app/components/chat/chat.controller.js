@@ -141,9 +141,7 @@
 
             var roomUsersRef = firebase.database().ref('rooms/' + room + '/users/');
             roomUsersRef.on('value',function(snap){
-
             })
-
         }
 
         /* $scope.listUsersRoom = function() {
