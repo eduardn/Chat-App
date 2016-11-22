@@ -28,6 +28,13 @@ hr {
     float: right;
 }
 
+.purple {
+    background-color:#862d59;
+}
+.mov {
+   background-color:#F5C2BC;
+}
+
 .green {
     color: #069E4C;
 }
@@ -38,6 +45,10 @@ hr {
 
 .grey {
     color: #BFB1A0;
+}
+
+.white{
+    color:white;
 }
 
 thead {
@@ -53,6 +64,7 @@ thead {
     color: #999999;
 }
 
+
 .btn.active.focus,
 .btn.active:focus,
 .btn.focus,
@@ -63,12 +75,12 @@ thead {
 }
 
 .btn-default {
-    color: #999999;
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
     padding: 10px 25px;
 }
 
+.btn-info:hover,
 .btn-default:hover,
 .btn-default:focus,
 .btn-default:active,
@@ -94,6 +106,29 @@ li:first-child> a {
 }
 */
 
+.logout
+{
+    font-size:80%;
+    margin-top:5%;
+}
+
+.logo{
+    width:12%;
+    height:12%;
+    text-align: center;
+    margin-right:3%;
+    margin-top:3%;
+}
+
+.pull-right {
+    margin-right: 1.5%;
+}
+
+.navbar-inverse
+{
+font-family: 'Josefin Sans';
+background-color:#862d59; 
+}
 .navbar-default {
     background-color: #0081A7;
     border-radius: 0px;
