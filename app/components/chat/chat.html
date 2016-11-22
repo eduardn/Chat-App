@@ -36,7 +36,7 @@
         Active users:
         <ul class="list-group" ng-if="rooms">
             <li class="list-group-item" ng-repeat="key in rooms">
-                {{key.users.name}}
+                {{key.users.child.name}}
             </li>
         </ul>
     </div>

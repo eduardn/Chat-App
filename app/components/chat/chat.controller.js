@@ -122,6 +122,7 @@
         $scope.joinRoom = function(room) {
             
                 firebase.database().ref('rooms/' + room + '/users/').push($scope.userName);
+
             }
             /*TESTING DATA FOR ROOM USERS
 
