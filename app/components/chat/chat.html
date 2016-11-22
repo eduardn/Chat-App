@@ -10,18 +10,18 @@
 </div>
 
 <div class="row">
-
     <div class="col-sm-4" class="container-fluid">
         <div> {{roomsNames.length}} available chat rooms:</div>
         <ul class="list-group" ng-if="rooms">
             <li class="list-group-item" ng-repeat="key in rooms">
                 {{key.roomName}}
                 <span class="badge pull-left">
-                    {{key.count}}
+                    {{getCount(key.users)}}
                 </span>
                 <button class="btn btn-xs bg-info pull-right" ng-click="joinRoom(key.roomName)">
                      join  <i class="fa fa-user-plus" aria-hidden="true"></i> 
                 </button>&nbsp;&nbsp;
+
             </li>
         </ul>
     </div>
@@ -30,7 +30,6 @@
     <div class="col-sm-8">
         Chat Messages
     </div>
-
 </div>
 <div class="row">
     <create-room></create-room>
