@@ -27,10 +27,11 @@
 
 
         $scope.logout = function() {
+            $scope.$storage = $localStorage.$reset();
             console.log("Logged out");
             $state.go('home');
-            $scope.$storage = $localStorage.$reset();
-        }
+
+        };
 
         /*
          *GAD team code
@@ -58,7 +59,7 @@
                 // console.log($scope.rooms);
                  $timeout(function() {
                     for (var key in $scope.rooms) {
-                       console.log($scope.rooms[key].users);
+                      // console.log($scope.rooms[key].users);
                     }
                 }, 5);
             });
@@ -125,7 +126,7 @@
                 }
 
             });
-        }
+        };
 
 
         /*
@@ -133,9 +134,15 @@
          *user, from the available rooms
          */
         $scope.joinRoom = function(room) {
-            $scope.checkUnique();
             firebase.database().ref('rooms/' + room + '/users/').push($scope.userName);
             localStorage.setItem('roomJoined', room);
+            $scope.checkUnique();
+            $state.go('chat.room', {roomName: room});
+
+            var roomUsersRef = firebase.database().ref('rooms/' + room + '/users/');
+            roomUsersRef.on('value',function(snap){
+                console.log(snap.val());
+            })
 
         }
 
@@ -153,5 +160,7 @@
              }
          }
          $scope.listUsersRoom();*/
+
+
     }
 })();
