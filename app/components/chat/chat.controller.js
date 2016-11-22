@@ -50,11 +50,12 @@
 
         /* GAD team code */
          function listUsers() {
-                database.ref('/rooms').once('value').then(function(snap) {
+                database.ref('/rooms/Bogdan/users/').once('value').then(function(snap) {
                 $scope.rooms = snap.val();
+                // console.log($scope.rooms);
                  $timeout(function() {
                     for (var key in $scope.rooms) {
-                       console.log(key);
+                       console.log($scope.rooms[key].users);
                     }
                 }, 5);
             });

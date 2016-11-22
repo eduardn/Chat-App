@@ -25,6 +25,9 @@
                 </button>&nbsp;&nbsp;
             </li>
         </ul>
+        <div class="row">
+        <create-room></create-room>
+        </div>
     </div>
 
 
@@ -36,11 +39,8 @@
         Active users:
         <ul class="list-group" ng-if="rooms">
             <li class="list-group-item" ng-repeat="key in rooms">
-                {{key.users.name}}
+                {{key.users}}
             </li>
         </ul>
     </div>
-</div>
-<div class="row">
-    <create-room></create-room>
 </div>
