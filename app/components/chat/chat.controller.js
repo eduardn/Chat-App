@@ -8,16 +8,19 @@
                 // controller: 'ChatController',
                 templateUrl: 'components/directives/createRoom.html'
             };
-        })
+        });
 
-    ChatController.$inject = ['$scope', '$state', 'loginService', '$localStorage', '$firebaseArray', '$firebaseObject', '$timeout', '$rootScope', '$q'];
+    ChatController.$inject = ['$scope', '$state', '$location', 'loginService', '$localStorage', '$firebaseArray', '$firebaseObject', '$timeout', '$rootScope', '$q'];
 
 
-    function ChatController($scope, $state, loginService, $localStorage, $firebaseArray, $firebaseObject, $timeout, $rootScope, $q) {
-
+    function ChatController($scope, $state, $location, loginService, $localStorage, $firebaseArray, $firebaseObject, $timeout, $rootScope, $q) {
 
         $scope.$storage = $localStorage.$default();
         $scope.userName = $scope.$storage.loggedUsername;
+        if (!$scope.userName) {
+            console.log("should redirect to login");
+            $location.path('/home');
+        }
         console.log("loggedUsername: ", $scope.userName);
         $scope.name = "";
         $scope.rooms = [];
@@ -43,44 +46,25 @@
                     for (var key in $scope.rooms) {
                         $scope.roomsNames.push($scope.rooms[key].roomName);
                     }
-                    
                 }, 5);
             });
         }
 
+
         /* GAD team code */
          function listUsers() {
-                database.ref('/rooms').once('value').then(function(snap) {
+                database.ref('/rooms/Bogdan/users/').once('value').then(function(snap) {
                 $scope.rooms = snap.val();
+                // console.log($scope.rooms);
                  $timeout(function() {
                     for (var key in $scope.rooms) {
-                       console.log(key);
+                       console.log($scope.rooms[key].users);
                     }
                 }, 5);
             });
-         }
-         listUsers();
+        }
 
-
-        /*
-         * take all active rooms
-         * created on database
-         */
-        /*  function listRooms() {
-              //var deferred = $q.defer();
-              firebase.database().ref('/rooms').once('value').then(function(snapshot) {
-                  var room = snapshot.val();
-                  console.log(room);
-                  $scope.activeRooms = [];
-                  $timeout(function() {
-                      for (var dataRooms in room) {
-                          $scope.activeRooms.push(room[dataRooms].roomName)
-                          console.log(room[dataRooms].roomName);
-                      }
-                  }, 5);
-              });
-          }*/
-
+        listUsers();
 
         /*
          *Call function to
@@ -93,12 +77,10 @@
          * adding a new room to database
          * TO DO : RESOLVE WITH MESSAGES
          */
-
         $scope.writeRoomData = function(roomName) {
             roomName = $scope.roomNameCreate;
-            console.log(roomName);
+            //console.log(roomName);
             firebase.database().ref('rooms/' + roomName).set({
-                "count": 0,
                 "messageObj": {
                     "data": "18/11/2016",
                     "sender": $scope.userName,
@@ -112,8 +94,39 @@
              *list rooms to refresh
              *interface
              */
+            $scope.roomNameCreate = null;
             listRooms();
         }
+
+        /*
+         *count users in a room
+         *and return the number 
+         */
+        $scope.getCount = function(users) {
+            var i = 0;
+            for (var p in users) {
+                if (users.hasOwnProperty(p)) {
+                    i++
+                }
+            }
+            return i
+
+        };
+
+        $scope.checkUnique = function() {
+            var roomName = localStorage.getItem('roomJoined');
+            console.log('user in room ' + roomName);
+            database.ref('rooms/' + roomName + '/users').once('value').then(function(snap) {
+                var roomUsers = snap.val();
+                for (var counter in roomUsers) {
+                    if ($scope.userName == roomUsers[counter]) {
+                        return true
+                    }
+                }
+
+            });
+        }
+
 
         /*
          *Join a room as
@@ -124,17 +137,6 @@
                 firebase.database().ref('rooms/' + room + '/users/').push($scope.userName);
 
             }
-            /*TESTING DATA FOR ROOM USERS
 
-               firebase.database().ref('rooms/'+ 'room2' +'/users/').once('value').then(function(snapshot) {
-                    var data = snapshot.val();
-                    console.log(data);
-
-                    for(var key in data ){
-                        console.log(data[key]);
-                    }
-
-                });
-                */
     }
 })();

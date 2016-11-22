@@ -1,3 +1,4 @@
+
 define( [
 	"./fnToString"
 ], function( fnToString ) {
