@@ -53,7 +53,7 @@
 
         /* GAD team code */
         function listUsers() {
-            database.ref('/rooms').once('value').then(function(snap) {
+            database.ref('/rooms').on('value').then(function(snap) {
                 $scope.rooms = snap.val();
                 $timeout(function() {
                     for (var key in $scope.rooms) {
