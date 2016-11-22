@@ -97,6 +97,7 @@
              */
             $scope.roomNameCreate = null;
             listRooms();
+
         }
 
         /*
@@ -124,7 +125,6 @@
                         return true
                     }
                 }
-
             });
         };
 
