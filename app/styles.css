@@ -183,3 +183,7 @@ p {
     color: #ffffff;
     padding: 8px 15px;
 }
+
+.usersRoom {
+    list-style: none;
+}

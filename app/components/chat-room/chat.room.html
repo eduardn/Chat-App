@@ -1,14 +1,44 @@
-<div>
-    Messages from {{room}}
-</div>
 
-<ul>
-    <li ng-repeat="message in messages">
-      {{message.sender}} said {{message.text}}
-    </li>
-</ul>
+<div class="row" ngIf={{room}}>
 
-<div class="footer">
-    <input type="text" ng-model="message.text"/>
-    <button class="btn btn-success" ng-click="sendMessage(message.text)">Send</button>
+    <!--CHAT MESSAGES-->
+    <div class="col-sm-10">
+        <div>
+            Messages from {{room}} Room
+        </div>
+
+        <ul class="messages">
+            <li ng-repeat="message in messages">
+                <div class="sender">
+                    <div class="sender-message"><span ng-style="myColorStyle">{{message.sender}}</span></div>
+                    <div class="text-message">{{message.text}}</div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="footer">
+            <input type="text" ng-model="message.text"/>
+            <button class="btn btn-success" ng-click="sendMessage(message.text)">Send</button>
+        </div>
+    </div>
+
+    <!--USERS FROM ROOM-->
+    <div class="col-sm-2">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Users</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="activeuser in roomUsers track by $index">
+                <td>
+                    {{activeuser}}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
 </div>

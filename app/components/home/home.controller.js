@@ -17,13 +17,20 @@
         $rootScope.$stateParams = $stateParams;
         $scope.$storage = $localStorage.$reset();
         $scope.username = "";
+        $scope.usercolor = getRandomColor();
+        console.log($scope.usercolor);
 
+        $scope.myStyle={'color':getRandomColor()};
         $scope.login = function(username){
             if(username){
 
+
                 $scope.$storage = $localStorage.$default({
-                    loggedUsername: username
+                    loggedUsername: username,
+                    usercolor: $scope.usercolor
                 });
+
+
 
                 //Save user to firebase
                 var newUserKey = firebase.database().ref().child('users').push().key;
@@ -45,6 +52,15 @@
         database.ref('/users').once('value').then(function(snap){
             console.log(snap.val());
         });
+
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++ ) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
 
 
 
