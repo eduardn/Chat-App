@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6043ec6c-17c5-4696-a37a-2e545b57606c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/chat/chat.controller.js" afterPath="$PROJECT_DIR$/app/components/chat/chat.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/chat/chat.html" afterPath="$PROJECT_DIR$/app/components/chat/chat.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -33,14 +35,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chat.controller.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="chat.controller.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/components/chat/chat.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2794">
-              <caret line="128" column="10" selection-start-line="128" selection-start-column="10" selection-end-line="128" selection-end-column="10" />
-              <folding>
-                <marker date="1479888224747" expanded="true" signature="4105:4107" ph="{...}" />
-              </folding>
+            <state relative-caret-position="3146">
+              <caret line="143" column="42" selection-start-line="143" selection-start-column="42" selection-end-line="143" selection-end-column="42" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -95,7 +95,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="132">
@@ -108,8 +108,8 @@
       <file leaf-file-name="chat.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/components/chat/chat.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="638">
-              <caret line="29" column="10" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
+            <state relative-caret-position="589">
+              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -147,10 +147,10 @@
         <option value="$PROJECT_DIR$/app/app.js" />
         <option value="$PROJECT_DIR$/app/components/home/home.controller.js" />
         <option value="$PROJECT_DIR$/bower_components/jquery/src/var/ObjectFunctionString.js" />
-        <option value="$PROJECT_DIR$/app/components/chat/chat.html" />
-        <option value="$PROJECT_DIR$/app/components/chat/chat.controller.js" />
         <option value="$PROJECT_DIR$/app/components/chat-room/ChatRoomController.js" />
         <option value="$PROJECT_DIR$/app/index.html" />
+        <option value="$PROJECT_DIR$/app/components/chat/chat.html" />
+        <option value="$PROJECT_DIR$/app/components/chat/chat.controller.js" />
       </list>
     </option>
   </component>
@@ -268,6 +268,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gradsmirc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gradsmirc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chat" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -355,12 +377,12 @@
       <workItem from="1479457517839" duration="7678000" />
       <workItem from="1479723457905" duration="11089000" />
       <workItem from="1479825095215" duration="2538000" />
-      <workItem from="1479886176296" duration="1394000" />
+      <workItem from="1479886176296" duration="1686000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25618000" />
+    <option name="totallyTimeSpent" value="25910000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2409" y="-9" width="2418" height="1308" extended-state="6" />
@@ -400,13 +422,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/app/components/chat/chat.controller.js</url>
-          <line>102</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
@@ -424,9 +439,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2794">
           <caret line="127" column="15" selection-start-line="127" selection-start-column="15" selection-end-line="127" selection-end-column="15" />
-          <folding>
-            <marker date="1479888224747" expanded="true" signature="4105:4107" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -506,9 +519,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1479888224747" expanded="true" signature="4105:4107" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -628,9 +639,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1479888224747" expanded="true" signature="4105:4107" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -702,24 +711,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/chat/chat.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="29" column="10" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/chat/chat.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2794">
-          <caret line="128" column="10" selection-start-line="128" selection-start-column="10" selection-end-line="128" selection-end-column="10" />
-          <folding>
-            <marker date="1479888224747" expanded="true" signature="4105:4107" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/components/chat-room/chat.room.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
@@ -740,6 +731,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="6" column="80" selection-start-line="6" selection-start-column="80" selection-end-line="6" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/chat/chat.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/chat/chat.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3146">
+          <caret line="143" column="42" selection-start-line="143" selection-start-column="42" selection-end-line="143" selection-end-column="42" />
           <folding />
         </state>
       </provider>

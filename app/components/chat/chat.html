@@ -1,12 +1,11 @@
-
 <nav class="navbar navbar-inverse" role="navigation">
-            <div class="col-sm-3">
-                <img class="pull-left white logo" src="http://parastudios.de/files/chat_vector/facebook_chat.png" alt="logo"/>
-                 <h4 class="white"> Hello, {{userName}} !</h4>
-            </div>
-            <div class="pull-right">
-                <button class="btn btn-default btn-xs logout" ng-click="logout()">Log Out <i class="fa fa-sign-out" aria-hidden="true"></i> </button>
-            </div>
+    <div class="col-sm-3">
+        <img class="pull-left white logo" src="http://parastudios.de/files/chat_vector/facebook_chat.png" alt="logo" />
+        <h4 class="white"> Hello, {{userName}} !</h4>
+    </div>
+    <div class="pull-right">
+        <button class="btn btn-default btn-xs logout" ng-click="logout()">Log Out <i class="fa fa-sign-out" aria-hidden="true"></i> </button>
+    </div>
 </nav>
 
 <div class="row">
@@ -19,19 +18,19 @@
                 <span class="badge pull-left">
                     {{getCount(key.users)}}
                 </span>
-                <button class="btn btn-xs pull-right mov" ng-click="joinRoom(key.roomName)">
+                <button class="btn btn-xs pull-right mov" ng-click="joinRoom(key.roomName); listRooms()">
                      join  <i class="fa fa-user-plus" aria-hidden="true"></i> 
                 </button>&nbsp;&nbsp;
 
             </li>
         </ul>
         <div class="row">
-        <create-room></create-room>
+            <create-room></create-room>
         </div>
     </div>
     <div class="col-sm-6">
         <ui-view></ui-view>
     </div>
 
-
 </div>
+
