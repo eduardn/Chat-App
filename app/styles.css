@@ -111,6 +111,9 @@ li:first-child> a {
     font-size:80%;
     margin-top:5%;
 }
+.logout:hover {
+    background-color: #F5C2BC;
+}
 
 .logo{
     width:12%;
@@ -182,4 +185,10 @@ p {
     background-color: #525252;
     color: #ffffff;
     padding: 8px 15px;
+}
+
+
+.purple:active,
+.purple:focus {
+    background-color: #F5C2BC;
 }

@@ -160,6 +160,5 @@
          $scope.listUsersRoom();*/
 
 
->>>>>>> master
     }
 })();
