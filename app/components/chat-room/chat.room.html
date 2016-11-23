@@ -1,14 +1,21 @@
+<div class="divMesaje">
+
 <div>
     Messages from {{room}}
 </div>
 
+<div class="messages">
 <ul>
     <li ng-repeat="message in messages">
       {{message.sender}} said {{message.text}}
     </li>
 </ul>
+</div>
 
 <div class="footer">
     <input type="text" ng-model="message.text"/>
-    <button class="btn btn-success" ng-click="sendMessage(message.text)">Send</button>
+    <button class="btn mov" ng-click="sendMessage(message.text)">Send</button>
 </div>
+
+</div>
+
