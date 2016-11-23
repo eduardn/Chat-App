@@ -208,6 +208,7 @@ p {
     border: 1px solid #ddd;
     overflow-y: scroll;
     max-height: 500px;
+    min-height: 500px;
 }
 
 .row{
