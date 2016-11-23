@@ -26,6 +26,8 @@
         console.log($scope.room);
         $scope.roomUsers = [];
 
+        $scope.loggedUsername = $scope.$storage.loggedUsername;
+
         var usercolor = $scope.$storage.usercolor;
 
         $scope.myColorStyle = { 'color': usercolor };
@@ -85,5 +87,20 @@
                 $scope.roomUsers = roomusers;
             }, 1);
         });
+
+        $scope.leaveRoom  =   function(user) {
+            var  usersArray  = [];
+            var  users  = [];
+            var  userRef  = firebase.database().ref('/rooms/' + $scope.room + '/users');
+            userRef.on('value',  function(snap) {
+                usersArray = snap.val();
+                for (var ukey in usersArray) {
+                    if (usersArray[ukey] === user) {
+                        userRef.child(ukey).remove();
+                        console.log(usersArray[ukey] + " Removed");
+                    }
+                }
+            })
+        }
     }
 })();
