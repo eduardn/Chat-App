@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <div class="row" ngIf={{room}}>
 
@@ -17,8 +18,9 @@
         </ul>
 
         <div class="footer">
-            <input type="text" ng-model="message.text"/>
-            <button class="btn btn-success" ng-click="sendMessage(message.text)">Send</button>
+            <input type="text" ng-model="message.text" id="txtSend"
+                   onkeydown="if(event.keyCode == 13) {document.getElementById('btnSend').click(); $('#txtSend').val('')}"/>
+            <button class="btn mov" ng-click="sendMessage(message.text); message.text = null" id="btnSend">Send</button>
         </div>
     </div>
 
@@ -42,3 +44,4 @@
     </div>
 
 </div>
+
