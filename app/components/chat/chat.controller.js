@@ -46,7 +46,6 @@
 
                 for (var key in $scope.rooms) {
                     roomNames.push($scope.rooms[key].roomName);
-                    console.log("Rooms: ",roomNames);
                 }
                 $scope.roomsNames = [];
 
