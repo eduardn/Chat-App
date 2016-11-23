@@ -98,7 +98,8 @@
             $scope.roomNameCreate = null;
             listRooms();
 
-        }
+            //  ` $scope.alert = {type: 'error', msg: 'Oh snap! Please insert a valid name!', show: true} ;      
+         }
 
         /*
          *count users in a room

@@ -45,6 +45,7 @@
         });
 
         $scope.sendMessage = function(messageText){
+          if(messageText){
             $scope.messages = [];
             var messageObject = {
                 sender: $scope.userName,
@@ -57,6 +58,7 @@
             updates['/rooms/' + $scope.room + '/messageObj/' + newPostKey] = messageObject;
 
             return firebase.database().ref().update(updates);
+        }
         }
 
     }

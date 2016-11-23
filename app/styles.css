@@ -33,7 +33,7 @@ hr {
     color: white;
 }
 
-.mov {
+.roz {
    background-color:#F5C2BC;
 }
 
@@ -212,7 +212,6 @@ p {
     overflow-y: auto;
     min-height: 500px;
     max-height: 500px;
-    min-height: 500px;
 }
 
 .row{
@@ -222,18 +221,24 @@ p {
 .footer{
     position: absolute;
     box-sizing: border-box;
-    width: 90%;
+    width: 100%;
 }
 
 .footer input{
-    width: 91%;
-    overflow-y: scroll;
-    max-height: 30px;
+    width: 85.5%;
+    max-height: 50px;
+    height: 50px;
     margin-top: 1%;
 }
+
 
 ul li{
     list-style-type: none;
     margin-top: 0.5%;
+}
+
+.footer button {
+    max-height: 50px;
+    height: 50px;
 }
 
