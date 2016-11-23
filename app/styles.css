@@ -203,20 +203,14 @@ p {
     padding: 8px 15px;
 }
 
-<<<<<<< HEAD
-
-.purple:active,
-.purple:focus {
-    background-color: #F5C2BC;
-}
-=======
 .divMesaje{
     margin: 1.5%;
 }
 
 .messages{
     border: 1px solid #ddd;
-    overflow-y: scroll;
+    overflow-y: auto;
+    min-height: 500px;
     max-height: 500px;
 }
 
@@ -227,11 +221,11 @@ p {
 .footer{
     position: absolute;
     box-sizing: border-box;
-    width: 100%;
+    width: 90%;
 }
 
 .footer input{
-    width: 85%;
+    width: 91%;
     overflow-y: scroll;
     max-height: 30px;
     margin-top: 1%;
@@ -242,4 +236,3 @@ ul li{
     margin-top: 0.5%;
 }
 
->>>>>>> master
