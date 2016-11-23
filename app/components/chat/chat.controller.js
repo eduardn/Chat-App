@@ -158,7 +158,5 @@
              }
          }
          $scope.listUsersRoom();*/
-
-
     }
 })();
