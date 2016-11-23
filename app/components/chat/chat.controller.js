@@ -134,7 +134,6 @@
          *user, from the available rooms
          */
         $scope.joinRoom = function(room) {
-
             firebase.database().ref('rooms/' + room + '/users/').push($scope.userName);
             localStorage.setItem('roomJoined', room);
             $scope.checkUnique();
@@ -159,8 +158,5 @@
              }
          }
          $scope.listUsersRoom();*/
-
-
-
     }
 })();

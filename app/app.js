@@ -13,7 +13,7 @@
                     url: '/home',
                     //template: '<h1>HomePage</h1>',
                     templateUrl: 'components/home/home.html',
-                    controller: 'HomeController'
+                    controller: 'HomeController',
                 })
 
                 .state('chat',{

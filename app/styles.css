@@ -127,6 +127,9 @@ li:first-child> a {
     font-size:80%;
     margin-top:5%;
 }
+.logout:hover {
+    background-color: #F5C2BC;
+}
 
 .logo{
     width:12%;
@@ -206,7 +209,8 @@ p {
 
 .messages{
     border: 1px solid #ddd;
-    overflow-y: scroll;
+    overflow-y: auto;
+    min-height: 500px;
     max-height: 500px;
     min-height: 500px;
 }
@@ -218,11 +222,11 @@ p {
 .footer{
     position: absolute;
     box-sizing: border-box;
-    width: 100%;
+    width: 90%;
 }
 
 .footer input{
-    width: 85%;
+    width: 91%;
     overflow-y: scroll;
     max-height: 30px;
     margin-top: 1%;

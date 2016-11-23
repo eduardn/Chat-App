@@ -1,10 +1,10 @@
-<div class="divMesaje">
 
+<div class="divMesaje" ng-controller="ChatRoomController">
 <div>
     Messages from {{room}}
 </div>
 
-<div class="messages">
+<div class="messages" schroll-bottom="messages">
 <ul>
     <li ng-repeat="message in messages">
       {{message.sender}} said {{message.text}}
@@ -12,8 +12,8 @@
 </ul>
 </div>
 
-<div class="footer">
-    <input type="text" ng-model="message.text"/>
+<div class="footer" ng-click="message.text =''">
+    <input type="text" ng-model="message.text" placeholder="Send a message"/>
     <button class="btn mov" ng-click="sendMessage(message.text)">Send</button>
 </div>
 
