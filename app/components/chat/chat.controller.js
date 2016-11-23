@@ -40,16 +40,21 @@
         var database = firebase.database();
 
         $scope.listRooms = function() {
-            database.ref('/rooms').once('value').then(function(snap) {
+            database.ref('/rooms').on('value',function(snap) {
                 $scope.rooms = snap.val();
+                var roomNames = [];
+
+                for (var key in $scope.rooms) {
+                    roomNames.push($scope.rooms[key].roomName);
+                    console.log("Rooms: ",roomNames);
+                }
                 $scope.roomsNames = [];
+
                 $timeout(function() {
-                    for (var key in $scope.rooms) {
-                        $scope.roomsNames.push($scope.rooms[key].roomName);
-                    }
-                }, 5);
+                    $scope.roomNames = roomNames;
+                }, 0);
             });
-        }
+        };
 
 
         /* GAD team code */
@@ -65,7 +70,7 @@
             });
         }
 
-        listUsers();
+        // listUsers();
 
         /*
          *Call function to
@@ -79,17 +84,20 @@
          * TO DO : RESOLVE WITH MESSAGES
          */
         $scope.writeRoomData = function(roomName) {
-            roomName = $scope.roomNameCreate;
+            var roomName = $scope.roomNameCreate;
             //console.log(roomName);
-            firebase.database().ref('rooms/' + roomName).set({
-                "messageObj": {
-                    "data": "18/11/2016",
-                    "sender": $scope.userName,
-                    "text": "1st Message"
-                },
-                "roomName": roomName,
-                "users": {}
-            });
+            var messageObject = {
+                sender: "RoomBot",
+                text: "Welcome to the room"
+            };
+            // Get a key for a new Post.
+            var newPostKey = firebase.database().ref().child('rooms').child($scope.roomNameCreate).child('messageObj').push().key;
+            // Write the new post's data simultaneously in the posts list and the user's post list.
+            var updates = {};
+            updates['/rooms/' + $scope.roomNameCreate + '/roomName'] = $scope.roomNameCreate;
+            updates['/rooms/' + $scope.roomNameCreate + '/messageObj/' + newPostKey] = messageObject;
+
+
             /*
              *Call again function to
              *list rooms to refresh
@@ -97,6 +105,8 @@
              */
             $scope.roomNameCreate = null;
             $scope.listRooms();
+
+            return firebase.database().ref().update(updates);
 
         }
 
