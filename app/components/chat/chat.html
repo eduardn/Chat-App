@@ -9,8 +9,8 @@
 </nav>
 
 <div class="row">
-    <div class="col-sm-3" class="container-fluid">
 
+    <div class="col-sm-3">
         <div> {{roomsNames.length}} available chat rooms:</div>
         <ul class="list-group" ng-if="rooms">
             <li class="list-group-item" ng-repeat="key in rooms">
@@ -28,8 +28,7 @@
             <create-room></create-room>
         </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-9">
         <ui-view></ui-view>
     </div>
-
 </div>

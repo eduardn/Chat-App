@@ -58,7 +58,7 @@ hr {
     color: white;
 }
 
-.purple:avtive{
+.purple:active{
     color: white;
 }
 
@@ -201,6 +201,11 @@ p {
     background-color: #525252;
     color: #ffffff;
     padding: 8px 15px;
+}
+
+
+.usersRoom {
+    list-style: none;
 }
 
 .divMesaje{

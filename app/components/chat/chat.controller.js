@@ -99,7 +99,7 @@
             $scope.listRooms();
 
             //  ` $scope.alert = {type: 'error', msg: 'Oh snap! Please insert a valid name!', show: true} ;      
-         }
+        }
 
         /*
          *count users in a room
@@ -132,7 +132,6 @@
             return $scope.ok;
         };
 
-
         /*
          *Join a room as
          *user, from the available rooms
@@ -151,20 +150,5 @@
                 roomUsersRef.on('value', function(snap) {})
             }
         }
-
-        /* $scope.listUsersRoom = function() {
-             var roomName = localStorage.getItem('roomJoined');
-             console.log('users in room ' + roomName)
-             if (roomName != undefined) {
-                 database.ref('rooms/' + roomName + '/users').once('value').then(function(snap) {
-                     var roomUsers = snap.val();
-                     for (var i in roomUsers) {
-                         console.log(roomUsers[i]);
-                     }
-                     // firebase.database('rooms/' + room + '/count').ref().update(updates)
-                 });
-             }
-         }
-         $scope.listUsersRoom();*/
     }
 })();

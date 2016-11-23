@@ -1,21 +1,42 @@
+<div class="row" ngIf={{room}}>
 
-<div class="divMesaje" ng-controller="ChatRoomController">
-<div>
-    Messages from {{room}}
+    <!--CHAT MESSAGES-->
+    <div class="col-sm-10">
+        <div>
+            Messages from {{room}} Room
+        </div>
+
+        <ul class="messages">
+            <li ng-repeat="message in messages">
+                <div class="sender">
+                    <div class="sender-message"><span ng-style="myColorStyle">{{message.sender}}</span></div>
+                    <div class="text-message">{{message.text}}</div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="footer">
+            <input type="text" ng-model="message.text" id="txtSend" onkeydown="if(event.keyCode == 13) {document.getElementById('btnSend').click(); $('#txtSend').val('')}" />
+            <button class="btn mov" ng-click="sendMessage(message.text); message.text = null" id="btnSend">Send</button>
+        </div>
+    </div>
+
+    <!--USERS FROM ROOM-->
+    <div class="col-sm-2">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Users</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="activeuser in roomUsers track by $index">
+                    <td>
+                        {{activeuser}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
 </div>
-
-<div class="messages" schroll-bottom="messages">
-<ul>
-    <li ng-repeat="message in messages">
-      {{message.sender}} said {{message.text}}
-    </li>
-</ul>
-</div>
-
-<div class="footer" ng-click="message.text =''">
-    <input type="text" ng-model="message.text" placeholder="Send a message"/>
-    <button class="btn purple" ng-click="sendMessage(message.text)"><i class="fa fa-send" aria-hidden="true"></i></button>
-</div>
-
-</div>
-
