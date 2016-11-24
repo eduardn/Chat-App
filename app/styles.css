@@ -38,7 +38,7 @@ hr {
 }
 
 .green {
-    color: #069E4C;
+    color: limegreen;
 }
 
 .yellow {
@@ -122,6 +122,8 @@ li:first-child> a {
     padding-left: 15px;
 }
 */
+
+
 
 .logout {
     font-size: 80%;
@@ -207,6 +209,7 @@ p {
 .usersRoom {
     list-style: none;
 }
+
 
 .divMesaje {
     margin: 1.5%;
