@@ -26,8 +26,8 @@
 
 .messages > li .sender .text-message {
     width: 600px;
-    background: #F5C2BC;
-    color: #333;
+    background: white;
+    color:black;
     font-size: 20px;
     padding: 6px 0px 6px 25px;
 }
@@ -35,4 +35,8 @@
 .roomNameDisplay {
     max-height: 500px;
     overflow: auto;
+}
+
+.white{
+    color: white;
 }
