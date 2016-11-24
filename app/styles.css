@@ -292,3 +292,14 @@ ul li {
 }
 
 /*********************************************/
+
+.row {
+    margin-top: 2%;
+}
+
+.userList {
+    min-height: 500px;
+    max-height: 500px;
+    overflow-y: auto; 
+
+}

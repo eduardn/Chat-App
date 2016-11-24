@@ -1,4 +1,4 @@
-<div class="row" ng-If="room">
+<div ng-If="room">
      <!--CHAT MESSAGES-->
     <div class="col-sm-9">
         <div>
@@ -8,7 +8,7 @@
         <ul class="messages" schroll-bottom="messages">
             <li ng-repeat="message in messages">
                 <div class="sender">
-                    <div class="sender-message"><span class="white">{{message.sender}}</span></div>
+                    <div class="sender-message">{{message.sender}}</div>
                     <div class="text-message">{{message.text}}</div>
                 </div>
             </li>
@@ -20,12 +20,10 @@
         </div>
     </div>
 
-    <div class="col-sm-2">
-
-    </div>
+    
 
     <!--USERS FROM ROOM-->
-    <div class="col-sm-3">
+    <div class="col-sm-3 userList">
         <div ng-if="roomUsers.length > 1"> {{roomUsers.length}} available users in {{room}}:</div>
         <div ng-if="roomUsers.length == 1"> {{roomUsers.length}} available user in {{room}}:</div>
       
