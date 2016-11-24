@@ -13,6 +13,8 @@
     color: white;
     -ms-border-radius: 8px;
     border-radius: 8px;
+    text-align: center;
+
 }
 
 .messages > li .sender .sender-message {
@@ -32,6 +34,8 @@
     padding: 6px 0px 6px 25px;
     border-radius: 2%;
     border: solid 1px black;
+    text-align: center;
+    width: 500px
 
 }
 
@@ -42,4 +46,10 @@
 
 .white{
     color: white;
+}
+
+.floatright{
+    direction: rtl;
+    float:right;
+    clear:right;
 }
