@@ -26,16 +26,16 @@
 
     <!--USERS FROM ROOM-->
     <div class="col-sm-3">
-        <div ng-if="roomUsers.length>1"> {{roomUsers.length}} available users in {{room}}:</div>
-        <div ng-if="roomUsers.length=1"> {{roomUsers.length}} available user in {{room}}:</div>
+        <div ng-if="roomUsers.length > 1"> {{roomUsers.length}} available users in {{room}}:</div>
+        <div ng-if="roomUsers.length == 1"> {{roomUsers.length}} available user in {{room}}:</div>
       
         <ul class="list-active-users">
             <li ng-repeat="activeuser in roomUsers track by $index">
                 <i class="fa fa-chevron-circle-down green" aria-hidden="true"></i> {{activeuser}}
             </li>
         </ul>
-
     </div>
+    <button class="btn btn-warning leave" ng-click="leaveRoom(loggedUsername)">leave room <i class="fa fa-plane" aria-hidden="true"></i></button>
 </div>
 
 <div class="row" ng-If="!room">
