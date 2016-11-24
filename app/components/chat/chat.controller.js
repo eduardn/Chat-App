@@ -51,6 +51,7 @@
                 $timeout(function() {
                     $scope.roomNames = roomNames;
                 }, 0);
+
             });
         };
 

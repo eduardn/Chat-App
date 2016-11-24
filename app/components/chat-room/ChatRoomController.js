@@ -81,11 +81,13 @@
                 var rooomuser = roomUsersArray[key];
                 roomusers.push(rooomuser);
             }
-            //console.log(roomusers);
+
 
             $timeout(function() {
                 $scope.roomUsers = roomusers;
             }, 1);
+
+            console.log("Users from room: ", $scope.roomUsers);
         });
 
         $scope.leaveRoom  =   function(user) {
