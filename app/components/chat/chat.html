@@ -13,22 +13,26 @@
 <div class="row">
     <div class="col-sm-3">
         <div> {{roomsNames.length}} available chat rooms:</div>
+        <div class="roomNameDisplay">
         <ul class="list-group" ng-if="rooms">
             <li class="list-group-item" ng-repeat="key in rooms">
                 {{key.roomName}}
                 <span class="badge pull-left">
                     {{getCount(key.users)}}
                 </span>
-                <button class="btn btn-xs pull-right mov" ng-click="joinRoom(key.roomName)">
+                <button class="btn btn-xs pull-right roz" ng-click="joinRoom(key.roomName); listRooms()">
                      join  <i class="fa fa-user-plus" aria-hidden="true"></i> 
                 </button>&nbsp;&nbsp;
             </li>
         </ul>
-        <div class="row">
+         </div>
+        <div class="buttonCreateRoom">
             <create-room></create-room>
+        
         </div>
     </div>
     <div class="col-sm-9">
         <ui-view></ui-view>
     </div>
+    
 </div>
