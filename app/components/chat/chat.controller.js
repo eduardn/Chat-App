@@ -10,10 +10,21 @@
             };
         });
 
+    
+
+
     ChatController.$inject = ['$scope', '$state', '$location', 'loginService', '$localStorage', '$firebaseArray', '$firebaseObject', '$timeout', '$rootScope', '$q'];
 
 
     function ChatController($scope, $state, $location, loginService, $localStorage, $firebaseArray, $firebaseObject, $timeout, $rootScope, $q) {
+
+            $scope.addButton = function(){
+            document.getElementById('toggleProfile').addEventListener('click', function () {
+  [].map.call(document.querySelectorAll('.profile'), function(el) {
+    el.classList.toggle('profile--open');
+  });
+});
+        }
 
         $scope.$storage = $localStorage.$default();
         $scope.userName = $scope.$storage.loggedUsername;
