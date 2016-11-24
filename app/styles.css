@@ -2,9 +2,6 @@ body {
     font-family: 'Garamond', sans-serif;
     font-weight: bold;
     background-color: #F7F7F7;
-    margin: 0!important;
-    padding: 0!important;
-    overflow: hidden;
 }
 
 .whitespace {
@@ -295,3 +292,14 @@ ul li {
 }
 
 /*********************************************/
+
+.row {
+    margin-top: 2%;
+}
+
+.userList {
+    min-height: 500px;
+    max-height: 500px;
+    overflow-y: auto; 
+
+}
