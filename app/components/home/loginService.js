@@ -3,6 +3,7 @@ angular.module('chatApp')
 
   function loginService(){
     var username = "";
+    var hideRoomsFromChat = "";
 
     this.setUsername = function(loggedUsername){
         username = loggedUsername;

@@ -34,14 +34,10 @@
 
                 //Save user to firebase
                 var newUserKey = firebase.database().ref().child('users').push().key;
-                console.log(newUserKey);
+                //console.log(newUserKey);
                 var updateUser = {};
                 updateUser['/users/' + newUserKey] = username;
                 firebase.database().ref().update(updateUser);
-
-                console.log("Username: ", username);
-
-                console.log("LocalStorage: ", $scope.$storage.loggedUsername);
                 $state.go('chat');
             } else {
                 $scope.loginError = true;

@@ -1,6 +1,7 @@
 <div class="row" ng-If="room">
      <!--CHAT MESSAGES-->
-    <div class="col-sm-9">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-6">
         <div>
             Messages from {{room}} Room
         </div>
@@ -19,13 +20,10 @@
             <button class="btn purple" ng-click="sendMessage(message.text); message.text = null" id="btnSend"><i class="fa fa-send" aria-hidden="true"></i></button>
         </div>
     </div>
-
-    <div class="col-sm-2">
-
-    </div>
+    <div class="col-sm-1"></div>
 
     <!--USERS FROM ROOM-->
-    <div class="col-sm-3">
+    <div class="col-sm-4">
         <div ng-if="roomUsers.length > 1"> {{roomUsers.length}} available users in {{room}}:</div>
         <div ng-if="roomUsers.length == 1"> {{roomUsers.length}} available user in {{room}}:</div>
       
