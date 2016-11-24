@@ -14,7 +14,7 @@ hr {
 }
 
 .container-fluid {
-    width: 95%;
+    width: 100%;
 }
 
 .btn-danger {
@@ -219,9 +219,7 @@ p {
     max-height: 500px;
 }
 
-.row {
-    margin-top: 50px;
-}
+
 
 .footer {
     position: absolute;
@@ -248,4 +246,8 @@ ul li {
 
 .mov {
     background-color: #F5C2BC;
+}
+
+.buttonCreateRoom {
+    margin-top: 3%;
 }
