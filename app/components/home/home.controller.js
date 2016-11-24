@@ -11,6 +11,14 @@
 
     function HomeController($scope, $state, $rootScope, $stateParams, loginService, $localStorage){
 
+             $scope.addButton = function(){
+            document.getElementById ('$toggleProfile').addEventListener('click', function () {
+  [].map.call(document.querySelectorAll('.profile'), function(el) {
+     el.classList.toggle('profile--open');
+   });
+ });
+        }
+
         var database = firebase.database();
 
         $rootScope.$state = $state;
