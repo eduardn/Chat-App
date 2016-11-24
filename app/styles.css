@@ -29,12 +29,12 @@ hr {
 }
 
 .purple {
-    background-color:#862d59;
+    background-color: #862d59;
     color: white;
 }
 
-.mov {
-   background-color:#F5C2BC;
+.roz {
+    background-color: #F5C2BC;
 }
 
 .green {
@@ -49,16 +49,17 @@ hr {
     color: #BFB1A0;
 }
 
-.white{
-    color:white;
+.white {
+    color: white;
 }
 
-.purple:hover,purple:focus {
+.purple:hover,
+purple:focus {
     background-color: #525252;
     color: white;
 }
 
-.purple:active{
+.purple:active {
     color: white;
 }
 
@@ -74,7 +75,6 @@ thead {
 .table td {
     color: #999999;
 }
-
 
 .btn.active.focus,
 .btn.active:focus,
@@ -102,7 +102,9 @@ thead {
     border-color: #525252;
 }
 
-.btn.focus, .btn:focus, .btn:hover {
+.btn.focus,
+.btn:focus,
+.btn:hover {
     color: white;
 }
 
@@ -121,30 +123,32 @@ li:first-child> a {
 }
 */
 
-
-.logout
-{
-    font-size:80%;
-    margin-top:5%;
+.logout {
+    font-size: 80%;
+    margin-top: 5%;
 }
 
-.logo{
-    width:12%;
-    height:12%;
+.logout:hover {
+    background-color: #F5C2BC;
+}
+
+.logo {
+    width: 12%;
+    height: 12%;
     text-align: center;
-    margin-right:3%;
-    margin-top:3%;
+    margin-right: 3%;
+    margin-top: 3%;
 }
 
 .pull-right {
     margin-right: 1.5%;
 }
 
-.navbar-inverse
-{
-font-family: 'Josefin Sans';
-background-color:#862d59; 
+.navbar-inverse {
+    font-family: 'Josefin Sans';
+    background-color: #862d59;
 }
+
 .navbar-default {
     background-color: #0081A7;
     border-radius: 0px;
@@ -200,40 +204,48 @@ p {
     padding: 8px 15px;
 }
 
-
 .usersRoom {
     list-style: none;
 }
 
-.divMesaje{
+.divMesaje {
     margin: 1.5%;
 }
 
-.messages{
+.messages {
     border: 1px solid #ddd;
-    overflow-y: scroll;
+    overflow-y: auto;
+    min-height: 500px;
     max-height: 500px;
 }
 
-.row{
+.row {
     margin-top: 50px;
 }
 
-.footer{
+.footer {
     position: absolute;
     box-sizing: border-box;
     width: 100%;
 }
 
-.footer input{
-    width: 85%;
-    overflow-y: scroll;
-    max-height: 30px;
+.footer input {
+    width: 85.5%;
+    max-height: 50px;
+    height: 50px;
     margin-top: 1%;
 }
 
-ul li{
+ul li {
     list-style-type: none;
     margin-top: 0.5%;
 }
 
+.footer button {
+    max-height: 50px;
+    height: 50px;
+}
+
+.mov {
+    background-color: #F5C2BC;
+}

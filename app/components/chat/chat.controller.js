@@ -40,36 +40,19 @@
         var database = firebase.database();
 
         $scope.listRooms = function() {
-            database.ref('/rooms').on('value',function(snap) {
+            database.ref('/rooms').on('value', function(snap) {
                 $scope.rooms = snap.val();
+                console.log($scope.rooms);
                 var roomNames = [];
-
                 for (var key in $scope.rooms) {
                     roomNames.push($scope.rooms[key].roomName);
                 }
                 $scope.roomsNames = [];
-
                 $timeout(function() {
                     $scope.roomNames = roomNames;
                 }, 0);
             });
         };
-
-
-        /* GAD team code */
-        function listUsers() {
-            database.ref('/rooms/Bogdan/users/').once('value').then(function(snap) {
-                $scope.rooms = snap.val();
-                // console.log($scope.rooms);
-                $timeout(function() {
-                    for (var key in $scope.rooms) {
-                        // console.log($scope.rooms[key].users);
-                    }
-                }, 5);
-            });
-        }
-
-        // listUsers();
 
         /*
          *Call function to
@@ -104,9 +87,7 @@
              */
             $scope.roomNameCreate = null;
             $scope.listRooms();
-
             return firebase.database().ref().update(updates);
-
         }
 
         /*
@@ -121,28 +102,29 @@
                 }
             }
             return i
-
         };
 
         $scope.checkUnique = function() {
+            // $scope.ok = false;
+
+            localStorage.setItem('lockJoin', false);
             var roomName = localStorage.getItem('roomJoined');
-            console.log('user in room ' + roomName);
-            database.ref('rooms/' + roomName + '/users').once('value').then(function(snap) {
-                var roomUsers = snap.val();
-                var userCount = 0;
+            console.log(roomName);
+            var starCountRef = firebase.database().ref('rooms/' + roomName + '/users');
+            starCountRef.on('value', function(snapshot) {
+                console.log(snapshot.val());
+                var roomUsers = snapshot.val();
                 for (var counter in roomUsers) {
                     if ($scope.userName == roomUsers[counter]) {
-                        userCount = userCount + 1;
-                        console.log(userCount + "number of joined users")
+                        //$scope.ok = true
+                        localStorage.setItem('lockJoin', true);
                     }
                 }
-                if (userCount > 1) {
-                    return true;
-                } else {
-                    return false;
-                }
-
+                //return $scope.ok;
+                return localStorage.getItem('lockJoin')
             });
+            //return $scope.ok;
+            return localStorage.getItem('lockJoin')
         };
 
         /*
@@ -150,13 +132,19 @@
          *user, from the available rooms
          */
         $scope.joinRoom = function(room) {
-            $scope.checkUnique();
-            firebase.database().ref('rooms/' + room + '/users/').push($scope.userName);
             localStorage.setItem('roomJoined', room);
-            $state.go('chat.room', { roomName: room });
-            var roomUsersRef = firebase.database().ref('rooms/' + room + '/users/');
-            roomUsersRef.on('value', function(snap) {})
-        };
-
+            if ($scope.checkUnique() == 'true') {
+                $scope.userInRomm = true;
+                return;
+            } else if ($scope.checkUnique() == 'false') {
+                $scope.userInRomm = false;
+                firebase.database().ref('rooms/' + room + '/users/').push($scope.userName);
+                $state.go('chat.room', { roomName: room });
+                var roomUsersRef = firebase.database().ref('rooms/' + room + '/users/');
+                roomUsersRef.on('value', function(snap) {})
+            } else {
+                console.log('other error')
+            }
+        }
     }
 })();

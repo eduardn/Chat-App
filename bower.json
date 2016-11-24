@@ -12,5 +12,8 @@
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0",
     "angular-mocks": "^1.4.1"
+  },
+  "dependencies": {
+    "angular-scroll-glue": "^2.1.0"
   }
 }

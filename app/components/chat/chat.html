@@ -7,9 +7,10 @@
         <button class="btn btn-default btn-xs logout" ng-click="logout()">Log Out <i class="fa fa-sign-out" aria-hidden="true"></i> </button>
     </div>
 </nav>
-
+<div ng-show="userInRomm" class="alert alert-warning">
+    <strong>Warning!</strong>User is already in this room.
+</div>
 <div class="row">
-
     <div class="col-sm-3">
         <div> {{roomsNames.length}} available chat rooms:</div>
         <ul class="list-group" ng-if="rooms">
@@ -21,7 +22,6 @@
                 <button class="btn btn-xs pull-right mov" ng-click="joinRoom(key.roomName)">
                      join  <i class="fa fa-user-plus" aria-hidden="true"></i> 
                 </button>&nbsp;&nbsp;
-
             </li>
         </ul>
         <div class="row">
@@ -31,6 +31,4 @@
     <div class="col-sm-9">
         <ui-view></ui-view>
     </div>
-
 </div>
-
