@@ -40,32 +40,19 @@
         var database = firebase.database();
 
         $scope.listRooms = function() {
-            database.ref('/rooms').once('value').then(function(snap) {
+            database.ref('/rooms').on('value', function(snap) {
                 $scope.rooms = snap.val();
+                console.log($scope.rooms);
+                var roomNames = [];
+                for (var key in $scope.rooms) {
+                    roomNames.push($scope.rooms[key].roomName);
+                }
                 $scope.roomsNames = [];
                 $timeout(function() {
-                    for (var key in $scope.rooms) {
-                        $scope.roomsNames.push($scope.rooms[key].roomName);
-                    }
-                }, 2);
+                    $scope.roomNames = roomNames;
+                }, 0);
             });
-        }
-
-
-        /* GAD team code */
-        function listUsers() {
-            database.ref('/rooms/Bogdan/users/').once('value').then(function(snap) {
-                $scope.rooms = snap.val();
-                // console.log($scope.rooms);
-                $timeout(function() {
-                    for (var key in $scope.rooms) {
-                        // console.log($scope.rooms[key].users);
-                    }
-                }, 5);
-            });
-        }
-
-        listUsers();
+        };
 
         /*
          *Call function to
@@ -79,17 +66,20 @@
          * TO DO : RESOLVE WITH MESSAGES
          */
         $scope.writeRoomData = function(roomName) {
-            roomName = $scope.roomNameCreate;
+            var roomName = $scope.roomNameCreate;
             //console.log(roomName);
-            firebase.database().ref('rooms/' + roomName).set({
-                "messageObj": {
-                    "data": "18/11/2016",
-                    "sender": $scope.userName,
-                    "text": "1st Message"
-                },
-                "roomName": roomName,
-                "users": {}
-            });
+            var messageObject = {
+                sender: "RoomBot",
+                text: "Welcome to the room"
+            };
+            // Get a key for a new Post.
+            var newPostKey = firebase.database().ref().child('rooms').child($scope.roomNameCreate).child('messageObj').push().key;
+            // Write the new post's data simultaneously in the posts list and the user's post list.
+            var updates = {};
+            updates['/rooms/' + $scope.roomNameCreate + '/roomName'] = $scope.roomNameCreate;
+            updates['/rooms/' + $scope.roomNameCreate + '/messageObj/' + newPostKey] = messageObject;
+
+
             /*
              *Call again function to
              *list rooms to refresh
@@ -97,8 +87,7 @@
              */
             $scope.roomNameCreate = null;
             $scope.listRooms();
-
-            //  ` $scope.alert = {type: 'error', msg: 'Oh snap! Please insert a valid name!', show: true} ;      
+            return firebase.database().ref().update(updates);
         }
 
         /*
@@ -116,20 +105,26 @@
         };
 
         $scope.checkUnique = function() {
+            // $scope.ok = false;
+
+            localStorage.setItem('lockJoin', false);
             var roomName = localStorage.getItem('roomJoined');
+            console.log(roomName);
             var starCountRef = firebase.database().ref('rooms/' + roomName + '/users');
             starCountRef.on('value', function(snapshot) {
-                $scope.ok = false;
                 console.log(snapshot.val());
                 var roomUsers = snapshot.val();
                 for (var counter in roomUsers) {
                     if ($scope.userName == roomUsers[counter]) {
-                        $scope.ok = true
+                        //$scope.ok = true
+                        localStorage.setItem('lockJoin', true);
                     }
                 }
-                return $scope.ok;
+                //return $scope.ok;
+                return localStorage.getItem('lockJoin')
             });
-            return $scope.ok;
+            //return $scope.ok;
+            return localStorage.getItem('lockJoin')
         };
 
         /*
@@ -137,17 +132,18 @@
          *user, from the available rooms
          */
         $scope.joinRoom = function(room) {
-            if ($scope.checkUnique()) {
-                console.log("user alrady in room");
+            localStorage.setItem('roomJoined', room);
+            if ($scope.checkUnique() == 'true') {
+                $scope.userInRomm = true;
                 return;
-            } else {
-                console.log('user added');
+            } else if ($scope.checkUnique() == 'false') {
+                $scope.userInRomm = false;
                 firebase.database().ref('rooms/' + room + '/users/').push($scope.userName);
-                localStorage.setItem('roomJoined', room);
                 $state.go('chat.room', { roomName: room });
-
                 var roomUsersRef = firebase.database().ref('rooms/' + room + '/users/');
                 roomUsersRef.on('value', function(snap) {})
+            } else {
+                console.log('other error')
             }
         }
     }
