@@ -3,12 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="6043ec6c-17c5-4696-a37a-2e545b57606c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/chat-room/ChatRoomController.js" afterPath="$PROJECT_DIR$/app/components/chat-room/ChatRoomController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/chat-room/chat.room.css" afterPath="$PROJECT_DIR$/app/components/chat-room/chat.room.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/chat-room/chat.room.html" afterPath="$PROJECT_DIR$/app/components/chat-room/chat.room.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/chat/chat.controller.js" afterPath="$PROJECT_DIR$/app/components/chat/chat.controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/chat/chat.html" afterPath="$PROJECT_DIR$/app/components/chat/chat.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/directives/createRoom.html" afterPath="$PROJECT_DIR$/app/components/directives/createRoom.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/styles.css" afterPath="$PROJECT_DIR$/app/styles.css" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,10 +27,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="chat.controller.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="chat.controller.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/components/chat/chat.controller.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
+            <state relative-caret-position="-189">
               <caret line="53" column="0" lean-forward="true" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
               <folding />
             </state>
@@ -49,11 +47,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chat.room.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="chat.room.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/components/chat-room/chat.room.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+            <state relative-caret-position="609">
+              <caret line="29" column="16" lean-forward="false" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -63,8 +61,19 @@
         <entry file="file://$PROJECT_DIR$/app/styles.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-114">
-              <caret line="247" column="0" lean-forward="false" selection-start-line="247" selection-start-column="0" selection-end-line="247" selection-end-column="0" />
-              <folding />
+              <caret line="265" column="0" lean-forward="false" selection-start-line="265" selection-start-column="0" selection-end-line="265" selection-end-column="0" />
+              <folding>
+                <marker date="1479981840959" expanded="true" signature="3442:3444" ph="{...}" />
+                <marker date="1479981840959" expanded="true" signature="3456:3528" ph="{...}" />
+                <marker date="1479981840959" expanded="true" signature="3544:3623" ph="{...}" />
+                <marker date="1479981840959" expanded="true" signature="3631:3683" ph="{...}" />
+                <marker date="1479981840959" expanded="true" signature="3700:3743" ph="{...}" />
+                <marker date="1479981840959" expanded="true" signature="3750:3784" ph="{...}" />
+                <marker date="1479981840959" expanded="true" signature="3804:3827" ph="{...}" />
+                <marker date="1479981840959" expanded="true" signature="3867:3886" ph="{...}" />
+                <marker date="1479981840959" expanded="true" signature="3915:3999" ph="{...}" />
+                <marker date="1479981840959" expanded="true" signature="4028:4112" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -82,7 +91,7 @@
       <file leaf-file-name="createRoom.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/components/directives/createRoom.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
+            <state relative-caret-position="-47">
               <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
@@ -122,8 +131,8 @@
       <file leaf-file-name="chat.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/components/chat/chat.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="14" column="20" lean-forward="false" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+            <state relative-caret-position="33">
+              <caret line="14" column="62" lean-forward="false" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -162,9 +171,9 @@
         <option value="$PROJECT_DIR$/app/components/chat-room/ChatRoomController.js" />
         <option value="$PROJECT_DIR$/app/components/directives/createRoom.html" />
         <option value="$PROJECT_DIR$/app/components/chat-room/chat.room.html" />
-        <option value="$PROJECT_DIR$/app/components/chat/chat.html" />
         <option value="$PROJECT_DIR$/app/components/chat/chat.controller.js" />
         <option value="$PROJECT_DIR$/app/components/chat-room/chat.room.css" />
+        <option value="$PROJECT_DIR$/app/components/chat/chat.html" />
       </list>
     </option>
   </component>
@@ -405,12 +414,12 @@
       <workItem from="1479906584643" duration="60000" />
       <workItem from="1479906655874" duration="20000" />
       <workItem from="1479906703664" duration="6224000" />
-      <workItem from="1479979885685" duration="1684000" />
+      <workItem from="1479979885685" duration="2089000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37958000" />
+    <option name="totallyTimeSpent" value="38363000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
@@ -775,14 +784,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/directives/createRoom.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/components/chat-room/ChatRoomController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
@@ -799,34 +800,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/chat/chat.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="14" column="20" lean-forward="false" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/chat/chat.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="53" column="0" lean-forward="true" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-114">
-          <caret line="247" column="0" lean-forward="false" selection-start-line="247" selection-start-column="0" selection-end-line="247" selection-end-column="0" />
+          <caret line="265" column="0" lean-forward="false" selection-start-line="265" selection-start-column="0" selection-end-line="265" selection-end-column="0" />
+          <folding>
+            <marker date="1479981840959" expanded="true" signature="3442:3444" ph="{...}" />
+            <marker date="1479981840959" expanded="true" signature="3456:3528" ph="{...}" />
+            <marker date="1479981840959" expanded="true" signature="3544:3623" ph="{...}" />
+            <marker date="1479981840959" expanded="true" signature="3631:3683" ph="{...}" />
+            <marker date="1479981840959" expanded="true" signature="3700:3743" ph="{...}" />
+            <marker date="1479981840959" expanded="true" signature="3750:3784" ph="{...}" />
+            <marker date="1479981840959" expanded="true" signature="3804:3827" ph="{...}" />
+            <marker date="1479981840959" expanded="true" signature="3867:3886" ph="{...}" />
+            <marker date="1479981840959" expanded="true" signature="3915:3999" ph="{...}" />
+            <marker date="1479981840959" expanded="true" signature="4028:4112" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/chat/chat.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="14" column="62" lean-forward="false" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/components/chat-room/chat.room.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+        <state relative-caret-position="609">
+          <caret line="29" column="16" lean-forward="false" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/directives/createRoom.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-47">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/chat/chat.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-189">
+          <caret line="53" column="0" lean-forward="true" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
           <folding />
         </state>
       </provider>
