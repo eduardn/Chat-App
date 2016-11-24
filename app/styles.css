@@ -2,9 +2,6 @@ body {
     font-family: 'Garamond', sans-serif;
     font-weight: bold;
     background-color: #F7F7F7;
-    margin: 0!important;
-    padding: 0!important;
-    overflow: hidden;
 }
 
 .whitespace {
@@ -113,6 +110,11 @@ thead {
 .btn:focus,
 .btn:hover {
     color: white;
+}
+
+.navbar{
+    margin: 0!important;
+    padding: 0!important;
 }
 
 
