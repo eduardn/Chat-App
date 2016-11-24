@@ -31,3 +31,8 @@
     font-size: 20px;
     padding: 6px 0px 6px 25px;
 }
+
+.roomNameDisplay {
+    max-height: 500px;
+    overflow: auto;
+}
