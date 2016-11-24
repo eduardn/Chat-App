@@ -1,7 +1,6 @@
-<div class="row" ngIf={{room}}>
-    <btn class="btn btn-warning" ng-click="leaveRoom(loggedUsername)">Leave Room</btn>
-    <!--CHAT MESSAGES-->
-    <div class="col-sm-8">
+<div class="row" ng-If="room">
+     <!--CHAT MESSAGES-->
+    <div class="col-sm-9">
         <div>
             Messages from {{room}} Room
         </div>
@@ -26,7 +25,7 @@
     </div>
 
     <!--USERS FROM ROOM-->
-    <div class="col-sm-2">
+    <div class="col-sm-3">
         <div ng-if="roomUsers.length>1"> {{roomUsers.length}} available users in {{room}}:</div>
         <div ng-if="roomUsers.length=1"> {{roomUsers.length}} available user in {{room}}:</div>
       
@@ -37,4 +36,8 @@
         </ul>
 
     </div>
+</div>
+
+<div class="row" ng-If="!room">
+Enter a chat room & have fun! 
 </div>

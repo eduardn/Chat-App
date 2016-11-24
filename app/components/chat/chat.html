@@ -11,12 +11,7 @@
     <strong>Warning!</strong>User is already in this room.
 </div>
 <div class="row">
-<<<<<<< HEAD
-
-    <div class="col-sm-3 ">
-=======
     <div class="col-sm-3">
->>>>>>> 2348d9e7ef25818de4a6416d78d9601851f47ad0
         <div> {{roomsNames.length}} available chat rooms:</div>
         <div class="roomNameDisplay">
         <ul class="list-group" ng-if="rooms">
@@ -25,11 +20,7 @@
                 <span class="badge pull-left">
                     {{getCount(key.users)}}
                 </span>
-<<<<<<< HEAD
                 <button class="btn btn-xs pull-right roz" ng-click="joinRoom(key.roomName); listRooms()">
-=======
-                <button class="btn btn-xs pull-right mov" ng-click="joinRoom(key.roomName)">
->>>>>>> 2348d9e7ef25818de4a6416d78d9601851f47ad0
                      join  <i class="fa fa-user-plus" aria-hidden="true"></i> 
                 </button>&nbsp;&nbsp;
             </li>
@@ -37,9 +28,11 @@
          </div>
         <div class="buttonCreateRoom">
             <create-room></create-room>
+        
         </div>
     </div>
     <div class="col-sm-9">
         <ui-view></ui-view>
     </div>
+    
 </div>
