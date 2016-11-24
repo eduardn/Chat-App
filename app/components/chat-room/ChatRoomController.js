@@ -94,7 +94,7 @@
             var  usersArray  = [];
             var  users  = [];
             var  userRef  = firebase.database().ref('/rooms/' + $scope.room + '/users');
-            userRef.on('value',  function(snap) {
+            userRef.once('value',  function(snap) {
                 usersArray = snap.val();
                 for (var ukey in usersArray) {
                     if (usersArray[ukey] === user) {
@@ -103,6 +103,7 @@
                     }
                 }
             })
+            $state.go('chat');
         }
     }
 })();
