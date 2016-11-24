@@ -153,9 +153,11 @@ li:first-child> a {
     margin-right: 1.5%;
 }
 
+
 .navbar-inverse {
     font-family: 'Josefin Sans';
     background-color: #862d59;
+
 }
 
 .navbar-default {
