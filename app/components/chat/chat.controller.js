@@ -15,6 +15,8 @@
 
     function ChatController($scope, $state, $location, loginService, $localStorage, $firebaseArray, $firebaseObject, $timeout, $rootScope, $q) {
 
+    
+
         $scope.$storage = $localStorage.$default();
         $scope.userName = $scope.$storage.loggedUsername;
         if (!$scope.userName) {

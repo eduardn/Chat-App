@@ -5,7 +5,7 @@
             Messages from {{room}} Room
         </div>
 
-        <ul class="messages" schroll-bottom="messages">
+        <ul class="messages" schroll-bottom="messages" id="rawText">
             <li ng-repeat="message in messages">
                 <div class="sender">
                     <div class="sender-message"><span class="white">{{message.sender}}</span></div>
@@ -28,7 +28,7 @@
     <div class="col-sm-3">
         <div ng-if="roomUsers.length > 1"> {{roomUsers.length}} available users in {{room}}:</div>
         <div ng-if="roomUsers.length == 1"> {{roomUsers.length}} available user in {{room}}:</div>
-      
+
         <ul class="list-active-users">
             <li ng-repeat="activeuser in roomUsers track by $index">
                 <i class="fa fa-chevron-circle-down green" aria-hidden="true"></i> {{activeuser}}
@@ -39,5 +39,5 @@
 </div>
 
 <div class="row" ng-If="!room">
-Enter a chat room & have fun! 
+Enter a chat room & have fun!
 </div>

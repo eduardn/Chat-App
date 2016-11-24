@@ -11,9 +11,11 @@
     "angular-ui-router": "^0.3.1",
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0",
-    "angular-mocks": "^1.4.1"
+    "angular-mocks": "^1.4.1",
+    "angular-emoji": "angular-emoji-filter#^0.0.2"
   },
   "dependencies": {
-    "angular-scroll-glue": "^2.1.0"
+    "angular-scroll-glue": "^2.1.0",
+    "embed-js": "^4.1.10"
   }
 }
