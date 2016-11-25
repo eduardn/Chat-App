@@ -90,7 +90,8 @@
         });
 
         $scope.leaveRoom  =   function(user) {
-            $rootScope.$broadcast('toggleRooms', false);
+            // $rootScope.$broadcast('toggleRooms', false);
+            localStorage.setItem('hidenList', false);
             var  usersArray  = [];
             var  users  = [];
             var  userRef  = firebase.database().ref('/rooms/' + $scope.room + '/users');
@@ -109,7 +110,7 @@
                     }
                 }
             });
-            $state.go('chat');
+            $state.go('chat', {} , { reload: true });
         }
     }
 })();

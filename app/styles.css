@@ -298,3 +298,7 @@ ul li {
     max-height: 500px;
     overflow-y: auto;
 }
+
+.doNotDisplay {
+    display: none;
+}

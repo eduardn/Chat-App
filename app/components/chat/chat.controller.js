@@ -25,7 +25,8 @@
                 });
             });
         }
-
+        $scope.hideRooms = (localStorage.getItem('hidenList') === 'true');
+        console.log($scope.hideRooms);
         $scope.$storage = $localStorage.$default();
         $scope.userName = $scope.$storage.loggedUsername;
         if (!$scope.userName) {
@@ -146,7 +147,9 @@
          *user, from the available rooms
          */
         $scope.joinRoom = function(room) {
-            $scope.hideRooms = true;
+            //$scope.hideRooms = true;
+            localStorage.setItem('hidenList', true);
+            $scope.hideRooms = (localStorage.getItem('hidenList') === 'true');
             localStorage.setItem('roomJoined', room);
             if ($scope.checkUnique()) {
                 console.log('problem');
@@ -166,8 +169,10 @@
             };
 
         }
-        $scope.$on('toggleRooms', function(event, arg) {
-            $scope.hideRooms = arg;
-        });
+
+
+        /*  $scope.$on('toggleRooms', function(event, arg) {
+              $scope.hideRooms = arg;
+          });*/
     }
 })();
