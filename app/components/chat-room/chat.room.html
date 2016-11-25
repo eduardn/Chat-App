@@ -1,5 +1,5 @@
 <div ng-If="room">
-     <!--CHAT MESSAGES-->
+    <!--CHAT MESSAGES-->
 
     <div class="col-sm-9">
 
@@ -10,8 +10,8 @@
         <ul class="messages" schroll-bottom="messages">
             <li ng-repeat="message in messages">
                 <div class="sender" ng-class="{'floatright': loggedUsername==message.sender}">
-                    <div class="sender-message"><span class="white" >{{message.sender}}</span></div>
-                    <div class="text-message">{{message.text}}</div>
+                    <div class="sender-message"><span>{{message.sender}}</span></div>
+                    <div class="text-message" ng-bind-html="message.text | linky "></div>
                 </div>
             </li>
         </ul>
@@ -26,7 +26,7 @@
     <div class="col-sm-3 userList">
         <div ng-if="roomUsers.length > 1"> {{roomUsers.length}} available users in {{room}}:</div>
         <div ng-if="roomUsers.length == 1"> {{roomUsers.length}} available user in {{room}}:</div>
-      
+
         <ul class="list-active-users">
             <li ng-repeat="activeuser in roomUsers track by $index">
                 <i class="fa fa-chevron-circle-down green" aria-hidden="true"></i> {{activeuser}} <i ng-click="kick(activeuser)" class="fa fa-coffee" aria-hidden="true"></i>
@@ -37,5 +37,5 @@
 </div>
 
 <div class="row" ng-If="!room">
-Enter a chat room & have fun! 
+    Enter a chat room & have fun!
 </div>

@@ -8,31 +8,32 @@
     </div>
 </nav>
 <div ng-show="userInRomm" class="alert alert-warning">
-    <strong>Warning!</strong>User is already in this room.
+    Warning! You are already in this room!
 </div>
 <div class="row">
     <div class="col-sm-3">
-        <div> {{roomNames.length}} available chat rooms:</div>
+        <div class="spinicon" ng-show="!roomNames"><i class="fa fa-spin fa-spinner fa-5" aria-hidden="true"></i></div>
+        <div ng-show="roomNames"> {{roomNames.length}} available chat rooms:</div>
         <div class="roomNameDisplay">
-        <ul class="list-group" ng-if="rooms">
-            <li class="list-group-item" ng-repeat="key in rooms">
-                {{key.roomName}}
-                <span class="badge pull-left">
+            <ul class="list-group" ng-if="rooms">
+                <li class="list-group-item" ng-repeat="key in rooms">
+                    {{key.roomName}}
+                    <span class="badge pull-left">
                     {{getCount(key.users)}}
                 </span>
-                <button class="btn btn-xs pull-right roz" ng-click="joinRoom(key.roomName); listRooms()">
+                    <button class="btn btn-xs pull-right roz" ng-click="joinRoom(key.roomName); listRooms()" ng-hide="hideRooms">
                      join  <i class="fa fa-user-plus" aria-hidden="true"></i> 
                 </button>&nbsp;&nbsp;
-            </li>
-        </ul>
-         </div>
+                </li>
+            </ul>
+        </div>
         <div class="buttonCreateRoom">
             <create-room></create-room>
-        
+
         </div>
     </div>
     <div class="col-sm-9">
         <ui-view></ui-view>
     </div>
-    
+
 </div>
