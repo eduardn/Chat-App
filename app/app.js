@@ -4,7 +4,7 @@
 (function(){
     'use strict';
 
-    angular.module('chatApp',['ui.router', 'firebase', 'ngStorage'])
+    angular.module('chatApp',['ui.router', 'firebase', 'ngStorage', 'ngEmoji', 'ngSanitize'])
         .config(['$urlRouterProvider','$stateProvider', function($urlRouterProvider, $stateProvider){
             $urlRouterProvider.otherwise('/home');
 
@@ -27,7 +27,16 @@
                     templateUrl: 'components/chat-room/chat.room.html',
                     controller: 'ChatRoomController'
                 })
-
         }])
+        
+        .run(function ($emoji) {
+        $emoji.setConfig({
+            img_dir: 'http://hassankhan.github.io/emojify.js/images/emoji'
+        })
+        });
+
+        angular.element(document).ready(function () {
+        angular.bootstrap(document, ['chatApp'])
+        })
 
 })();
