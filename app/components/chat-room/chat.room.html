@@ -10,10 +10,10 @@
         </div>
 
         <ul class="messages" schroll-bottom="messages" id="rawText">
-            <li ng-repeat="message in messages" ng-bind-html="message.text | emoji">
-                <div class="sender" ng-class="{'floatright': loggedUsername==message.sender}">
+            <li ng-repeat="message in messages" >
+                <div class="sender" ng-class="{'floatright': loggedUsername == message.sender}">
                     <div class="sender-message"><span class="white" >{{message.sender}}</span></div>
-                    <div class="text-message">{{message.text}}</div>
+                    <div class="text-message"  ng-bind-html="message.text | emoji">{{message.text}}</div>
                 </div>
             </li>
         </ul>
@@ -22,20 +22,6 @@
             <input type="text" ng-model="message.text" ng-change="text = message.text" id="txtSend" onkeydown="if(event.keyCode == 13) {document.getElementById('btnSend').click(); $('#txtSend').val('')}" />
             <input type="hidden" ng-model="text" />
             <button class="btn purple" ng-click="sendMessage(message.text); message.text = null" id="btnSend"><i class="fa fa-send" aria-hidden="true"></i></button>
-             <!--<div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                <h1>ngEmoji</h1>
-                <div class="form-group">
-                    <textarea class="form-control" ng-model="text" id="" cols="30" rows="10"></textarea>
-                </div>
-                
-                <h1>Output</h1>
-                <div class="form-group" ng-bind-html="text | emoji"></div>
-                </div>
-            </div>
-            </div>-->
-            
         </div>
     </div>
 
