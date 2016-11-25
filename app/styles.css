@@ -94,6 +94,13 @@ thead {
     outline: 0;
 }
 
+.spinicon{
+    text-align:center;
+    margin-top:10%;
+    margin-bottom:10%;
+    font-size: 3em;
+}
+
 .btn-default {
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;

@@ -9,7 +9,7 @@
             <li ng-repeat="message in messages">
                 <div class="sender" ng-class="{'floatright': loggedUsername==message.sender}">
                     <div class="sender-message"><span>{{message.sender}}</span></div>
-                    <div class="text-message">{{message.text}}</div>
+                    <div class="text-message" ng-bind-html="message.text | linky "></div>
                 </div>
             </li>
         </ul>

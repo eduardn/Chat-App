@@ -4,7 +4,7 @@
 (function(){
     'use strict';
 
-    angular.module('chatApp',['ui.router', 'firebase', 'ngStorage'])
+    angular.module('chatApp',['ui.router', 'firebase', 'ngStorage', 'ngSanitize' ])
         .config(['$urlRouterProvider','$stateProvider', function($urlRouterProvider, $stateProvider){
             $urlRouterProvider.otherwise('/home');
 

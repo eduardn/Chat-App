@@ -19,7 +19,7 @@
         })
         .controller('ChatRoomController', ChatRoomController);
 
-    ChatRoomController.$inject = ['$scope', '$timeout', '$state', '$firebaseArray', '$firebaseObject', '$rootScope', '$q', '$stateParams'];
+    ChatRoomController.$inject = ['$scope', '$timeout', '$state', '$firebaseArray', '$firebaseObject', '$rootScope', '$q', '$stateParams' ];
 
     function ChatRoomController($scope, $timeout, $state, $firebaseArray, $firebaseObject, $rootScope, $q, $stateParams) {
         $scope.room = $stateParams.roomName;
