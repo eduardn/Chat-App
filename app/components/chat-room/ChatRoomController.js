@@ -92,12 +92,18 @@
             var  usersArray  = [];
             var  users  = [];
             var  userRef  = firebase.database().ref('/rooms/' + $scope.room + '/users');
-            userRef.on('value',  function(snap) {
+            userRef.once('value').then(function(snap) {
                 usersArray = snap.val();
+                //console.log(roomUsersArray);
                 for (var ukey in usersArray) {
                     if (usersArray[ukey] === user) {
                         userRef.child(ukey).remove();
-                        console.log(usersArray[ukey] + " Removed");
+                        console.log(usersArray)
+                        console.log(ukey + " Removed");
+                        // var  otherRef = firebase.database().ref('/rooms/' + $scope.room + '/users/' + ukey).set(null);
+                        /*otherRef.on('value',  function(snap) {
+                            // console.log(snap.val());
+                        });*/
                     }
                 }
             })

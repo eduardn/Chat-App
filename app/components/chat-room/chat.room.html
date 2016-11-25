@@ -9,7 +9,7 @@
         <ul class="messages">
             <li ng-repeat="message in messages">
                 <div class="sender">
-                    <div class="sender-message"><span ng-style="myColorStyle">{{message.sender}}</span></div>
+                    <div ng-class="{'test': message.sender == userName}" class="sender-message"><span ng-style="myColorStyle">{{message.sender}}</span></div>
                     <div class="text-message">{{message.text}}</div>
                 </div>
             </li>

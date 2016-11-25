@@ -105,26 +105,28 @@
         };
 
         $scope.checkUnique = function() {
-            // $scope.ok = false;
+            $scope.ok = false;
 
-            localStorage.setItem('lockJoin', false);
+            //localStorage.setItem('lockJoin', false);
             var roomName = localStorage.getItem('roomJoined');
+            //$scope.ok = false;
             console.log(roomName);
             var starCountRef = firebase.database().ref('rooms/' + roomName + '/users');
             starCountRef.on('value', function(snapshot) {
-                console.log(snapshot.val());
+                $scope.ok = false;
+                // console.log(snapshot.val());
                 var roomUsers = snapshot.val();
                 for (var counter in roomUsers) {
                     if ($scope.userName == roomUsers[counter]) {
-                        //$scope.ok = true
-                        localStorage.setItem('lockJoin', true);
+                        $scope.ok = true
+                            //localStorage.setItem('lockJoin', true);
                     }
                 }
-                //return $scope.ok;
-                return localStorage.getItem('lockJoin')
+                return $scope.ok;
+                //return localStorage.getItem('lockJoin')
             });
-            //return $scope.ok;
-            return localStorage.getItem('lockJoin')
+            return $scope.ok;
+            //return localStorage.getItem('lockJoin')
         };
 
         /*
@@ -132,18 +134,20 @@
          *user, from the available rooms
          */
         $scope.joinRoom = function(room) {
+            console.log(room + 'room');
             localStorage.setItem('roomJoined', room);
-            if ($scope.checkUnique() == 'true') {
+            if ($scope.checkUnique()) {
+                console.log('problem');
                 $scope.userInRomm = true;
                 return;
-            } else if ($scope.checkUnique() == 'false') {
+            } else {
+                console.log('here');
+                $scope.ok = false;
                 $scope.userInRomm = false;
                 firebase.database().ref('rooms/' + room + '/users/').push($scope.userName);
-                $state.go('chat.room', { roomName: room });
-                var roomUsersRef = firebase.database().ref('rooms/' + room + '/users/');
-                roomUsersRef.on('value', function(snap) {})
-            } else {
-                console.log('other error')
+                 $state.go('chat.room', { roomName: room });
+                // var roomUsersRef = firebase.database().ref('rooms/' + room + '/users/');
+                // roomUsersRef.on('value', function(snap) {})
             }
         }
     }
