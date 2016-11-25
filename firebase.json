@@ -5,9 +5,11 @@
   "hosting": {
     "public": "app",
     "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ]
+      "firebase.json"
+    ],
+    "rewrites": [ {
+      "source": "/app/**",
+      "destination": "/app/index.html"
+    } ]
   }
 }
