@@ -35,8 +35,8 @@
         })
         });
 
-        angular.element(document).ready(function () {
-        angular.bootstrap(document, ['chatApp'])
-        })
+        // angular.element(document).ready(function () {
+        // angular.bootstrap(document, ['chatApp'])
+        // })
 
 })();
