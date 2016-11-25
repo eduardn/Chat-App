@@ -25,7 +25,7 @@
         $scope.room = $stateParams.roomName;
         console.log($scope.room);
         $scope.roomUsers = [];
-
+        
         $scope.loggedUsername = $scope.$storage.loggedUsername;
 
         var usercolor = $scope.$storage.usercolor;

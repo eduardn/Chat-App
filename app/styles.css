@@ -67,6 +67,11 @@ purple:focus {
     color: white;
 }
 
+.alert
+{
+    text-align: center;
+}
+
 thead {
     color: #999999;
     background-color: #EDEDED;
@@ -87,6 +92,13 @@ thead {
 .btn:active:focus,
 .btn:focus {
     outline: 0;
+}
+
+.spinicon{
+    text-align:center;
+    margin-top:10%;
+    margin-bottom:10%;
+    font-size: 3em;
 }
 
 .btn-default {
@@ -291,9 +303,6 @@ ul li {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
-
-/*********************************************/
-
 .row {
     margin-top: 2%;
 }
@@ -306,4 +315,5 @@ ul li {
 
 .doNotDisplay {
     display: none;
+
 }

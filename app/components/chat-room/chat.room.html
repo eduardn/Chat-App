@@ -12,7 +12,7 @@
             <li ng-repeat="message in messages" >
                 <div class="sender" ng-class="{'floatright': loggedUsername == message.sender}">
                     <div class="sender-message"><span class="white" >{{message.sender}}</span></div>
-                    <div class="text-message"  ng-bind-html="message.text | emoji">{{message.text}}</div>
+                    <div class="text-message"  ng-bind-html="message.text | linky | emoji ">{{message.text}}</div>
                 </div>
             </li>
         </ul>
