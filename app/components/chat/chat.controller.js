@@ -20,11 +20,11 @@
 
             $scope.addButton = function(){
             document.getElementById('toggleProfile').addEventListener('click', function () {
-  [].map.call(document.querySelectorAll('.profile'), function(el) {
-    el.classList.toggle('profile--open');
-  });
-});
-        }
+                 [].map.call(document.querySelectorAll('.profile'), function(el) {
+                   el.classList.toggle('profile--open');
+                      });
+                    });
+        };
 
         $scope.$storage = $localStorage.$default();
         $scope.userName = $scope.$storage.loggedUsername;
@@ -163,9 +163,12 @@
             }
         };
 
-
-        $scope.$on('toggleRooms', function (event, arg) {
-            $scope.hideRooms = arg;
+        $scope.$on('kick', function (event, arg) {
+            console.log("Kick Args",arg);
+            if($scope.userName === arg.user){
+                console.log("You have been kicked");
+                $state.go('chat');
+            }
         });
     }
 })();
