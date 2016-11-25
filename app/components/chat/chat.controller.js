@@ -165,10 +165,12 @@
 
         $scope.$on('kick', function (event, arg) {
             console.log("Kick Args",arg);
+            console.log("Kick args user", arg.user);
             if($scope.userName === arg.user){
                 console.log("You have been kicked");
                 $state.go('chat');
             }
         });
+
     }
 })();

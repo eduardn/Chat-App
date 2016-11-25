@@ -106,7 +106,7 @@
         };
 
         $scope.kick = function(user){
-            if($scope.  loggedUsername == 'admin'){
+            if($scope.loggedUsername == 'admin'){
                 $rootScope.$broadcast('kick',{user: user});
                 var  usersArray  = [];
                 var  users  = [];
@@ -121,7 +121,20 @@
                     }
                 });
             }
+        };
 
-        }
+        var userInRoom = firebase.database().ref('rooms/' + $scope.room + '/users/');
+        roomUsersRef.on('value', function(snap) {
+            roomUsersArray = snap.val();
+            var roomusers = [];
+            for (var key in roomUsersArray) {
+                var rooomuser = roomUsersArray[key];
+                roomusers.push(rooomuser);
+            }
+            if(roomusers.indexOf($scope.loggedUsername)== -1){
+                console.log("You have been disconnected");
+                $state.go('chat');
+            }
+        });
     }
 })();
