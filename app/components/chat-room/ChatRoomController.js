@@ -19,9 +19,9 @@
         })
         .controller('ChatRoomController', ChatRoomController);
 
-    ChatRoomController.$inject = ['$scope', '$timeout', '$state', '$firebaseArray', '$firebaseObject', '$rootScope', '$q', '$stateParams'];
+    ChatRoomController.$inject = ['$scope', '$timeout', '$state', '$firebaseArray', '$firebaseObject', '$rootScope', '$q', '$stateParams', 'loginService'];
 
-    function ChatRoomController($scope, $timeout, $state, $firebaseArray, $firebaseObject, $rootScope, $q, $stateParams) {
+    function ChatRoomController($scope, $timeout, $state, $firebaseArray, $firebaseObject, $rootScope, $q, $stateParams, loginService) {
         $scope.room = $stateParams.roomName;
         console.log($scope.room);
         $scope.roomUsers = [];
@@ -81,26 +81,35 @@
                 var rooomuser = roomUsersArray[key];
                 roomusers.push(rooomuser);
             }
-            //console.log(roomusers);
+
 
             $timeout(function() {
                 $scope.roomUsers = roomusers;
             }, 1);
+
         });
 
         $scope.leaveRoom  =   function(user) {
+            $rootScope.$broadcast('toggleRooms', false);
             var  usersArray  = [];
             var  users  = [];
             var  userRef  = firebase.database().ref('/rooms/' + $scope.room + '/users');
-            userRef.on('value',  function(snap) {
+            userRef.once('value',  function(snap) {
                 usersArray = snap.val();
+                //console.log(roomUsersArray);
                 for (var ukey in usersArray) {
                     if (usersArray[ukey] === user) {
                         userRef.child(ukey).remove();
-                        console.log(usersArray[ukey] + " Removed");
+                        console.log(usersArray)
+                        console.log(ukey + " Removed");
+                        // var  otherRef = firebase.database().ref('/rooms/' + $scope.room + '/users/' + ukey).set(null);
+                        /*otherRef.on('value',  function(snap) {
+                            // console.log(snap.val());
+                        });*/
                     }
                 }
-            })
+            });
+            $state.go('chat');
         }
     }
 })();

@@ -14,7 +14,7 @@ hr {
 }
 
 .container-fluid {
-    width: 95%;
+    width: 100%;
 }
 
 .btn-danger {
@@ -38,7 +38,7 @@ hr {
 }
 
 .green {
-    color: #069E4C;
+    color: limegreen;
 }
 
 .yellow {
@@ -51,6 +51,10 @@ hr {
 
 .white {
     color: white;
+}
+
+.leave {
+    float: right;
 }
 
 .purple:hover,
@@ -175,6 +179,12 @@ li:first-child> a {
     background-color: #005e7a;
 }
 
+.navbar {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
 p {
     float: left;
     padding: 8px;
@@ -213,14 +223,19 @@ p {
 }
 
 .messages {
+    /*border: 1px solid #ddd;
+    overflow-y: auto;
+    min-height: 500px;
+    max-height: 500px;*/
     border: 1px solid #ddd;
+    overflow-x: hidden;
     overflow-y: auto;
     min-height: 500px;
     max-height: 500px;
-}
-
-.row {
-    margin-top: 50px;
+    max-width: 100%;
+    min-width: 150px;
+    padding: 2px;
+    margin: 3px;
 }
 
 .footer {
@@ -230,7 +245,7 @@ p {
 }
 
 .footer input {
-    width: 85.5%;
+    width: 91%;
     max-height: 50px;
     height: 50px;
     margin-top: 1%;
@@ -248,4 +263,38 @@ ul li {
 
 .mov {
     background-color: #F5C2BC;
+}
+
+.buttonCreateRoom {
+    margin-top: 3%;
+}
+
+
+/* Scroll bar**/
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+
+/*********************************************/
+
+.row {
+    margin-top: 2%;
+}
+
+.userList {
+    min-height: 500px;
+    max-height: 500px;
+    overflow-y: auto;
 }

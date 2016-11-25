@@ -1,10 +1,10 @@
 .messages {
     list-style: none;
+    width: 99%;
 }
 
 .messages > li {
-    position: relative;
-    margin-bottom: 10px;
+    margin: 0px 10px 10px 20px;
 }
 
 .messages > li .sender{
@@ -13,6 +13,8 @@
     color: white;
     -ms-border-radius: 8px;
     border-radius: 8px;
+    text-align: center;
+
 }
 
 .messages > li .sender .sender-message {
@@ -25,9 +27,29 @@
 }
 
 .messages > li .sender .text-message {
-    width: 600px;
-    background: #F5C2BC;
-    color: #333;
-    font-size: 20px;
+    width: 650%;
+    background: #f1f1f1;
+    color:black;
+    font-size: 16px;
     padding: 6px 0px 6px 25px;
+    border-radius: 2%;
+    border: solid 1px black;
+    text-align: center;
+    width: 500px
+
+}
+
+.roomNameDisplay {
+    max-height: 500px;
+    overflow: auto;
+}
+
+.white{
+    color: white;
+}
+
+.floatright{
+    direction: rtl;
+    float:right;
+    clear:right;
 }
