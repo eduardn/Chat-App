@@ -27,7 +27,6 @@
                     templateUrl: 'components/chat-room/chat.room.html',
                     controller: 'ChatRoomController'
                 })
-
         }])
 
 })();

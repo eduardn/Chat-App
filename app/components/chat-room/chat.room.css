@@ -9,6 +9,7 @@
 
 .messages > li .sender{
     color: white;
+<<<<<<< HEAD
   
     width: auto;
     max-width: auto;
@@ -16,6 +17,12 @@
     margin: 0px 10px 10px 20px;
     padding-right: 20px;
     
+=======
+    -ms-border-radius: 8px;
+    border-radius: 8px;
+    text-align: center;
+
+>>>>>>> 48e0275d9b20790d02417708c66af3bcb36bffb6
 }
 
 
@@ -38,6 +45,8 @@
     font-size: 16px;
     border-radius: 2%;
     border: solid 1px black;
+    text-align: center;
+    width: 500px
 
 }
 

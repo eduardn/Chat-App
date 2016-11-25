@@ -53,8 +53,8 @@ hr {
     color: white;
 }
 
-.leave{
-     float:right;
+.leave {
+    float: right;
 }
 
 .purple:hover,
@@ -144,8 +144,6 @@ li:first-child> a {
 }
 */
 
-
-
 .logout {
     font-size: 80%;
     margin-top: 5%;
@@ -198,7 +196,7 @@ li:first-child> a {
     background-color: #005e7a;
 }
 
-.navbar{
+.navbar {
     width: 100%;
     padding: 0;
     margin: 0;
@@ -237,7 +235,6 @@ p {
     list-style: none;
 }
 
-
 .divMesaje {
     margin: 1.5%;
 }
@@ -256,10 +253,7 @@ p {
     min-width: 150px;
     padding: 2px;
     margin: 3px;
-
 }
-
-
 
 .footer {
     position: absolute;
@@ -298,17 +292,16 @@ ul li {
 ::-webkit-scrollbar {
     width: 8px;
 }
- 
+
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
 }
- 
+
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
-/*********************************************/
 
 .row {
     margin-top: 2%;
@@ -317,5 +310,10 @@ ul li {
 .userList {
     min-height: 500px;
     max-height: 500px;
-    overflow-y: auto; 
+    overflow-y: auto;
+}
+
+.doNotDisplay {
+    display: none;
+
 }
