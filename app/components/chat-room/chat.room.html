@@ -1,28 +1,30 @@
-<div ng-If="room">
-    <!--CHAT MESSAGES-->
 
+<div>
+<div ng-If="room">
+  <!--CHAT MESSAGES-->
     <div class="col-sm-9">
 
         <div>
             Messages from {{room}} Room
         </div>
 
-        <ul class="messages" schroll-bottom="messages">
-            <li ng-repeat="message in messages">
-                <div class="sender" ng-class="{'floatright': loggedUsername==message.sender}">
-                    <div class="sender-message"><span class="white">{{message.sender}}</span></div>
-                    <div class="text-message">{{message.text}}</div>
+       <ul class="messages" schroll-bottom="messages" id="rawText">
+            <li ng-repeat="message in messages" >
+                <div class="sender" ng-class="{'floatright': loggedUsername == message.sender}">
+                    <div class="sender-message"><span class="white" >{{message.sender}}</span></div>
+                    <div class="text-message"  ng-bind-html="message.text | linky | emoji ">{{message.text}}</div>
                 </div>
             </li>
         </ul>
 
         <div class="footer">
-            <input type="text" ng-model="message.text" id="txtSend" onkeydown="if(event.keyCode == 13) {document.getElementById('btnSend').click(); $('#txtSend').val('')}" />
+            <input type="text" ng-model="message.text" ng-change="text = message.text" id="txtSend" onkeydown="if(event.keyCode == 13) {document.getElementById('btnSend').click(); $('#txtSend').val('')}" />
+            <input type="hidden" ng-model="text" />
             <button class="btn purple" ng-click="sendMessage(message.text); message.text = null" id="btnSend"><i class="fa fa-send" aria-hidden="true"></i></button>
         </div>
     </div>
 
-    <!--USERS FROM ROOM-->
+  <!--USERS FROM ROOM-->
     <div class="col-sm-3 userList">
         <div ng-if="roomUsers.length > 1"> {{roomUsers.length}} available users in {{room}}:</div>
         <div ng-if="roomUsers.length == 1"> {{roomUsers.length}} available user in {{room}}:</div>
@@ -37,5 +39,7 @@
 </div>
 
 <div class="row" ng-If="!room">
-    Enter a chat room & have fun!
+Enter a chat room & have fun!
 </div>
+</div>
+

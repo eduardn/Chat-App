@@ -67,6 +67,10 @@ purple:focus {
     color: white;
 }
 
+.alert {
+    text-align: center;
+}
+
 thead {
     color: #999999;
     background-color: #EDEDED;
@@ -87,6 +91,13 @@ thead {
 .btn:active:focus,
 .btn:focus {
     outline: 0;
+}
+
+.spinicon {
+    text-align: center;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    font-size: 3em;
 }
 
 .btn-default {
@@ -110,6 +121,11 @@ thead {
 .btn:focus,
 .btn:hover {
     color: white;
+}
+
+.navbar {
+    margin: 0!important;
+    padding: 0!important;
 }
 
 
@@ -286,9 +302,6 @@ ul li {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
-
-/*********************************************/
-
 .row {
     margin-top: 2%;
 }
@@ -301,23 +314,4 @@ ul li {
 
 .doNotDisplay {
     display: none;
-}
-
-.btn-circle {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    padding: 6px 0;
-    font-size: 12px;
-    line-height: 1.428571429;
-    border-radius: 15px;
-}
-
-.btn-circle.btn-lg {
-    width: 50px;
-    height: 50px;
-    padding: 10px 16px;
-    font-size: 18px;
-    line-height: 1.33;
-    border-radius: 25px;
 }

@@ -1,0 +1,45 @@
+{
+  "name": "embed-js",
+  "version": "4.1.10",
+  "description": "A JavaScript plugin that analyses the string and embeds emojis, media, tweets, code and services.",
+  "main": [
+    "./src/embed.css",
+    "./src/embed.js"
+  ],
+  "authors": [
+    "Ritesh Kumar <rkritesh078@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "JavaScript-plugin",
+    "embed",
+    "plugins",
+    "JavaScript",
+    "embed-js",
+    "emoticon",
+    "jquery-embed",
+    "emoji"
+  ],
+  "homepage": "http://riteshkr.com/embed.js",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "www/lib",
+    "test",
+    "tests",
+    "demo",
+    "src"
+  ],
+  "_release": "4.1.10",
+  "_resolution": {
+    "type": "version",
+    "tag": "v4.1.10",
+    "commit": "dab5aa634bb039930e2d496029a6410baa901340"
+  },
+  "_source": "https://github.com/ritz078/embed-js.git",
+  "_target": "^4.1.10",
+  "_originalSource": "embed-js",
+  "_direct": true
+}

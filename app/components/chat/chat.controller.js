@@ -25,8 +25,10 @@
                 });
             });
         }
+
         $scope.hideRooms = (localStorage.getItem('hidenList') === 'true');
         console.log($scope.hideRooms);
+
         $scope.$storage = $localStorage.$default();
         $scope.userName = $scope.$storage.loggedUsername;
         if (!$scope.userName) {

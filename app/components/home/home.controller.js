@@ -10,6 +10,8 @@
     HomeController.$inject=['$scope', '$state','$rootScope', '$stateParams', 'loginService', '$localStorage'];
 
     function HomeController($scope, $state, $rootScope, $stateParams, loginService, $localStorage){
+      
+
 
              $scope.addButton = function(){
             document.getElementById ('$toggleProfile').addEventListener('click', function () {

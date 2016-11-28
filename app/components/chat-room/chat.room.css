@@ -1,37 +1,48 @@
 .messages {
     list-style: none;
-    width: 99%;
 }
+
 
 .messages > li {
     margin: 0px 10px 10px 20px;
 }
 
 .messages > li .sender{
-    background: #862D59;
-    width: 100px;
     color: white;
+<<<<<<< HEAD
+  
+    width: auto;
+    max-width: auto;
+     clear:right;
+    margin: 0px 10px 10px 20px;
+    padding-right: 20px;
+    
+=======
     -ms-border-radius: 8px;
     border-radius: 8px;
     text-align: center;
 
+>>>>>>> 48e0275d9b20790d02417708c66af3bcb36bffb6
 }
 
+
 .messages > li .sender .sender-message {
+    
+    background: #862D59;
     text-align: center;
     width: 100px;
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-size: 14px;
     font-weight: bold;
-    padding: 2px 6px;
+    padding: 2px 4px;
+  
 }
 
 .messages > li .sender .text-message {
-    width: 650%;
+    padding-left:10px;
     background: #f1f1f1;
     color:black;
     font-size: 16px;
-    padding: 6px 0px 6px 25px;
     border-radius: 2%;
     border: solid 1px black;
     text-align: center;
@@ -52,4 +63,13 @@
     direction: rtl;
     float:right;
     clear:right;
+    margin: 0px 10px 10px 20px;
+    padding-right: 20px;
+
+}
+
+.floatright .text-message{
+    padding-right:10px;
+    min-width: 50px;
+    width: 95%;
 }
