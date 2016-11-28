@@ -42,6 +42,7 @@
 
         $scope.logout = function() {
             $scope.$storage = $localStorage.$reset();
+            localStorage.clear();
             console.log("Logged out");
             $state.go('home');
 
