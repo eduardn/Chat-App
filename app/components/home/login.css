@@ -13,7 +13,7 @@ body {
   margin: 0;
   font-family: 'Garamond', 'Times New Roman', Helvetica, sans-serif;
   min-height: 100%;
-  background: linear-gradient(to bottom, #520c1f  10%, #E0B8CF  100%);
+  background: linear-gradient(to bottom, #847ec7  10%, #ddd  150%);
   color: white;
 }
 img {
@@ -147,7 +147,7 @@ input:valid + .label {
   line-height: 2.5rem;
   padding: 0 1.5rem;
   color: white;
-  background: #520c1f;
+  background: #6fc582;
   text-transform: uppercase;
   border-radius: .25rem;
   letter-spacing: .2em;
