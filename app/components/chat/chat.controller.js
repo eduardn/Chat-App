@@ -28,7 +28,6 @@
 
         $scope.hideRooms = (localStorage.getItem('hidenList') === 'true');
         console.log($scope.hideRooms);
-
         $scope.$storage = $localStorage.$default();
         $scope.userName = $scope.$storage.loggedUsername;
         if (!$scope.userName) {
@@ -42,10 +41,24 @@
 
         $scope.logout = function() {
             $scope.$storage = $localStorage.$reset();
+    var  userRef  = firebase.database().ref('/rooms/');
+            userRef.once('value',  function(snap) {
+                var usersArray = snap.val();
+                for (var ukey in usersArray) {
+                    for (var ukeyUser in usersArray[ukey].users) {
+                        console.log(usersArray[ukey].users[ukeyUser] + " ukeyUser");
+                        console.log(localStorage.getItem('userNameLogged'));
+                        if (usersArray[ukey].users[ukeyUser] === localStorage.getItem('userNameLogged')) {
+                            //console.log(ukeyUser + ' tadaaaaaaaaaaaaaaa')
+                            var remove = firebase.database().ref('/rooms/' + ukey + '/users/' + ukeyUser).remove();
+                        }
+                    }
+                }
+            });
+
             localStorage.clear();
             console.log("Logged out");
             $state.go('home');
-
         };
 
         /*
