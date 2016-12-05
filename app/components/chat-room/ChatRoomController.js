@@ -131,23 +131,8 @@
             }
         };
 
-        //     $scope.kick = function(user){
-        //     if($scope.loggedUsername == 'username'){
-        //         $rootScope.$broadcast('kick',{user: user});
-        //         var  usersArray  = [];
-        //         var  users  = [];
-        //         var  userRef  = firebase.database().ref('/users/' + $scope.username);
-        //         userRef.once('value',  function(snap) {
-        //             usersArray = snap.val();
-        //             for (var ukey in usersArray) {
-        //                 if (usersArray[ukey] === user) {
-        //                     userRef.child(ukey).remove();
-        //                     console.log(usersArray[ukey] + " Removed");
-        //                 }
-        //             }
-        //         });
-        //     }
-        // };
+    
+
 
         var userInRoom = firebase.database().ref('rooms/' + $scope.room + '/users/');
         userInRoom.on('value', function(snap) {
