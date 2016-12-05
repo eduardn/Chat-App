@@ -41,8 +41,7 @@ button {
 .profile {
   position: relative;
 }
-.profile--open {
-}
+
 .profile--open .profile__form {
   visibility: visible;
   height: auto;
