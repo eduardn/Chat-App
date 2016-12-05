@@ -6,9 +6,12 @@
   "license": "ISC",
   "devDependencies": {
     "grunt": "*",
-    "grunt-browser-sync": "*"
+    "grunt-browser-sync": "*",
+    "grunt-karma": "^0.10.1",
+    "karma-junit-reporter": "^0.2.2"
   },
   "dependencies": {
+    "angular-ui-router": "^0.3.2",
     "embed-js": "^4.1.10",
     "grunt-karma": "^0.10.1",
     "jasmine-core": "^2.2.0",

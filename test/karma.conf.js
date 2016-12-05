@@ -1,6 +1,6 @@
 // Karma configuration
 
-module.exports = function (config) {
+module.exports = function(config) {
     config.set({
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -20,8 +20,11 @@ module.exports = function (config) {
             'bower_components/angular-mocks/angular-mocks.js',
 
             '../app/app.js',
+            '../app/components/chat/*.js',
+            '../app/components/chat-room/*.js',
+            '../app/components/emoji/*.js',
+            '../app/components/home/*.js',
             '../app/**/*.js',
-
             'test/unit/*.js'
         ],
 
