@@ -1,53 +1,53 @@
 <div class="row">
-<nav class="navbar navbar-inverse" role="navigation">
-    <div class="col-sm-3">
-        <img class="pull-left white logo" src="http://www.meetmecorp.com/wp-content/uploads/2015/08/mm_app_icon.png" alt="logo" />
-        <h4 class="intro"> Hello, {{userName}}!</h4>
-    </div>
-    <div class="pull-right">
-        <button class="btn btn-default btn-xs logout" ng-click="logout()"> <i class="fa fa-sign-out" aria-hidden="true" ></i>  LOG OUT </button>
-        
-    </div>
-  
-</nav>
-  </div
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="col-sm-3">
+            <img class="pull-left white logo" src="http://www.meetmecorp.com/wp-content/uploads/2015/08/mm_app_icon.png" alt="logo" />
+            <h4 class="intro"> Hello, {{userName}}!</h4>
+        </div>
+        <div class="pull-right">
+            <button class="btn btn-default btn-xs logout" ng-click="logout()"> <i class="fa fa-sign-out" aria-hidden="true" ></i>  LOG OUT </button>
+
+        </div>
+
+    </nav>
+</div
 <div class="container-fluid">
-<div class="row">
-    <div class="row-height">
-    <div class="col-sm-3 col-sm-height" >
-<div ng-show="userInRomm" class="alert alert-warning">
-    Warning! You are already in this room!
-</div>
+    <div class="row">
+        <div class="row-height">
+            <div class="col-sm-3 col-sm-height" >
+                <div ng-show="userInRomm" class="alert alert-warning">
+                    Warning! You are already in this room!
+                </div>
 
 
-        <div class="spinicon" ng-show="!roomNames"><i class="fa fa-spin fa-spinner fa-5" aria-hidden="true"></i></div>
-        <div ng-show="roomNames" id="roomName"> {{roomNames.length}} available chat rooms:</div>
-        <div class="roomNameDisplay">
-           
-            <ul class="list-group" ng-if="rooms">
-                <li class="list-group-item" ng-repeat="key in rooms">
-                    {{key.roomName}}
-                    <span class="badge pull-left">
+                <div class="spinicon" ng-show="!roomNames"><i class="fa fa-spin fa-spinner fa-5" aria-hidden="true"></i></div>
+                <div ng-show="roomNames" id="roomName"> {{roomNames.length}} available chat rooms:</div>
+                <div class="roomNameDisplay">
+
+                    <ul class="list-group" ng-if="rooms">
+                        <li class="list-group-item" ng-repeat="key in rooms">
+                            {{key.roomName}}
+                            <span class="badge pull-left">
                     {{getCount(key.users)}} 
                 </span> &nbsp;
-                    <button class="btn btn-xs pull-right roz" ng-click="joinRoom(key.roomName); listRooms()" ng-hide="hideRooms">
-                     <i class="fa fa-user-plus" aria-hidden="true"></i> 
-                     join  
-                </button>&nbsp;&nbsp;
-                </li>
-            </ul>
-        </div>
-        <div class="buttonCreateRoom">
-            <create-room></create-room>
+                            <button class="btn btn-xs pull-right roz" ng-click="joinRoom(key.roomName); listRooms()" ng-hide="hideRooms">
+                                <i class="fa fa-user-plus" aria-hidden="true"></i>
+                                join
+                            </button>&nbsp;&nbsp;
+                        </li>
+                    </ul>
+                </div>
+                <div class="buttonCreateRoom">
+                    <create-room></create-room>
+
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <!--<img src="./components/chat/img/gett.jpg" >-->
+                <ui-view></ui-view>
+            </div>
 
         </div>
     </div>
-    <div class="col-sm-9">
-        <!--<img src="./components/chat/img/gett.jpg" >-->
-        <ui-view></ui-view>
-    </div>
-
-</div>
-</div>
 
 </div>

@@ -24,8 +24,9 @@
                     el.classList.toggle('profile--open');
                 });
             });
-        };
-        $scope.hideRooms = (localStorage.getItem('hidenList') === 'false');
+        }
+
+        $scope.hideRooms = (localStorage.getItem('hidenList') === 'true');
         console.log($scope.hideRooms);
         $scope.$storage = $localStorage.$default();
         $scope.userName = $scope.$storage.loggedUsername;
@@ -39,10 +40,10 @@
 
 
         $scope.logout = function() {
-        $scope.$storage = $localStorage.$reset();
-        var  userRef  = firebase.database().ref('/rooms/');
+            $scope.$storage = $localStorage.$reset();
+            var  userRef  = firebase.database().ref('/rooms/');
 
-            userRef.once('value',  function(snap) {
+            userRef.once('value',  function(snap) {
                 var usersArray = snap.val();
                 for (var ukey in usersArray) {
                     for (var ukeyUser in usersArray[ukey].users) {
@@ -51,26 +52,26 @@
                         if (usersArray[ukey].users[ukeyUser] === localStorage.getItem('userNameLogged')) {
                             //console.log(ukeyUser + ' tadaaaaaaaaaaaaaaa')
                             var remove = firebase.database().ref('/rooms/' + ukey + '/users/' + ukeyUser ).remove();
-                   
-                                                }
+
+                        }
                     }
                 }
-                  });
+            });
 
-                    
+
 
             var userLoggedUserRef = firebase.database().ref('/users/');
-            userLoggedUserRef.once('value', function(snap){ 
-            var users = snap.val();
-        console.log(users);
-        for(var ukeyUser in users){
-                        if(users[ukeyUser]===$scope.userName){
-                            console.log(users[ukeyUser] + " ukeyUser");
-                            var removeUser = firebase.database().ref('/users/'+ ukeyUser).remove();
-                        }
-                    
-        }
-        });
+            userLoggedUserRef.once('value', function(snap){
+                var users = snap.val();
+                console.log(users);
+                for(var ukeyUser in users){
+                    if(users[ukeyUser]===$scope.userName){
+                        console.log(users[ukeyUser] + " ukeyUser");
+                        var removeUser = firebase.database().ref('/users/'+ ukeyUser).remove();
+                    }
+
+                }
+            });
 
             localStorage.clear();
             console.log("Logged out");
@@ -79,7 +80,7 @@
 
 
 
-  
+
 
         /*
          *GAD team code
@@ -137,7 +138,7 @@
             $scope.roomNameCreate = null;
             $scope.listRooms();
             return firebase.database().ref().update(updates);
-        };
+        }
 
         /*
          *count users in a room
@@ -167,8 +168,8 @@
                 var roomUsers = snapshot.val();
                 for (var counter in roomUsers) {
                     if ($scope.userName == roomUsers[counter]) {
-                        $scope.ok = true;
-                            //localStorage.setItem('lockJoin', true);
+                        $scope.ok = true
+                        //localStorage.setItem('lockJoin', true);
                     }
                 }
                 return $scope.ok;
@@ -202,21 +203,13 @@
                 firebase.database().ref().update(updateUser);
 
                 $state.go('chat.room', { roomName: room });
-            }
+            };
 
-        $scope.$on('kick', function (event, arg) {
-            console.log("Kick Args",arg);
-            console.log("Kick args user", arg.user);
-            if($scope.userName === arg.user){
-                console.log("You have been kicked");
-                $state.go('chat');
-            }
-        });
-        };
+        }
 
 
         /*  $scope.$on('toggleRooms', function(event, arg) {
-              $scope.hideRooms = arg;
-          });*/
+         $scope.hideRooms = arg;
+         });*/
     }
 })();

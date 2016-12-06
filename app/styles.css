@@ -3,11 +3,9 @@ body {
     font-weight: bold;
     background-color:white;
     background-image: url("components/chat/img/gettop.jpg");
-     background-size: 75% 83%;
+    background-size: 75% 83%;
     background-repeat: no-repeat;
     background-position: right bottom;
-    
-    
 }
 
 .whitespace {
@@ -121,7 +119,7 @@ purple:focus {
     color:white;
     margin-left: -10%;
     margin-top: 10%;
-  }
+}
 .logout:hover{
     color: white;
     background-color: #6fc582;
@@ -131,7 +129,7 @@ purple:focus {
     width: 12%;
     height: 12%;
     text-align: center;
-   margin: 3% 2% 5% 7%;
+    margin: 3% 2% 5% 7%;
 }
 
 .navbar-inverse {
@@ -145,7 +143,7 @@ purple:focus {
     background-color: #0081A7;
     border-radius: 0px;
     background-color: #0081a7;
- 
+
     margin-bottom: 0px;
     border: 1px solid #ddd;
 }
@@ -198,7 +196,7 @@ p {
 }
 
 .btn-sm {
-  
+
     color: #ffffff;
     padding: 8px 15px;
 }
@@ -298,8 +296,8 @@ ul li {
 }
 
 .roomNameDisplay{
-   min-height: 545px;
-   font-size: 17px;
+    min-height: 545px;
+    font-size: 17px;
 }
 
 .leave {
@@ -323,10 +321,10 @@ ul li {
 }
 
 .list-group-item{
-  
+
     border: none;
-      border-bottom: 1px solid #ddd;
-      
+    border-bottom: 1px solid #ddd;
+
 }
 
 #newRoomGreen{
@@ -354,8 +352,8 @@ ul li {
 }
 
 .intro{
-   margin-top: 4.2%;
-   font-size: 40px;
+    margin-top: 4.2%;
+    font-size: 40px;
 }
 
 .imagine {
@@ -367,7 +365,7 @@ ul li {
     margin-left: 10%;
     margin-top: 5%;
     width: 80%;
- 
+
 }
 
 .pull-left{
@@ -377,7 +375,7 @@ ul li {
 .badge{
     margin-top:1%;
     margin-right: 1%;
-  
+
 }
 
 img.emoji{
