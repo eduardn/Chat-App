@@ -130,18 +130,18 @@
             }
         };
 
-        // var userInRoom = firebase.database().ref('rooms/' + $scope.room + '/users/');
-        // userInRoom.on('value', function(snap) {
-        //     roomUsersArray = snap.val();
-        //     var roomusers = [];
-        //     for (var key in roomUsersArray) {
-        //         var rooomuser = roomUsersArray[key];
-        //         roomusers.push(rooomuser);
-        //     }
-        //     if(roomusers.indexOf($scope.loggedUsername)== -1){
-        //         console.log("You have been disconnected");
-        //         $state.go('chat', {} , { reload: true });
-        //     }
-        // });
+        var userInRoom = firebase.database().ref('rooms/' + $scope.room + '/users/');
+        userInRoom.on('value', function(snap) {
+            roomUsersArray = snap.val();
+            var roomusers = [];
+            for (var key in roomUsersArray) {
+                var rooomuser = roomUsersArray[key];
+                roomusers.push(rooomuser);
+            }
+            if(roomusers.indexOf($scope.loggedUsername)== -1){
+                console.log("You have been disconnected");
+                $state.go('chat', {} , { reload: true });
+            }
+        });
     }
 })();

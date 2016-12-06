@@ -19,34 +19,42 @@
         firebase.initializeApp(config);
     </script>
 
-    <script src="../bower_components/angular/angular.min.js"></script>
-    <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="../node_modules/angularfire/dist/angularfire.min.js"></script>
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
-   
 
+    <!-- build:js vendor.js -->
+        <script src="../bower_components/angular/angular.min.js"></script>
+        <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script src="../node_modules/angularfire/dist/angularfire.min.js"></script>
+        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="../node_modules/angular-sanitize/angular-sanitize.min.js"></script>
+        <script src="../bower_components/ngstorage/ngStorage.min.js"></script>
+    <!-- endbuild -->
+
+
+
+    <!-- build:js app.min.js -->
     <script src="app.js"></script>
     <script src="components/home/home.controller.js"></script>
-
     <script src="components/chat/chat.controller.js"></script>
     <script src="components/chat-room/ChatRoomController.js"></script>
     <script src="components/home/loginService.js"></script>
+    <!-- endbuild -->
 
+    <!-- build:js templates.js -->
+    <script></script>
+    <!-- endbuild -->
+
+    <!-- build:css app.min.css -->
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
-  
     <link rel="stylesheet" href="styles.css">
- 
 
     <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="components/home/home.css">
     <link rel="stylesheet" href="components/chat-room/chat.room.css">
+    <link rel="stylesheet" href="components/home/login.css">
+
     <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,700' rel='stylesheet' type='text/css'>
-    
-
-    <script src="../node_modules/angular-sanitize/angular-sanitize.min.js"></script>
-
+    <!-- endbuild -->
 
 </head>
 
