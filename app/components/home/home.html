@@ -1,4 +1,4 @@
-<div class="container">
+<!--<div class="container">
     <div class="row">
         <div role="alert">
             <span class="error" ng-show="loginError">
@@ -11,6 +11,39 @@
                 </div>
             </form>
             <button class="btn btn-md purple" ng-click="login(username)"> <i class="fa fa-sign-in" aria-hidden="true"></i> Log in</button>
-        </div>
     </div>
+</div>-->
+
+   <link rel="stylesheet" href="components/home/login.css">
+
+<div class="container">
+
+  <div class="profile">
+    <!--<button class="profile__avatar" id="toggleProfile">
+     <img src="delasusan.ico"> 
+    </button>-->
+    <!--<div class="profile__form">
+      <div class="profile__fields">-->
+        <div class="field">
+          <input type="text" id="fieldUser" class="input"  onkeydown="if(event.keyCode == 13) document.getElementById('btnLogin').click();" ng-model="username" required pattern=.*\S.* />
+          <label for="fieldUser" class="label">Username</label>
+        </div>
+		
+       
+        <div class="profile__footer">
+          <button class="btnbtn" id="btnLogin" ng-click="login(username)"> Login</button>
+        </div>
+		
+      </div>
+     </div>
+  </div>
 </div>
+  
+
+<!--<script>
+    document.getElementById('toggleProfile').addEventListener('click', function () {
+  [].map.call(document.querySelectorAll('.profile'), function(el) {
+    el.classList.toggle('profile--open');
+  });
+});
+</script>-->

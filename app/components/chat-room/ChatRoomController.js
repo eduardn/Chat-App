@@ -19,13 +19,13 @@
         })
         .controller('ChatRoomController', ChatRoomController);
 
-    ChatRoomController.$inject = ['$scope', '$timeout', '$state', '$firebaseArray', '$firebaseObject', '$rootScope', '$q', '$stateParams'];
+    ChatRoomController.$inject = ['$scope', '$timeout', '$state', '$firebaseArray', '$firebaseObject', '$rootScope', '$q', '$stateParams', 'loginService'];
 
-    function ChatRoomController($scope, $timeout, $state, $firebaseArray, $firebaseObject, $rootScope, $q, $stateParams) {
+    function ChatRoomController($scope, $timeout, $state, $firebaseArray, $firebaseObject, $rootScope, $q, $stateParams, loginService) {
         $scope.room = $stateParams.roomName;
         console.log($scope.room);
         $scope.roomUsers = [];
-
+        
         $scope.loggedUsername = $scope.$storage.loggedUsername;
 
         var usercolor = $scope.$storage.usercolor;
@@ -37,7 +37,7 @@
         //Get messages from room
         var messagesArray = [];
         var roomName = $scope.room;
-        var messageRef = database.ref('/rooms/' + roomName + '/messageObj').limitToLast(10);
+        var messageRef = database.ref('/rooms/' + roomName + '/messageObj').limitToLast(20);
 
         messageRef.on('value', function(snap) {
             messagesArray = snap.val();
@@ -81,26 +81,71 @@
                 var rooomuser = roomUsersArray[key];
                 roomusers.push(rooomuser);
             }
-            //console.log(roomusers);
+
 
             $timeout(function() {
                 $scope.roomUsers = roomusers;
             }, 1);
+
         });
 
         $scope.leaveRoom  =   function(user) {
+            // $rootScope.$broadcast('toggleRooms', false);
+            localStorage.setItem('hidenList', false);
             var  usersArray  = [];
             var  users  = [];
             var  userRef  = firebase.database().ref('/rooms/' + $scope.room + '/users');
-            userRef.on('value',  function(snap) {
+            userRef.once('value',  function(snap) {
                 usersArray = snap.val();
+                //console.log(roomUsersArray);
                 for (var ukey in usersArray) {
                     if (usersArray[ukey] === user) {
                         userRef.child(ukey).remove();
-                        console.log(usersArray[ukey] + " Removed");
+                        console.log(usersArray)
+                        console.log(ukey + " Removed");
+                        // var  otherRef = firebase.database().ref('/rooms/' + $scope.room + '/users/' + ukey).set(null);
+                        /*otherRef.on('value',  function(snap) {
+                            // console.log(snap.val());
+                        });*/
                     }
                 }
-            })
+            });
+            $state.go('chat', {} , { reload: true });
         }
+
+         $scope.kick = function(user){
+            if($scope.loggedUsername == 'admin'){
+                $rootScope.$broadcast('kick',{user: user});
+                var  usersArray  = [];
+                var  users  = [];
+                var  userRef  = firebase.database().ref('/rooms/' + $scope.room + '/users');
+                userRef.once('value',  function(snap) {
+                    usersArray = snap.val();
+                    for (var ukey in usersArray) {
+                        if (usersArray[ukey] === user) {
+                            userRef.child(ukey).remove();
+                            console.log(usersArray[ukey] + " Removed");
+                        }
+                    }
+                });
+            }
+        };
+
+    
+
+
+        var userInRoom = firebase.database().ref('rooms/' + $scope.room + '/users/');
+        userInRoom.on('value', function(snap) {
+            roomUsersArray = snap.val();
+            var roomusers = [];
+            for (var key in roomUsersArray) {
+                var rooomuser = roomUsersArray[key];
+                roomusers.push(rooomuser);
+            }
+            if(roomusers.indexOf($scope.loggedUsername)== -1){
+                console.log("You have been disconnected");
+                $state.go('chat', {} , { reload: true });
+            }
+        });
     }
 })();

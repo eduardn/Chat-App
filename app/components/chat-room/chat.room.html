@@ -1,42 +1,54 @@
-<div class="row" ngIf={{room}}>
-    <btn class="btn btn-warning" ng-click="leaveRoom(loggedUsername)">Leave Room</btn>
-    <!--CHAT MESSAGES-->
-    <div class="col-sm-10">
-        <div>
-            Messages from {{room}} Room
+
+<div>
+<div ng-If="room">
+  <!--CHAT MESSAGES-->
+    <div class="col-sm-9">
+
+        <div class="btnLeave">
+         <div class="textRoom"> Welcome to {{room}}!
+            <!--Messages from {{room}} Room-->
+                <button class="btn btn-success leave" ng-click="leaveRoom(loggedUsername)"><i class="fa fa-plane" aria-hidden="true" ></i> LEAVE </button>
+        </div>
         </div>
 
-        <ul class="messages">
-            <li ng-repeat="message in messages">
-                <div class="sender">
-                    <div class="sender-message"><span ng-style="myColorStyle">{{message.sender}}</span></div>
-                    <div class="text-message">{{message.text}}</div>
+       <ul class="messages" schroll-bottom="messages" id="rawText">
+            <li ng-repeat="message in messages" >
+                <div class="sender" ng-class="{'floatright': loggedUsername == message.sender }">
+                    <div class="sender-message"><span class="white" >{{message.sender}}</span></div>
+    
+                        <div ng-class="{'custom': loggedUsername == message.sender}"  class="text-message"  ng-bind-html="message.text | linky | emoji " >{{message.text}}</div>
+                       
                 </div>
+                
             </li>
         </ul>
 
         <div class="footer">
-            <input type="text" ng-model="message.text" id="txtSend" onkeydown="if(event.keyCode == 13) {document.getElementById('btnSend').click(); $('#txtSend').val('')}" />
-            <button class="btn mov" ng-click="sendMessage(message.text); message.text = null" id="btnSend">Send</button>
+            
+            <input type="text" ng-model="message.text" ng-change="text = message.text" id="txtSend" onkeydown="if(event.keyCode == 13) {document.getElementById('btnSend').click(); $('#txtSend').val('')}" />
+               <button class="btn purple" ng-click="sendMessage(message.text); message.text = null" id="btnSend"><i class="fa fa-send" aria-hidden="true"></i></button>
+            <input type="hidden" ng-model="text" />
+         
         </div>
     </div>
 
-    <!--USERS FROM ROOM-->
-    <div class="col-sm-2">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Users</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="activeuser in roomUsers track by $index">
-                    <td>
-                        {{activeuser}}
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+  <!--USERS FROM ROOM-->
+    <div class="col-sm-3 userList">
+        <div ng-if="roomUsers.length > 1" class="avUser"> {{roomUsers.length}} available users in {{room}}:</div>
+        <div ng-if="roomUsers.length == 1" class="avUser"> {{roomUsers.length}} available user in {{room}}:</div>
 
+        <ul class="list-active-users">
+            <li ng-repeat="activeuser in roomUsers track by $index">
+                <i class="fa fa-chevron-circle-down green" aria-hidden="true"></i> {{activeuser}}
+                <i ng-show="loggedUsername=='admin'" ng-click="kick(activeuser)" class="fa fa-coffee" aria-hidden="true"></i>
+            </li>
+        </ul>
     </div>
+
 </div>
+
+<div class="row" ng-If="!room">
+Enter a chat room & have fun!
+</div>
+</div>
+
