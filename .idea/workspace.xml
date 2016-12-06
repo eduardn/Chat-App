@@ -54,9 +54,18 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="368">
               <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding />
+=======
+            <state relative-caret-position="410">
+              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+              <folding>
+                <marker date="1481011524278" expanded="true" signature="1797:1837" ph="..." />
+                <marker date="1481011524278" expanded="true" signature="1816:1828" ph="..." />
+              </folding>
+>>>>>>> master
             </state>
           </provider>
         </entry>
@@ -349,12 +358,20 @@
       <workItem from="1479979885685" duration="5733000" />
       <workItem from="1480406721763" duration="11478000" />
       <workItem from="1480926715418" duration="6646000" />
+<<<<<<< HEAD
       <workItem from="1481011359190" duration="35000" />
+=======
+      <workItem from="1481011359190" duration="242000" />
+>>>>>>> master
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="60166000" />
+=======
+    <option name="totallyTimeSpent" value="60373000" />
+>>>>>>> master
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="0" />
@@ -471,7 +488,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
           <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+<<<<<<< HEAD
           <folding />
+=======
+          <folding>
+            <marker date="1481011524278" expanded="true" signature="1797:1837" ph="..." />
+            <marker date="1481011524278" expanded="true" signature="1816:1828" ph="..." />
+          </folding>
+>>>>>>> master
         </state>
       </provider>
     </entry>
@@ -510,6 +534,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/components/chat/chat.html">
+<<<<<<< HEAD
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="14" column="62" lean-forward="false" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
@@ -542,6 +567,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.tmp/concat/app.min.css">
       <provider selected="true" editor-type-id="text-editor">
+=======
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="62" lean-forward="false" selection-start-line="14" selection-start-column="62" selection-end-line="14" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/app.css" />
+    <entry file="file://$PROJECT_DIR$/dist/dist/app.min.js" />
+    <entry file="file://$PROJECT_DIR$/database.rules.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="1" lean-forward="false" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1018">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/venodr.js" />
+    <entry file="file://$PROJECT_DIR$/.firebaserc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="3" lean-forward="false" selection-start-line="2" selection-start-column="10" selection-end-line="3" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.tmp/concat/app.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+>>>>>>> master
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
@@ -712,9 +771,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="368">
           <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding />
+=======
+        <state relative-caret-position="410">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding>
+            <marker date="1481011524278" expanded="true" signature="1797:1837" ph="..." />
+            <marker date="1481011524278" expanded="true" signature="1816:1828" ph="..." />
+          </folding>
+>>>>>>> master
         </state>
       </provider>
     </entry>
