@@ -1,22 +1,24 @@
 /**
  * Created by bcojocariu on 11/3/2016.
  */
-(function(){
+(function() {
     'use strict';
 
     angular.module('chatApp')
-        .controller('HomeController',HomeController);
+        .controller('HomeController', HomeController);
 
-    HomeController.$inject=['$scope', '$state','$rootScope', '$stateParams', 'loginService', '$localStorage'];
+    HomeController.$inject = ['$scope', '$state', '$rootScope', '$stateParams', 'loginService', '$localStorage'];
 
-    function HomeController($scope, $state, $rootScope, $stateParams, loginService, $localStorage){
+    function HomeController($scope, $state, $rootScope, $stateParams, loginService, $localStorage) {
 
-             $scope.addButton = function(){
-            document.getElementById ('$toggleProfile').addEventListener('click', function () {
-  [].map.call(document.querySelectorAll('.profile'), function(el) {
-     el.classList.toggle('profile--open');
-   });
- });
+
+
+        $scope.addButton = function() {
+            document.getElementById('$toggleProfile').addEventListener('click', function() {
+                [].map.call(document.querySelectorAll('.profile'), function(el) {
+                    el.classList.toggle('profile--open');
+                });
+            });
         }
 
         var database = firebase.database();
@@ -28,18 +30,14 @@
         $scope.usercolor = getRandomColor();
         console.log($scope.usercolor);
 
-        $scope.myStyle={'color':getRandomColor()};
-        $scope.login = function(username){
-            if(username){
-
-
+        $scope.myStyle = { 'color': getRandomColor() };
+        $scope.login = function(username) {
+            localStorage.setItem('userNameLogged', username);
+            if (username) {
                 $scope.$storage = $localStorage.$default({
                     loggedUsername: username,
                     usercolor: $scope.usercolor
                 });
-
-
-
                 //Save user to firebase
                 var newUserKey = firebase.database().ref().child('users').push().key;
                 //console.log(newUserKey);
@@ -53,14 +51,14 @@
 
         };
 
-        database.ref('/users').once('value').then(function(snap){
+        database.ref('/users').once('value').then(function(snap) {
             console.log(snap.val());
         });
 
         function getRandomColor() {
             var letters = '0123456789ABCDEF';
             var color = '#';
-            for (var i = 0; i < 6; i++ ) {
+            for (var i = 0; i < 6; i++) {
                 color += letters[Math.floor(Math.random() * 16)];
             }
             return color;

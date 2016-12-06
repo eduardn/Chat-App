@@ -37,7 +37,7 @@
         //Get messages from room
         var messagesArray = [];
         var roomName = $scope.room;
-        var messageRef = database.ref('/rooms/' + roomName + '/messageObj').limitToLast(10);
+        var messageRef = database.ref('/rooms/' + roomName + '/messageObj').limitToLast(20);
 
         messageRef.on('value', function(snap) {
             messagesArray = snap.val();
@@ -110,9 +110,9 @@
                 }
             });
             $state.go('chat', {} , { reload: true });
-        };
+        }
 
-        $scope.kick = function(user){
+         $scope.kick = function(user){
             if($scope.loggedUsername == 'admin'){
                 $rootScope.$broadcast('kick',{user: user});
                 var  usersArray  = [];

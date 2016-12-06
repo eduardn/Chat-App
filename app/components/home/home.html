@@ -25,13 +25,13 @@
     <!--<div class="profile__form">
       <div class="profile__fields">-->
         <div class="field">
-          <input type="text" id="fieldUser" class="input" ng-model="username" required pattern=.*\S.* />
+          <input type="text" id="fieldUser" class="input"  onkeydown="if(event.keyCode == 13) document.getElementById('btnLogin').click();" ng-model="username" required pattern=.*\S.* />
           <label for="fieldUser" class="label">Username</label>
         </div>
 		
        
         <div class="profile__footer">
-          <button class="btnbtn" ng-click="login(username)">Login</button>
+          <button class="btnbtn" id="btnLogin" ng-click="login(username)"> Login</button>
         </div>
 		
       </div>

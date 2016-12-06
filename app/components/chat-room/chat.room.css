@@ -8,58 +8,117 @@
 }
 
 .messages > li .sender{
-    color: white;
-    -ms-border-radius: 8px;
-    border-radius: 8px;
+    color: black;
+    width: auto;
+    clear:right;
     text-align: center;
-
 }
-
 
 .messages > li .sender .sender-message {
     
-    background: #862D59;
+    /*background: #862D59;*/
     text-align: center;
     width: 100px;
     text-transform: capitalize;
     font-size: 14px;
     font-weight: bold;
-    padding: 2px 4px;
+
+    color: black;
   
 }
 
 .messages > li .sender .text-message {
-    padding-left:10px;
-    background: #f1f1f1;
-    color:black;
-    font-size: 16px;
-    border-radius: 2%;
-    border: solid 1px black;
-    text-align: center;
-    width: 500px
+
+    position:relative;
+  padding:15px;
+  margin: 20px;
+  color:#333;
+  background:#eee;
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  border-radius:10px;
+  width: 600px;
+  font-size: 17px;
+  text-align: left;
 
 }
+
+.messages > li .sender .sender-message {
+
+  position: relative;
+  top:19px;
+  left:35px;
+  right: 35px;
+  border:15px solid transparent;
+  border-bottom-color:#eee;
+
+  display:block;
+  width:0;
+  
+}
+
+div.sender-message{
+    margin-top: -40px;
+}
+
+.messages > li .floatright .sender-message{
+
+  position: relative;
+ 
+  left:35px;
+  right: 35px;
+  border:15px solid transparent;
+  border-bottom-color:#847ec7;
+
+  display:block;
+  width:0;
+  
+}
+
 
 .roomNameDisplay {
     max-height: 500px;
     overflow: auto;
 }
 
-.white{
-    color: white;
+span.white{
+    color:black;
+    font-size: 18px;
+    
+    
+    
+
+    
 }
+
+
 
 .floatright{
     direction: rtl;
     float:right;
     clear:right;
-    margin: 0px 10px 10px 20px;
-    padding-right: 20px;
+
+    
+
+        
+    
 
 }
 
-.floatright .text-message{
-    padding-right:10px;
+.floatright  > li .sender .text-message{
+    float:right;
+    /*padding-right:10px;*/
     min-width: 50px;
     width: 95%;
+    position:relative;
+
+  color:#333;
+  background:#eee;
+  /* css3 */
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  border-radius:10px;
+  
+   
+
 }
