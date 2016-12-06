@@ -9,31 +9,22 @@
 
 .messages > li .sender{
     color: black;
-
-
     width: auto;
-
     clear:right;
-
-
     text-align: center;
 }
 
 .messages > li .sender .sender-message {
-
     /*background: #862D59;*/
     text-align: center;
     width: 100px;
     text-transform: capitalize;
     font-size: 14px;
     font-weight: bold;
-
     color: black;
-
 }
 
 .messages > li .sender .text-message {
-
     position:relative;
     padding:15px;
     margin: 20px;
@@ -49,17 +40,14 @@
 }
 
 .messages > li .sender .sender-message {
-
     position: relative;
     top:19px;
     left:35px;
     right: 35px;
     border:15px solid transparent;
     border-bottom-color:#eee;
-
     display:block;
     width:0;
-
 }
 
 div.sender-message{
@@ -67,19 +55,15 @@ div.sender-message{
 }
 
 .messages > li .floatright .sender-message{
-
     position: relative;
-
     left:35px;
     right: 35px;
     border:15px solid transparent;
     border-bottom-color:#847ec7;
-
     display:block;
     width:0;
 
 }
-
 
 .roomNameDisplay {
     max-height: 500px;
@@ -89,25 +73,12 @@ div.sender-message{
 span.white{
     color:black;
     font-size: 18px;
-
-
-
-
-
 }
-
-
 
 .floatright{
     direction: rtl;
     float:right;
     clear:right;
-
-
-
-
-
-
 }
 
 .floatright  > li .sender .text-message{
@@ -116,7 +87,6 @@ span.white{
     min-width: 50px;
     width: 95%;
     position:relative;
-
     color:#333;
     background:#eee;
 / css3 /

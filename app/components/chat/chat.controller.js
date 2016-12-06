@@ -18,13 +18,7 @@
 
     function ChatController($scope, $state, $location, loginService, $localStorage, $firebaseArray, $firebaseObject, $timeout, $rootScope, $q) {
 
-        $scope.addButton = function() {
-            document.getElementById('toggleProfile').addEventListener('click', function() {
-                [].map.call(document.querySelectorAll('.profile'), function(el) {
-                    el.classList.toggle('profile--open');
-                });
-            });
-        }
+
 
         $scope.hideRooms = (localStorage.getItem('hidenList') === 'true');
         console.log($scope.hideRooms);

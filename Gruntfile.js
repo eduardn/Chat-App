@@ -35,6 +35,10 @@ module.exports = function (grunt) {
            html: {
                src: './app/index.html',
                dest: './dist/index.html'
+           },
+           fonts: {
+               src: './bower_components/font-awesome/fonts',
+               dest: './dist/'
            }
         },
         karma: {

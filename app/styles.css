@@ -1,12 +1,21 @@
-body {
+html{
+    height: 100%;
+}
+
+.chatroom-body {
     font-family: 'Garamond', sans-serif;
     font-weight: bold;
     background-color:white;
     background-image: url("components/chat/img/gettop.jpg");
-    background-size: 75% 83%;
+    background-size: 70% 80%;
     background-repeat: no-repeat;
-    background-position: right bottom;
+    background-position: right center;
 }
+
+.chat-body row{
+    margin-bottom: 20px;
+}
+
 
 .whitespace {
     background-color: #FFFFFF;
@@ -19,6 +28,7 @@ hr {
 
 .container-fluid {
     width: 100%;
+
 }
 
 .btn-danger {
@@ -118,7 +128,7 @@ purple:focus {
     background-color: #847ec7;
     color:white;
     margin-left: -10%;
-    margin-top: 10%;
+    margin-top: 7%;
 }
 .logout:hover{
     color: white;
@@ -126,10 +136,9 @@ purple:focus {
 }
 
 .logo {
-    width: 12%;
-    height: 12%;
+    width: 35px;
+    height: 35px;
     text-align: center;
-    margin: 3% 2% 5% 7%;
 }
 
 .navbar-inverse {
@@ -137,6 +146,7 @@ purple:focus {
     background-color: white;
     color: black;
     border-color: #ddd;
+
 }
 
 .navbar-default {
@@ -225,6 +235,8 @@ p {
     max-height: 50px;
     height: 40px;
     font-size: 17px;
+    color: black;
+    padding-left: 2%;
 }
 
 ul li {
@@ -313,6 +325,7 @@ ul li {
     margin-top:2%;
     font-size: 17px;
     margin-right: -6%;
+    color:black;
 }
 .avUser{
     margin-top: 2%;
@@ -321,10 +334,9 @@ ul li {
 }
 
 .list-group-item{
-
     border: none;
     border-bottom: 1px solid #ddd;
-
+    color:black;
 }
 
 #newRoomGreen{
@@ -332,6 +344,7 @@ ul li {
     background-color: #6fc582;
     color: white;
     font-size: 17px;
+    margin-top: -5%;
 }
 
 .badge{
@@ -369,7 +382,7 @@ ul li {
 }
 
 .pull-left{
-    margin-top: 3%;
+    margin-top: 5%;
     margin-left: -3%;
 }
 .badge{
@@ -384,4 +397,183 @@ img.emoji{
 
 .textRoom{
     font-size: 21px;
+}
+
+/*FROM LOGIN */
+
+/* Base styles */
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+html {
+    font-size: 100%;
+    line-height: 1.5;
+    height: 100%;
+}
+
+.login-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-family: 'Garamond', 'Times New Roman', Helvetica, sans-serif;
+    min-height: 100%;
+    background: linear-gradient(to bottom, #847ec7  10%, #ddd  150%);
+    color: white;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    animation: intro .7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+img {
+    vertical-align: middle;
+    max-width: 100%;
+}
+button {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+}
+
+/* Container */
+
+/* Profile Card */
+.profile {
+    margin-top: 22%;
+    margin-left: 42%;
+    width: 280px;
+}
+
+.profile--open .profile__form {
+    visibility: visible;
+    height: auto;
+    opacity: 1;
+    transform: translateY(-6em);
+    padding-top: 12em;
+}
+.profile--open .profile__fields {
+    opacity: 1;
+    visibility: visible;
+}
+.profile--open .profile__avatar {
+    transform: translate(-50%, -1.5em);
+    border-radius: 50%;
+}
+.profile__form {
+    position: relative;
+    /* background: #f0eced*/
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    padding: 3em;
+    border-radius: .25em;
+    -webkit-filter: drop-shadow(0 0 2em rgba(0,0,0,0.2));
+    transition:
+            opacity .4s ease-in-out,
+            height .4s ease-in-out,
+            transform .4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+            padding .4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+}
+.profile__fields {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.profile__avatar {
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 1.25em;
+    overflow: hidden;
+    width: 4.5em;
+    height: 4.5em;
+    display: block;
+    transition: transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    will-change: transform;
+}
+.profile__avatar:focus {
+    outline: 0;
+}
+.profile__footer {
+    padding-top: 1em;
+}
+
+
+/* Form */
+.field {
+    position: relative;
+    margin-bottom: 2em;
+}
+.label {
+    position: absolute;
+    height: 2rem;
+    line-height: 2rem;
+    bottom: 0;
+    color: white;
+    transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-size: 20px;
+}
+.login-input  {
+    width: 100%;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    height: 2rem;
+    line-height: 2rem;
+    border-bottom: 1px solid #eee;
+    color: white;
+    transition: all .2s ease-in;
+    font:25px 'Garamond';
+}
+.login-input:focus {
+    outline: 0;
+    border-color: #ccc;
+}
+
+/* Using required and a faux pattern to see if input has text from http://stackoverflow.com/questions/16952526/detect-if-an-input-has-text-in-it-using-css */
+.login-input:focus + .label,
+login-input:valid + .label {
+    transform: translateY(-100%);
+    font-size: 0.75rem;
+    color: #ccc;
+}
+
+
+.btnbtn {
+    border: 0;
+    font-size: 0.75rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    padding: 0 1.5rem;
+    color: white;
+    background: #6fc582;
+    text-transform: uppercase;
+    border-radius: .25rem;
+    letter-spacing: .2em;
+    transition: background .2s;
+    font-family: 'Garamond';
+}
+.btnbtn:focus {
+    outline: 0;
+}
+.btnbtn:hover,
+.btnbtn:focus {
+    background:white;
+    color: black;
+}
+
+
+
+@keyframes intro {
+    from {
+        opacity: 0;
+        top: 0;
+    }
+    to {
+        opacity: 1;
+        top: 50%;
+    }
 }

@@ -25,7 +25,7 @@
 
         <div class="footer">
             
-            <input type="text" ng-model="message.text" ng-change="text = message.text" id="txtSend" onkeydown="if(event.keyCode == 13) {document.getElementById('btnSend').click(); $('#txtSend').val('')}" />
+            <input class="input-text" type="text" ng-model="message.text" ng-change="text = message.text" id="txtSend" onkeydown="if(event.keyCode == 13) {document.getElementById('btnSend').click(); $('#txtSend').val('')}" />
                <button class="btn purple" ng-click="sendMessage(message.text); message.text = null" id="btnSend"><i class="fa fa-send" aria-hidden="true"></i></button>
             <input type="hidden" ng-model="text" />
          
