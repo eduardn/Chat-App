@@ -2,35 +2,49 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
   'use strict';
 
   $templateCache.put('components/chat-room/chat.room.html',
+    "\r" +
+    "\n" +
+    "<div>\r" +
+    "\n" +
     "<div ng-If=\"room\">\r" +
     "\n" +
-    "    <!--CHAT MESSAGES-->\r" +
-    "\n" +
-    "\r" +
+    "  <!--CHAT MESSAGES-->\r" +
     "\n" +
     "    <div class=\"col-sm-9\">\r" +
     "\n" +
     "\r" +
     "\n" +
-    "        <div>\r" +
+    "        <div class=\"btnLeave\">\r" +
     "\n" +
-    "            Messages from {{room}} Room\r" +
+    "         <div class=\"textRoom\"> Welcome to {{room}}!\r" +
+    "\n" +
+    "            <!--Messages from {{room}} Room-->\r" +
+    "\n" +
+    "                <button class=\"btn btn-success leave\" ng-click=\"leaveRoom(loggedUsername)\"><i class=\"fa fa-plane\" aria-hidden=\"true\" ></i> LEAVE </button>\r" +
+    "\n" +
+    "        </div>\r" +
     "\n" +
     "        </div>\r" +
     "\n" +
     "\r" +
     "\n" +
-    "        <ul class=\"messages\" schroll-bottom=\"messages\">\r" +
+    "       <ul class=\"messages\" schroll-bottom=\"messages\" id=\"rawText\">\r" +
     "\n" +
-    "            <li ng-repeat=\"message in messages\">\r" +
+    "            <li ng-repeat=\"message in messages\" >\r" +
     "\n" +
-    "                <div class=\"sender\" ng-class=\"{'floatright': loggedUsername==message.sender}\">\r" +
+    "                <div class=\"sender\" ng-class=\"{'floatright': loggedUsername == message.sender }\">\r" +
     "\n" +
-    "                    <div class=\"sender-message\"><span>{{message.sender}}</span></div>\r" +
+    "                    <div class=\"sender-message\"><span class=\"white\" >{{message.sender}}</span></div>\r" +
     "\n" +
-    "                    <div class=\"text-message\" ng-bind-html=\"message.text | linky \"></div>\r" +
+    "    \r" +
+    "\n" +
+    "                        <div ng-class=\"{'custom': loggedUsername == message.sender}\"  class=\"text-message\"  ng-bind-html=\"message.text | linky | emoji \" >{{message.text}}</div>\r" +
+    "\n" +
+    "                       \r" +
     "\n" +
     "                </div>\r" +
+    "\n" +
+    "                \r" +
     "\n" +
     "            </li>\r" +
     "\n" +
@@ -40,9 +54,15 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "        <div class=\"footer\">\r" +
     "\n" +
-    "            <input type=\"text\" ng-model=\"message.text\" id=\"txtSend\" onkeydown=\"if(event.keyCode == 13) {document.getElementById('btnSend').click(); $('#txtSend').val('')}\" />\r" +
+    "            \r" +
     "\n" +
-    "            <button class=\"btn purple\" ng-click=\"sendMessage(message.text); message.text = null\" id=\"btnSend\"><i class=\"fa fa-send\" aria-hidden=\"true\"></i></button>\r" +
+    "            <input class=\"input-text\" type=\"text\" ng-model=\"message.text\" ng-change=\"text = message.text\" id=\"txtSend\" onkeydown=\"if(event.keyCode == 13) {document.getElementById('btnSend').click(); $('#txtSend').val('')}\" />\r" +
+    "\n" +
+    "               <button class=\"btn purple\" ng-click=\"sendMessage(message.text); message.text = null\" id=\"btnSend\"><i class=\"fa fa-send\" aria-hidden=\"true\"></i></button>\r" +
+    "\n" +
+    "            <input type=\"hidden\" ng-model=\"text\" />\r" +
+    "\n" +
+    "         \r" +
     "\n" +
     "        </div>\r" +
     "\n" +
@@ -50,13 +70,13 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "\r" +
     "\n" +
-    "    <!--USERS FROM ROOM-->\r" +
+    "  <!--USERS FROM ROOM-->\r" +
     "\n" +
     "    <div class=\"col-sm-3 userList\">\r" +
     "\n" +
-    "        <div ng-if=\"roomUsers.length > 1\"> {{roomUsers.length}} available users in {{room}}:</div>\r" +
+    "        <div ng-if=\"roomUsers.length > 1\" class=\"avUser\"> {{roomUsers.length}} available users in {{room}}:</div>\r" +
     "\n" +
-    "        <div ng-if=\"roomUsers.length == 1\"> {{roomUsers.length}} available user in {{room}}:</div>\r" +
+    "        <div ng-if=\"roomUsers.length == 1\" class=\"avUser\"> {{roomUsers.length}} available user in {{room}}:</div>\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -64,7 +84,7 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <li ng-repeat=\"activeuser in roomUsers track by $index\">\r" +
     "\n" +
-    "                <i class=\"fa fa-chevron-circle-down green\" aria-hidden=\"true\"></i> {{activeuser}} <i ng-show=\"loggedUsername=='admin'\" ng-click=\"kick(activeuser)\" class=\"fa fa-coffee\" aria-hidden=\"true\"></i>\r" +
+    "                <i class=\"fa fa-chevron-circle-down green\" aria-hidden=\"true\"></i> {{activeuser}} <i ng-show=\"loggedUsername=='admin'\" ng-click=\"kick(activeuser)\" class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>\r" +
     "\n" +
     "            </li>\r" +
     "\n" +
@@ -72,7 +92,7 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "    </div>\r" +
     "\n" +
-    "    <button class=\"btn btn-warning leave\" ng-click=\"leaveRoom(loggedUsername)\">leave room <i class=\"fa fa-plane\" aria-hidden=\"true\"></i></button>\r" +
+    "\r" +
     "\n" +
     "</div>\r" +
     "\n" +
@@ -80,84 +100,117 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "<div class=\"row\" ng-If=\"!room\">\r" +
     "\n" +
-    "    Enter a chat room & have fun!\r" +
+    "Enter a chat room & have fun!\r" +
     "\n" +
-    "</div>"
+    "</div>\r" +
+    "\n" +
+    "</div>\r" +
+    "\n" +
+    "\r" +
+    "\n"
   );
 
 
   $templateCache.put('components/chat/chat.html',
-    "<nav class=\"navbar navbar-inverse\" role=\"navigation\">\r" +
+    "<div class=\"row chat-body\">\r" +
     "\n" +
-    "    <div class=\"col-sm-3\">\r" +
+    "    <nav class=\"navbar navbar-inverse\" role=\"navigation\">\r" +
     "\n" +
-    "        <img class=\"pull-left white logo\" src=\"http://parastudios.de/files/chat_vector/facebook_chat.png\" alt=\"logo\" />\r" +
+    "        <div class=\"col-sm-3\">\r" +
     "\n" +
-    "        <h4 class=\"white\"> Hello, {{userName}} !</h4>\r" +
+    "            <img class=\"pull-left white logo\" src=\"http://www.meetmecorp.com/wp-content/uploads/2015/08/mm_app_icon.png\" alt=\"logo\" />\r" +
     "\n" +
-    "    </div>\r" +
-    "\n" +
-    "    <div class=\"pull-right\">\r" +
-    "\n" +
-    "        <button class=\"btn btn-default btn-xs logout\" ng-click=\"logout()\">Log Out <i class=\"fa fa-sign-out\" aria-hidden=\"true\"></i> </button>\r" +
-    "\n" +
-    "    </div>\r" +
-    "\n" +
-    "</nav>\r" +
-    "\n" +
-    "<div ng-show=\"userInRomm\" class=\"alert alert-warning\">\r" +
-    "\n" +
-    "    Warning! You are already in this room!\r" +
-    "\n" +
-    "</div>\r" +
-    "\n" +
-    "<div class=\"row\">\r" +
-    "\n" +
-    "    <div class=\"col-sm-3\">\r" +
-    "\n" +
-    "        <div class=\"spinicon\" ng-show=\"!roomNames\"><i class=\"fa fa-spin fa-spinner fa-5\" aria-hidden=\"true\"></i></div>\r" +
-    "\n" +
-    "        <div ng-show=\"roomNames\"> {{roomNames.length}} available chat rooms:</div>\r" +
-    "\n" +
-    "        <div class=\"roomNameDisplay\">\r" +
-    "\n" +
-    "            <ul class=\"list-group\" ng-if=\"rooms\">\r" +
-    "\n" +
-    "                <li class=\"list-group-item\" ng-repeat=\"key in rooms\">\r" +
-    "\n" +
-    "                    {{key.roomName}}\r" +
-    "\n" +
-    "                    <span class=\"badge pull-left\">\r" +
-    "\n" +
-    "                    {{getCount(key.users)}}\r" +
-    "\n" +
-    "                </span>\r" +
-    "\n" +
-    "                    <button class=\"btn btn-xs pull-right roz\" ng-click=\"joinRoom(key.roomName); listRooms()\" ng-hide=\"hideRooms\">\r" +
-    "\n" +
-    "                     join  <i class=\"fa fa-user-plus\" aria-hidden=\"true\"></i> \r" +
-    "\n" +
-    "                </button>&nbsp;&nbsp;\r" +
-    "\n" +
-    "                </li>\r" +
-    "\n" +
-    "            </ul>\r" +
+    "            <h4 class=\"intro\"> Hello, {{userName}}!</h4>\r" +
     "\n" +
     "        </div>\r" +
     "\n" +
-    "        <div class=\"buttonCreateRoom\">\r" +
+    "        <div class=\"pull-right\">\r" +
     "\n" +
-    "            <create-room></create-room>\r" +
+    "            <button class=\"btn btn-default btn-xs logout\" ng-click=\"logout()\"> <i class=\"fa fa-sign-out\" aria-hidden=\"true\" ></i>  LOG OUT </button>\r" +
     "\n" +
     "\r" +
     "\n" +
     "        </div>\r" +
     "\n" +
-    "    </div>\r" +
+    "\r" +
     "\n" +
-    "    <div class=\"col-sm-9\">\r" +
+    "    </nav>\r" +
     "\n" +
-    "        <ui-view></ui-view>\r" +
+    "</div>\r" +
+    "\n" +
+    "<div class=\"container-fluid chatroom-body\">\r" +
+    "\n" +
+    "    <div class=\"row\">\r" +
+    "\n" +
+    "        <div class=\"row-height\">\r" +
+    "\n" +
+    "            <div class=\"col-sm-3 col-sm-height\" >\r" +
+    "\n" +
+    "                <div ng-show=\"userInRomm\" class=\"alert alert-warning\">\r" +
+    "\n" +
+    "                    Warning! You are already in this room!\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                <div class=\"spinicon\" ng-show=\"!roomNames\"><i class=\"fa fa-spin fa-spinner fa-5\" aria-hidden=\"true\"></i></div>\r" +
+    "\n" +
+    "                <div ng-show=\"roomNames\" id=\"roomName\"> {{roomNames.length}} available chat rooms:</div>\r" +
+    "\n" +
+    "                <div class=\"roomNameDisplay\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                    <ul class=\"list-group\" ng-if=\"rooms\">\r" +
+    "\n" +
+    "                        <li class=\"list-group-item\" ng-repeat=\"key in rooms\">\r" +
+    "\n" +
+    "                            {{key.roomName}}\r" +
+    "\n" +
+    "                            <span class=\"badge pull-left\">\r" +
+    "\n" +
+    "                    {{getCount(key.users)}}\r" +
+    "\n" +
+    "                </span> &nbsp;\r" +
+    "\n" +
+    "                            <button class=\"btn btn-xs pull-right roz\" ng-click=\"joinRoom(key.roomName); listRooms()\" ng-hide=\"hideRooms\">\r" +
+    "\n" +
+    "                                <i class=\"fa fa-user-plus\" aria-hidden=\"true\"></i>\r" +
+    "\n" +
+    "                                join\r" +
+    "\n" +
+    "                            </button>&nbsp;&nbsp;\r" +
+    "\n" +
+    "                        </li>\r" +
+    "\n" +
+    "                    </ul>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"buttonCreateRoom\">\r" +
+    "\n" +
+    "                    <create-room></create-room>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "            <div class=\"col-sm-9\">\r" +
+    "\n" +
+    "                <!--<img src=\"./components/chat/img/gett.jpg\" >-->\r" +
+    "\n" +
+    "                <ui-view></ui-view>\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        </div>\r" +
     "\n" +
     "    </div>\r" +
     "\n" +
@@ -172,9 +225,9 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "<div class=\"container-fluid\">\r" +
     "\n" +
-    "    <button type=\"button\" class=\"btn purple \" data-toggle=\"modal\" data-target=\"#myModal\">\r" +
+    "    <button type=\"button\" class=\"btn\" id=\"newRoomGreen\" data-toggle=\"modal\" data-target=\"#myModal\">\r" +
     "\n" +
-    "  create new room <i class=\"fa fa-plus\" aria-hidden=\"true\"></i>\r" +
+    "   <i class=\"fa fa-plus\" aria-hidden=\"true\"></i> CREATE\r" +
     "\n" +
     "</button>\r" +
     "\n" +
@@ -265,11 +318,11 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "\r" +
     "\n" +
-    "   <link rel=\"stylesheet\" href=\"components/home/login.css\">\r" +
+    "\r" +
     "\n" +
     "\r" +
     "\n" +
-    "<div class=\"container\">\r" +
+    "<div class=\"container-fluid login-container\">\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -287,7 +340,7 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "        <div class=\"field\">\r" +
     "\n" +
-    "          <input type=\"text\" id=\"fieldUser\" class=\"input\" ng-model=\"username\" required pattern=.*\\S.* />\r" +
+    "          <input type=\"text\" id=\"fieldUser\" class=\"login-input\"  onkeydown=\"if(event.keyCode == 13) document.getElementById('btnLogin').click();\" ng-model=\"username\" required pattern=.*\\S.* />\r" +
     "\n" +
     "          <label for=\"fieldUser\" class=\"label\">Username</label>\r" +
     "\n" +
@@ -299,7 +352,7 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "        <div class=\"profile__footer\">\r" +
     "\n" +
-    "          <button class=\"btnbtn\" ng-click=\"login(username)\">Login</button>\r" +
+    "          <button class=\"btnbtn\" id=\"btnLogin\" ng-click=\"login(username)\"> Login</button>\r" +
     "\n" +
     "        </div>\r" +
     "\n" +

@@ -6,10 +6,10 @@ html{
     font-family: 'Garamond', sans-serif;
     font-weight: bold;
     background-color:white;
-    background-image: url("components/chat/img/gettop.jpg");
+    background-image: url("img/gettop.jpg");
     background-size: 70% 80%;
     background-repeat: no-repeat;
-    background-position: right center;
+    background-position: right 15px center;
 }
 
 .chat-body row{
@@ -231,7 +231,7 @@ p {
 }
 
 .footer input {
-    width: 93%;
+    width: 91%;
     max-height: 50px;
     height: 40px;
     font-size: 17px;

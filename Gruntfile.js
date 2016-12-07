@@ -37,8 +37,16 @@ module.exports = function (grunt) {
                dest: './dist/index.html'
            },
            fonts: {
-               src: './bower_components/font-awesome/fonts',
+               expand: true,
+               cwd: './bower_components/font-awesome/',
+               src: 'fonts/**',
                dest: './dist/'
+           },
+           img: {
+                expand: true,
+                cwd: './app/',
+                src: 'img/**',
+                dest: './dist/'
            }
         },
         karma: {
@@ -94,7 +102,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-angular-templates');
 
     grunt.registerTask('test:unit', ['karma:unit']);
-    grunt.registerTask('package', ['copy:html', 'useminPrepare', 'concat:generated', 'uglify:generated', 'cssmin:generated', 'usemin', 'ngtemplates']);
+    grunt.registerTask('package', ['copy:html', 'useminPrepare', 'concat:generated', 'uglify:generated', 'cssmin:generated', 'usemin', 'ngtemplates','copy:fonts', 'copy:img',]);
 
     grunt.registerTask('default', ['browserSync']);
 };
