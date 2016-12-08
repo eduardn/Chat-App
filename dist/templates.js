@@ -116,7 +116,7 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "    <nav class=\"navbar navbar-inverse\" role=\"navigation\">\r" +
     "\n" +
-    "        <div class=\"col-sm-3\">\r" +
+    "        <div class=\"col-sm-6\">\r" +
     "\n" +
     "            <img class=\"pull-left white logo\" src=\"http://www.meetmecorp.com/wp-content/uploads/2015/08/mm_app_icon.png\" alt=\"logo\" />\r" +
     "\n" +
@@ -127,8 +127,6 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "        <div class=\"pull-right\">\r" +
     "\n" +
     "            <button class=\"btn btn-default btn-xs logout\" ng-click=\"logout()\"> <i class=\"fa fa-sign-out\" aria-hidden=\"true\" ></i>  LOG OUT </button>\r" +
-    "\n" +
-    "\r" +
     "\n" +
     "        </div>\r" +
     "\n" +
@@ -263,7 +261,7 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "        <div class=\"modal-body\">\r" +
     "\n" +
-    "          <input type=\"text\" placeholder=' room name' ng-pattern=\"/^[a-zA-Z0-9]*$/\" ng-model=\"roomNameCreate\" required/>\r" +
+    "          <input type=\"text\" placeholder=' room name' ng-pattern=\"/^[a-zA-Z0-9]+[@+ +&+-]*$/\" ng-model=\"roomNameCreate\" required/>\r" +
     "\n" +
     "        </div>\r" +
     "\n" +
@@ -273,9 +271,15 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "        </div>\r" +
     "\n" +
+    "      </div>\r" +
+    "\n" +
     "    </div>\r" +
     "\n" +
+    "  </div>\r" +
+    "\n" +
     "</div>\r" +
+    "\n" +
+    "\r" +
     "\n"
   );
 

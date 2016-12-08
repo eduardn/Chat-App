@@ -122,6 +122,7 @@
             var updates = {};
             updates['/rooms/' + $scope.roomNameCreate + '/roomName'] = $scope.roomNameCreate;
             updates['/rooms/' + $scope.roomNameCreate + '/messageObj/' + newPostKey] = messageObject;
+            updates['/rooms/' + $scope.roomNameCreate + '/creator'] = $scope.userName;
 
 
             /*

@@ -14,7 +14,6 @@ body{
 
 .chatroom-body {
     font-family: 'Source Sans Pro', sans-serif;
-    font-weight: bold;
     background-color:white;
     background-image: url("img/gettop.jpg");
     background-size: 70% 80%;
@@ -146,8 +145,8 @@ purple:focus {
 }
 
 .logo {
-    width: 35px;
-    height: 35px;
+    width: 50px;
+    height: 50px;
     text-align: center;
 }
 
@@ -374,7 +373,7 @@ ul li {
 }
 
 .intro{
-    margin-top: 4.2%;
+    margin-top: 2%;
     font-size: 40px;
 }
 
@@ -391,8 +390,8 @@ ul li {
 }
 
 .pull-left{
-    margin-top: 5%;
-    margin-left: -3%;
+    margin-top: 1%;
+    margin-left: 0%;
 }
 .badge{
     margin-top:1%;
@@ -409,6 +408,7 @@ img.emoji{
 }
 
 /*FROM LOGIN */
+
 
 /* Base styles */
 *, *:after, *:before {
@@ -517,6 +517,7 @@ button {
     margin-bottom: 2em;
 }
 .label {
+    font-weight: normal;
     position: absolute;
     height: 2rem;
     line-height: 2rem;
@@ -582,6 +583,45 @@ login-input:valid + .label {
     to {
         opacity: 1;
         top: 50%;
+    }
+}
+
+@media screen and (min-width:320px) and (max-width: 800px) {
+
+    .roomNameDisplay {
+
+        width: 160%;
+        margin-left: -20px;
+
+    }
+
+    .col-sm-height {
+        padding: 30px;
+        border-right: none;
+
+    }
+
+    .pull-left.white.logo {
+        margin-top: 32px;
+    }
+
+    #newRoomGreen {
+        margin-bottom: 68px;
+        width: 200px;
+        margin-left: -50px;
+
+    }
+
+    #roomName {
+        text-align: center;
+    }
+
+    .logout {
+        margin-top: 25px;
+    }
+
+    h4.intro.ng-binding {
+        margin-top: 10%;
     }
 }
 /*!

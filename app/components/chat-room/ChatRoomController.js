@@ -23,6 +23,7 @@
 
     function ChatRoomController($scope, $timeout, $state, $firebaseArray, $firebaseObject, $rootScope, $q, $stateParams, loginService) {
         $scope.room = $stateParams.roomName;
+        $scope.roomCreator = "";
         console.log($scope.room);
         $scope.roomUsers = [];
         
@@ -37,7 +38,7 @@
         //Get messages from room
         var messagesArray = [];
         var roomName = $scope.room;
-        var messageRef = database.ref('/rooms/' + roomName + '/messageObj').limitToLast(20);
+        var messageRef = database.ref('/rooms/' + roomName + '/messageObj');
 
         messageRef.on('value', function(snap) {
             messagesArray = snap.val();
@@ -50,6 +51,17 @@
             $timeout(function() {
                 $scope.messages = messages;
             }, 1);
+        });
+
+        //Get userCreator
+        var roomCreatorRef = database.ref('/rooms/' + roomName + '/creator');
+        roomCreatorRef.once('value', function(snap){
+            var roomCreator = snap.val();
+
+            $timeout(function() {
+                $scope.roomCreator = roomCreator;
+            }, 1);
+
         });
 
         $scope.sendMessage = function(messageText) {
@@ -112,7 +124,7 @@
         }
 
          $scope.kick = function(user){
-            if($scope.loggedUsername == 'admin'){
+            if($scope.loggedUsername == $scope.roomCreator){
                 $rootScope.$broadcast('kick',{user: user});
                 var  usersArray  = [];
                 var  users  = [];
