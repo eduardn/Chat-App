@@ -21,6 +21,13 @@
         <div class="modal-body">
           <input type="text" placeholder=' room name' ng-pattern="/^[a-zA-Z0-9]+[@+ +&+-]*$/" ng-model="roomNameCreate" required/>
         </div>
+        <div>
+          <ul id="roomImages">
+            <li ng-repeat="imageUrl in imagesUrls">
+              <img ng-src="{{imageUrl}}" ng-click="saveRoomImage(imageUrl)">
+            </li>
+          </ul>
+        </div>
         <div class="modal-footer">
           <button type="button" ng-click="writeRoomData()" class="btn btn-default" data-dismiss="modal">Create</button>
         </div>

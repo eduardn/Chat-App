@@ -24,12 +24,13 @@
                 <div class="roomNameDisplay">
 
                     <ul class="list-group" ng-if="rooms">
-                        <li class="list-group-item" ng-repeat="key in rooms">
-                            {{key.roomName}}
-                            <span class="badge pull-left">
-                    {{getCount(key.users)}}
-                </span> &nbsp;
-                            <button class="btn btn-xs pull-right roz" ng-click="joinRoom(key.roomName); listRooms()" ng-hide="hideRooms">
+                        <li class="list-group-item" ng-repeat="room in rooms">
+                            <img ng-src="{{room.imageUrl}}" width="40px" height="40px">
+                            {{room.roomName}}
+                            <span class="badge">
+                                {{getCount(room.users)}}
+                            </span> &nbsp;
+                            <button class="btn btn-xs pull-right roz" ng-click="joinRoom(room.roomName); listRooms()" ng-hide="hideRooms">
                                 <i class="fa fa-user-plus" aria-hidden="true"></i>
                                 join
                             </button>&nbsp;&nbsp;

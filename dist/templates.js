@@ -84,7 +84,9 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <li ng-repeat=\"activeuser in roomUsers track by $index\">\r" +
     "\n" +
-    "                <i class=\"fa fa-chevron-circle-down green\" aria-hidden=\"true\"></i> {{activeuser}} <i ng-show=\"loggedUsername=='admin'\" ng-click=\"kick(activeuser)\" class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>\r" +
+    "                <i class=\"fa fa-chevron-circle-down green\" aria-hidden=\"true\"></i> {{activeuser}} <i ng-show=\"loggedUsername==roomCreator\" ng-click=\"kick(activeuser)\" class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>\r" +
+    "\n" +
+    "                <span ng-show=\"activeuser==roomCreator\">(Admin)</span>\r" +
     "\n" +
     "            </li>\r" +
     "\n" +

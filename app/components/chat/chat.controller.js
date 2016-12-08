@@ -87,12 +87,15 @@
                 $scope.rooms = snap.val();
                 //console.log($scope.rooms);
                 var roomNames = [];
+                var roomImages = [];
                 for (var key in $scope.rooms) {
                     roomNames.push($scope.rooms[key].roomName);
+                    roomImages.push($scope.rooms[key].imageUrl)
                 }
                 $scope.roomsNames = [];
                 $timeout(function() {
                     $scope.roomNames = roomNames;
+                    $scope.roomImages = roomImages;
                 }, 0);
 
             });
@@ -109,9 +112,24 @@
          * adding a new room to database
          * TO DO : RESOLVE WITH MESSAGES
          */
+        $scope.imagesUrls = ['http://www.imarijuana.com/wp-content/uploads/2011/10/Romania-Marijuana-Laws.png',
+            'http://pix.iemoji.com/images/emoji/apple/ios-9/256/christmas-tree.png',
+            'http://icons.veryicon.com/png/Sport/Sport/Basketball.png',
+            'https://65.media.tumblr.com/avatar_ee6f82e163e3_128.png',
+            'http://pix.iemoji.com/images/emoji/apple/ios-9/256/beer-mug.png',
+            'http://pix.iemoji.com/images/emoji/apple/ios-9/256/party-popper.png',
+            'https://s-media-cache-ak0.pinimg.com/564x/36/92/52/36925231de3dea90fd0d3c8fd9510d74.jpg',
+            'http://icons.iconarchive.com/icons/visualpharm/animals/256/Panda-icon.png',
+            'http://www.iconarchive.com/download/i86393/atyourservice/service-categories/Makeup.ico'];
+
+        $scope.saveRoomImage = function(imageUrl){
+            console.log(imageUrl);
+            $scope.roomImage = imageUrl;
+        };
+
         $scope.writeRoomData = function(roomName) {
             var roomName = $scope.roomNameCreate;
-            //console.log(roomName);
+
             var messageObject = {
                 sender: "RoomBot",
                 text: "Welcome to this room!"
@@ -123,6 +141,7 @@
             updates['/rooms/' + $scope.roomNameCreate + '/roomName'] = $scope.roomNameCreate;
             updates['/rooms/' + $scope.roomNameCreate + '/messageObj/' + newPostKey] = messageObject;
             updates['/rooms/' + $scope.roomNameCreate + '/creator'] = $scope.userName;
+            updates['/rooms/' + $scope.roomNameCreate + '/imageUrl'] = $scope.roomImage;
 
 
             /*

@@ -352,6 +352,12 @@ ul li {
 .badge{
     background-color: #847ec7;
     color: white;
+    margin-top: 1%;
+    margin-right: 20%;
+    float: none;
+}
+.list-group-item>.badge {
+    float:none;
 }
 
 #btnSend{
@@ -386,11 +392,6 @@ ul li {
 .pull-left{
     margin-top: 1%;
     margin-left: 0%;
-}
-.badge{
-    margin-top:1%;
-    margin-right: 1%;
-
 }
 
 img.emoji{
@@ -567,6 +568,17 @@ login-input:valid + .label {
 .btnbtn:focus {
     background:white;
     color: black;
+}
+
+#roomImages{
+    list-style-type: none;
+}
+#roomImages li{
+    display: inline;
+}
+#roomImages li img{
+    width:10%;
+    height:10%;
 }
 
 @keyframes intro {
