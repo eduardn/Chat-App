@@ -7,9 +7,9 @@
     angular.module('chatApp')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', '$state', '$rootScope', '$stateParams', 'loginService', '$localStorage'];
+    HomeController.$inject = ['$scope', '$state', '$rootScope', '$stateParams', 'loginService'];
 
-    function HomeController($scope, $state, $rootScope, $stateParams, loginService, $localStorage) {
+    function HomeController($scope, $state, $rootScope, $stateParams, loginService) {
 
 
 
@@ -19,13 +19,13 @@
                     el.classList.toggle('profile--open');
                 });
             });
-        }
+        };
 
         var database = firebase.database();
 
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
-        $scope.$storage = $localStorage.$reset();
+        $scope.$storage = {};
         $scope.username = "";
         $scope.usercolor = getRandomColor();
         console.log($scope.usercolor);
@@ -34,10 +34,11 @@
         $scope.login = function(username) {
             localStorage.setItem('userNameLogged', username);
             if (username) {
-                $scope.$storage = $localStorage.$default({
+                localStorage.setItem('userNameLogged', JSON.stringify({
                     loggedUsername: username,
                     usercolor: $scope.usercolor
-                });
+                }));
+                $scope.$storage = JSON.parse(localStorage.getItem('userNameLogged'));
                 //Save user to firebase
                 var newUserKey = firebase.database().ref().child('users').push().key;
                 //console.log(newUserKey);

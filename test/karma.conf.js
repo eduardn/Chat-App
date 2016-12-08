@@ -1,6 +1,6 @@
 // Karma configuration
 
-module.exports = function(config) {
+module.exports = function (config) {
     config.set({
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -16,15 +16,16 @@ module.exports = function(config) {
         files: [
             'bower_components/jquery/dist/jquery.js',
             'bower_components/angular/angular.js',
+            'node_modules/angular-sanitize/angular-sanitize.min.js',
             'bower_components/angular-ui-router/release/angular-ui-router.js',
             'bower_components/angular-mocks/angular-mocks.js',
+            'node_modules/firebase/firebase.js',
+            'node_modules/angularfire/dist/angularfire.min.js',
+            
 
-            '../app/app.js',
-            '../app/components/chat/*.js',
-            '../app/components/chat-room/*.js',
-            '../app/components/emoji/*.js',
-            '../app/components/home/*.js',
-            '../app/**/*.js',
+            './app/app.js',
+            './app/**/*.js',
+
             'test/unit/*.js'
         ],
 

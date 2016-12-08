@@ -1,33 +1,70 @@
-describe("testing index controller", function() {
+describe("testing home controller", function () {
+    beforeEach(module('ui.router'));
+    beforeEach(module('firebase'));
     beforeEach(module('chatApp'));
-
     var $controller;
-    var scope;
-    var location, byDateFilter;
-    var $filter, $compile;
+    var config = {
+        apiKey: "AIzaSyD_4mJEqBj73LNaSakhTmJyusbNumAXPsM",
+        authDomain: "mirc-67e54.firebaseapp.com",
+        databaseURL: "https://mirc-67e54.firebaseio.com",
+        storageBucket: "mirc-67e54.appspot.com",
+        messagingSenderId: "94467643559"
+    };
+    firebase.initializeApp(config);
+    var scope, location, httpBackend, state, stateParams, loginService, fb;
 
-    beforeEach(inject(function(_$controller_, _$rootScope_, _$location_, _$injector_, $filter, $compile) {
-        // The injector unwraps the underscores (_) from around the parameter names when matching
+    beforeEach(inject(function (_$controller_, _$rootScope_, _$location_, _$injector_, _$state_, _$stateParams_, _loginService_) {
         $controller = _$controller_;
         scope = _$rootScope_;
         location = _$location_;
-        createFilter = $filter;
-
-        scope = _$rootScope_.$new();
-
-        // Compile some HTML that uses the directive
-        element = $compile('<create-room></create-room>')(scope);
+        state = _$state_;
+        httpBackend = _$injector_.get('$httpBackend');
+        stateParams = _$stateParams_;
+        loginService = _loginService_;
+        // _$localStorage_ = _$localStorage_;
+        httpBackend
+            .whenGET(/index\/.*\//)
+            .respond(200, {});
 
     }));
 
+    describe("check controller is initialized", function () {
+        it("checks variables to be defined", function () {
+            var homeController = $controller('HomeController', {
+                $scope: scope,
+                $state: state,
+                $stateParams: stateParams,
+                loginService: loginService
+            });
+            expect(scope.login).toBeDefined();
 
-    describe("check controller is initialized", function() {
-        it("checks name to exist", inject(function($controller) {
-            var indexController = $controller('ChatController', { $scope: scope });
-            console.log('check if directive exists');
-            expect(element).toBeDefined();
-            console.log('it exists');
-        }));
-    })
+        });
+        it('check if login is defined', function () {
+            var homeController = $controller('HomeController', {
+                $scope: scope,
+                $state: state,
+                $stateParams: stateParams,
+                loginService: loginService
+            });
+            expect(scope.login).toBeDefined();
+        })
+
+
+    });
+
+    // describe('check login', function () {
+    //
+    //
+    //
+    //     it("should login", function () {
+    //
+    //         var parent = $rootScope;
+    //         var child = parent.$new();
+    //
+    //         parent.salutation = "Hello";
+    //         console.log(scope);
+    //         expect(scope.username).toEqual('ancutza_draguta');
+    //     });
+    // })
 
 });

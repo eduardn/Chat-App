@@ -13,10 +13,10 @@
 
 
 
-    ChatController.$inject = ['$scope', '$state', '$location', 'loginService', '$localStorage', '$firebaseArray', '$firebaseObject', '$timeout', '$rootScope', '$q'];
+    ChatController.$inject = ['$scope', '$state', '$location', 'loginService', '$firebaseArray', '$firebaseObject', '$timeout', '$rootScope', '$q'];
 
 
-    function ChatController($scope, $state, $location, loginService, $localStorage, $firebaseArray, $firebaseObject, $timeout, $rootScope, $q) {
+    function ChatController($scope, $state, $location, loginService, $firebaseArray, $firebaseObject, $timeout, $rootScope, $q) {
 
         $scope.addButton = function() {
             document.getElementById('toggleProfile').addEventListener('click', function() {
@@ -28,7 +28,7 @@
 
         $scope.hideRooms = (localStorage.getItem('hidenList') === 'true');
         console.log($scope.hideRooms);
-        $scope.$storage = $localStorage.$default();
+        $scope.$storage = JSON.parse(localStorage.getItem('userNameLogged'));
         $scope.userName = $scope.$storage.loggedUsername;
         if (!$scope.userName) {
             console.log("should redirect to login");
@@ -40,7 +40,7 @@
 
 
         $scope.logout = function() {
-            $scope.$storage = $localStorage.$reset();
+            $scope.$storage = {};
             var  userRef  = firebase.database().ref('/rooms/');
             userRef.once('value',  function(snap) {
                 var usersArray = snap.val();

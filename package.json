@@ -8,6 +8,7 @@
     "grunt": "*",
     "grunt-browser-sync": "*",
     "grunt-karma": "^0.10.1",
+    "grunt-protractor-runner": "^4.0.0",
     "karma-junit-reporter": "^0.2.2"
   },
   "dependencies": {
