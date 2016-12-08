@@ -28,9 +28,9 @@
             })
         }])
 
-    .run(function($emoji) {
+    .run(['$emoji', function($emoji) {
         $emoji.setConfig({
             img_dir: 'http://hassankhan.github.io/emojify.js/images/emoji'
         })
-    });
+    }]);
 })();

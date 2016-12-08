@@ -7,9 +7,12 @@
 html{
     height: 100%;
 }
+body{
+    font-family: 'Lato', sans-serif;
+}
 
 .chatroom-body {
-    font-family: 'Garamond', sans-serif;
+    font-family: 'Lato', sans-serif;;
     font-weight: bold;
     background-color:white;
     background-image: url("img/gettop.jpg");
@@ -39,7 +42,7 @@ hr {
 
 .btn-danger {
     float: right;
-    font-family: 'Garamond', sans-serif;
+    font-family: 'Lato', sans-serif;
     font-weight: bold;
     padding: 10px 25px;
 }
@@ -107,7 +110,7 @@ purple:focus {
 }
 
 .btn-default {
-    font-family: 'Garamond', sans-serif;
+    font-family: 'Lato', sans-serif;
     font-weight: bold;
     padding: 10px 25px;
 }
@@ -148,7 +151,7 @@ purple:focus {
 }
 
 .navbar-inverse {
-    font-family: 'Garamond';
+    font-family: 'Lato', sans-serif;
     background-color: white;
     color: black;
     border-color: #ddd;
@@ -422,7 +425,7 @@ html {
     height: 100%;
     width: 100%;
     margin: 0;
-    font-family: 'Garamond', 'Times New Roman', Helvetica, sans-serif;
+    font-family: 'Lato', sans-serif;
     min-height: 100%;
     background: linear-gradient(to bottom, #847ec7  10%, #ddd  150%);
     color: white;
@@ -560,7 +563,7 @@ login-input:valid + .label {
     border-radius: .25rem;
     letter-spacing: .2em;
     transition: background .2s;
-    font-family: 'Garamond';
+    font-family: 'Lato', sans-serif;
 }
 .btnbtn:focus {
     outline: 0;

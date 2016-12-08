@@ -20,7 +20,7 @@
 
 
 
-        $scope.hideRooms = (localStorage.getItem('hidenList') === 'true');
+        $scope.hideRooms = (localStorage.getItem('hidenList') === 'false');
         console.log($scope.hideRooms);
         $scope.$storage = $localStorage.$default();
         $scope.userName = $scope.$storage.loggedUsername;
