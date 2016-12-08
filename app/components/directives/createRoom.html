@@ -1,7 +1,7 @@
 
 <div class="container-fluid">
     <button type="button" class="btn" id="newRoomGreen" data-toggle="modal" data-target="#myModal">
-   <i class="fa fa-plus" aria-hidden="true"></i> CREATE
+   <i class="fa fa-plus" aria-hidden="true"></i> <strong>CREATE</strong>
 </button>
 
    
@@ -15,17 +15,14 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Enter Room Name</h4>
         </div>
+        <div class="alert alert-warning">
+          No white spaces or special characters allowed.
+        </div>
         <div class="modal-body">
-          <input type="text" place-holder="room name" ng-model="roomNameCreate" required/>
+          <input type="text" placeholder=' room name' ng-pattern="/^[a-zA-Z0-9]+[@+ +&+-]*$/" ng-model="roomNameCreate" required/>
         </div>
         <div class="modal-footer">
           <button type="button" ng-click="writeRoomData()" class="btn btn-default" data-dismiss="modal">Create</button>
         </div>
     </div>
 </div>
-<!--<div ng-controller="ChatController">
-  <div ng-show="alert.show">
-    <alert type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
-  </div>
-  <button class='btn' ng-click="addAlert()">Add Alert</button>
-</div>-->

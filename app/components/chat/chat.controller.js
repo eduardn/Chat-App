@@ -114,7 +114,7 @@
             //console.log(roomName);
             var messageObject = {
                 sender: "RoomBot",
-                text: "Welcome to the room"
+                text: "Welcome to this room!"
             };
             // Get a key for a new Post.
             var newPostKey = firebase.database().ref().child('rooms').child($scope.roomNameCreate).child('messageObj').push().key;

@@ -1,13 +1,13 @@
+
 html{
     height: 100%;
 }
 body{
-    font-family: 'Lato', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .chatroom-body {
-    font-family: 'Lato', sans-serif;;
-    font-weight: bold;
+    font-family: 'Source Sans Pro', sans-serif;
     background-color:white;
     background-image: url("img/gettop.jpg");
     background-size: 70% 80%;
@@ -36,7 +36,7 @@ hr {
 
 .btn-danger {
     float: right;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-weight: bold;
     padding: 10px 25px;
 }
@@ -104,7 +104,7 @@ purple:focus {
 }
 
 .btn-default {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     font-weight: bold;
     padding: 10px 25px;
 }
@@ -145,7 +145,7 @@ purple:focus {
 }
 
 .navbar-inverse {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     background-color: white;
     color: black;
     border-color: #ddd;
@@ -155,7 +155,6 @@ purple:focus {
 .navbar-default {
     background-color: #0081A7;
     border-radius: 0px;
-    background-color: #0081a7;
 
     margin-bottom: 0px;
     border: 1px solid #ddd;
@@ -404,6 +403,7 @@ img.emoji{
 
 /*FROM LOGIN */
 
+
 /* Base styles */
 *, *:after, *:before {
     box-sizing: border-box;
@@ -419,7 +419,7 @@ html {
     height: 100%;
     width: 100%;
     margin: 0;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
     min-height: 100%;
     background: linear-gradient(to bottom, #847ec7  10%, #ddd  150%);
     color: white;
@@ -511,6 +511,7 @@ button {
     margin-bottom: 2em;
 }
 .label {
+    font-weight: normal;
     position: absolute;
     height: 2rem;
     line-height: 2rem;
@@ -557,7 +558,7 @@ login-input:valid + .label {
     border-radius: .25rem;
     letter-spacing: .2em;
     transition: background .2s;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 .btnbtn:focus {
     outline: 0;
@@ -567,8 +568,6 @@ login-input:valid + .label {
     background:white;
     color: black;
 }
-
-
 
 @keyframes intro {
     from {

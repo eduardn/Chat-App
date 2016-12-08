@@ -82,7 +82,6 @@
                 roomusers.push(rooomuser);
             }
 
-
             $timeout(function() {
                 $scope.roomUsers = roomusers;
             }, 1);

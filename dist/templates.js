@@ -227,7 +227,7 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "    <button type=\"button\" class=\"btn\" id=\"newRoomGreen\" data-toggle=\"modal\" data-target=\"#myModal\">\r" +
     "\n" +
-    "   <i class=\"fa fa-plus\" aria-hidden=\"true\"></i> CREATE\r" +
+    "   <i class=\"fa fa-plus\" aria-hidden=\"true\"></i> <strong>CREATE</strong>\r" +
     "\n" +
     "</button>\r" +
     "\n" +
@@ -255,9 +255,15 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "        </div>\r" +
     "\n" +
+    "        <div class=\"alert alert-warning\">\r" +
+    "\n" +
+    "          No white spaces or special characters allowed.\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
     "        <div class=\"modal-body\">\r" +
     "\n" +
-    "          <input type=\"text\" place-holder=\"room name\" ng-model=\"roomNameCreate\" required/>\r" +
+    "          <input type=\"text\" placeholder=' room name' ng-pattern=\"/^[a-zA-Z0-9]*$/\" ng-model=\"roomNameCreate\" required/>\r" +
     "\n" +
     "        </div>\r" +
     "\n" +
@@ -270,18 +276,7 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "    </div>\r" +
     "\n" +
     "</div>\r" +
-    "\n" +
-    "<!--<div ng-controller=\"ChatController\">\r" +
-    "\n" +
-    "  <div ng-show=\"alert.show\">\r" +
-    "\n" +
-    "    <alert type=\"alert.type\" close=\"closeAlert($index)\">{{alert.msg}}</alert>\r" +
-    "\n" +
-    "  </div>\r" +
-    "\n" +
-    "  <button class='btn' ng-click=\"addAlert()\">Add Alert</button>\r" +
-    "\n" +
-    "</div>-->"
+    "\n"
   );
 
 
