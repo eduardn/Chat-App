@@ -37,7 +37,7 @@
         //Get messages from room
         var messagesArray = [];
         var roomName = $scope.room;
-        var messageRef = database.ref('/rooms/' + roomName + '/messageObj').limitToLast(10);
+        var messageRef = database.ref('/rooms/' + roomName + '/messageObj').limitToLast(20);
 
         messageRef.on('value', function(snap) {
             messagesArray = snap.val();
@@ -112,5 +112,40 @@
             });
             $state.go('chat', {} , { reload: true });
         }
+
+         $scope.kick = function(user){
+            if($scope.loggedUsername == 'admin'){
+                $rootScope.$broadcast('kick',{user: user});
+                var  usersArray  = [];
+                var  users  = [];
+                var  userRef  = firebase.database().ref('/rooms/' + $scope.room + '/users');
+                userRef.once('value',  function(snap) {
+                    usersArray = snap.val();
+                    for (var ukey in usersArray) {
+                        if (usersArray[ukey] === user) {
+                            userRef.child(ukey).remove();
+                            console.log(usersArray[ukey] + " Removed");
+                        }
+                    }
+                });
+            }
+        };
+
+    
+
+
+        var userInRoom = firebase.database().ref('rooms/' + $scope.room + '/users/');
+        userInRoom.on('value', function(snap) {
+            roomUsersArray = snap.val();
+            var roomusers = [];
+            for (var key in roomUsersArray) {
+                var rooomuser = roomUsersArray[key];
+                roomusers.push(rooomuser);
+            }
+            if(roomusers.indexOf($scope.loggedUsername)== -1){
+                console.log("You have been disconnected");
+                $state.go('chat', {} , { reload: true });
+            }
+        });
     }
 })();

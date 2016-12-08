@@ -40,8 +40,9 @@
 
 
         $scope.logout = function() {
-            $scope.$storage = {};
-            var  userRef  = firebase.database().ref('/rooms/');
+
+        $scope.$storage = $localStorage.$reset();
+        var  userRef  = firebase.database().ref('/rooms/');
             userRef.once('value',  function(snap) {
                 var usersArray = snap.val();
                 for (var ukey in usersArray) {
@@ -50,15 +51,36 @@
                         console.log(localStorage.getItem('userNameLogged'));
                         if (usersArray[ukey].users[ukeyUser] === localStorage.getItem('userNameLogged')) {
                             //console.log(ukeyUser + ' tadaaaaaaaaaaaaaaa')
-                            var remove = firebase.database().ref('/rooms/' + ukey + '/users/' + ukeyUser).remove();
-                        }
+                            var remove = firebase.database().ref('/rooms/' + ukey + '/users/' + ukeyUser ).remove();
+
+                                                }
                     }
                 }
-            });
+                  });
+
+
+
+            var userLoggedUserRef = firebase.database().ref('/users/');
+            userLoggedUserRef.once('value', function(snap){
+            var users = snap.val();
+        console.log(users);
+        for(var ukeyUser in users){
+                        if(users[ukeyUser]===$scope.userName){
+                            console.log(users[ukeyUser] + " ukeyUser");
+                            var removeUser = firebase.database().ref('/users/'+ ukeyUser).remove();
+                        }
+
+        }
+        });
+
             localStorage.clear();
             console.log("Logged out");
             $state.go('home');
         };
+
+
+
+  
 
         /*
          *GAD team code
