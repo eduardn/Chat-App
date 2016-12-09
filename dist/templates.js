@@ -166,17 +166,19 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "                    <ul class=\"list-group\" ng-if=\"rooms\">\r" +
     "\n" +
-    "                        <li class=\"list-group-item\" ng-repeat=\"key in rooms\">\r" +
+    "                        <li class=\"list-group-item\" ng-repeat=\"room in rooms\">\r" +
     "\n" +
-    "                            {{key.roomName}}\r" +
+    "                            <img ng-src=\"{{room.imageUrl}}\" width=\"35px\" height=\"35px\">\r" +
     "\n" +
-    "                            <span class=\"badge pull-left\">\r" +
+    "                            {{room.roomName}}\r" +
     "\n" +
-    "                    {{getCount(key.users)}}\r" +
+    "                            <span class=\"badge\">\r" +
     "\n" +
-    "                </span> &nbsp;\r" +
+    "                                {{getCount(room.users)}}\r" +
     "\n" +
-    "                            <button class=\"btn btn-xs pull-right roz\" ng-click=\"joinRoom(key.roomName); listRooms()\" ng-hide=\"hideRooms\">\r" +
+    "                            </span> &nbsp;\r" +
+    "\n" +
+    "                            <button class=\"btn btn-xs pull-right roz\" ng-click=\"joinRoom(room.roomName); listRooms()\" ng-hide=\"hideRooms\">\r" +
     "\n" +
     "                                <i class=\"fa fa-user-plus\" aria-hidden=\"true\"></i>\r" +
     "\n" +
@@ -263,7 +265,23 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "        <div class=\"modal-body\">\r" +
     "\n" +
-    "          <input type=\"text\" placeholder=' room name' ng-pattern=\"/^[a-zA-Z0-9]+[@+ +&+-]*$/\" ng-model=\"roomNameCreate\" required/>\r" +
+    "          <img ng-src=\"{{roomImage}}\" width=\"40px\" height=\"40px\">\r" +
+    "\n" +
+    "          <input type=\"text\" placeholder=' room name' ng-model=\"roomNameCreate\" required/>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "        <div>\r" +
+    "\n" +
+    "          <ul id=\"roomImages\">\r" +
+    "\n" +
+    "            <li ng-repeat=\"imageUrl in imagesUrls\">\r" +
+    "\n" +
+    "              <img ng-src=\"{{imageUrl}}\" ng-click=\"saveRoomImage(imageUrl)\">\r" +
+    "\n" +
+    "            </li>\r" +
+    "\n" +
+    "          </ul>\r" +
     "\n" +
     "        </div>\r" +
     "\n" +

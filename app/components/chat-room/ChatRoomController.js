@@ -11,7 +11,7 @@
                 link: function(scope, element) {
                     scope.$watchCollection('schrollBottom', function(newValue) {
                         if (newValue) {
-                            $(element).scrollTop($(element)[0].scrollHeight);
+                            $(element).scrollTop($(element)[0].scrollHeight + 20);
                         }
                     });
                 }
@@ -107,11 +107,9 @@
             var  userRef  = firebase.database().ref('/rooms/' + $scope.room + '/users');
             userRef.once('value',  function(snap) {
                 usersArray = snap.val();
-                //console.log(roomUsersArray);
                 for (var ukey in usersArray) {
                     if (usersArray[ukey] === user) {
                         userRef.child(ukey).remove();
-                        console.log(usersArray);
                         console.log(ukey + " Removed");
                         // var  otherRef = firebase.database().ref('/rooms/' + $scope.room + '/users/' + ukey).set(null);
                         /*otherRef.on('value',  function(snap) {

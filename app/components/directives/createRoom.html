@@ -19,7 +19,8 @@
           No white spaces or special characters allowed.
         </div>
         <div class="modal-body">
-          <input type="text" placeholder=' room name' ng-pattern="/^[a-zA-Z0-9]+[@+ +&+-]*$/" ng-model="roomNameCreate" required/>
+          <img ng-src="{{roomImage}}" width="40px" height="40px">
+          <input type="text" placeholder=' room name' ng-model="roomNameCreate" required/>
         </div>
         <div>
           <ul id="roomImages">
