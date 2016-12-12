@@ -14,7 +14,7 @@
        <ul class="messages" schroll-bottom="messages" id="rawText">
             <li ng-repeat="message in messages" >
                 <div class="sender" ng-class="{'floatright': loggedUsername == message.sender }">
-                    <div class="sender-message"><span class="white" >{{message.sender}}</span></div>
+                    <div class="sender-message"><div class="test"><span class="white" >{{message.sender}}</span></div></div>
     
                         <div ng-class="{'custom': loggedUsername == message.sender}"  class="text-message"  ng-bind-html="message.text | linky | emoji " >{{message.text}}</div>
                        

@@ -36,6 +36,8 @@
     width: 600px;
     font-size: 17px;
     text-align: left;
+    margin-top: 17px;
+    margin-left: 10px;
 
 }
 
@@ -66,7 +68,7 @@ div.sender-message{
 }
 
 .roomNameDisplay {
-    max-height: 500px;
+    max-height: 530px;
     overflow: auto;
 }
 

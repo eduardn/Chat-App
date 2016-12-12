@@ -149,7 +149,7 @@
             }
             if(roomusers.indexOf($scope.loggedUsername)== -1){
                 console.log("You have been disconnected");
-                $state.go('chat', {} , { reload: true });
+                $state.go('chat');
             }
         });
     }

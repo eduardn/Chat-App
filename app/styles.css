@@ -310,11 +310,6 @@ ul li {
     background: white;
 }
 
-.roomNameDisplay{
-    min-height: 545px;
-    font-size: 17px;
-}
-
 .leave {
     margin-right: 4%;
     margin-bottom: 2%;
@@ -347,7 +342,7 @@ ul li {
     background-color: #6fc582;
     color: white;
     font-size: 17px;
-    margin-top: -5%;
+    margin-top: 3.5%;
 }
 
 .badge{
@@ -366,11 +361,17 @@ ul li {
     color: #847ec7;
 }
 
+.test {
+    margin-right: -3px;
+}
+
 .messages > li .sender .text-message.custom {
     background: linear-gradient(to left, #847ec7  10%, #ddd  200%);
     color:white;
     text-align: right;
     direction: ltr;
+    margin-top: 17px;
+    margin-right: 10px;
 }
 
 .intro{
