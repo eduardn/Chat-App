@@ -13,11 +13,14 @@
 
        <ul class="messages" schroll-bottom="messages" id="rawText">
             <li ng-repeat="message in messages" >
-                <div class="sender" ng-class="{'floatright': loggedUsername == message.sender }">
-                    <div class="sender-message"><div class="test"><span class="white" >{{message.sender}}</span></div></div>
+                <div class="sender-photo"><img width="40px" height="40px" ng-src="{{message.senderPhotoURL}}"></div>
+                <div class="sender" ng-class="{'floatright': loggedUser.displayName == message.sender }">
+                    <div class="sender-message">
+                        <div class="test"><span class="white" >{{message.sender}}</span></div>
+
+                    </div>
     
-                        <div ng-class="{'custom': loggedUsername == message.sender}"  class="text-message"  ng-bind-html="message.text | linky | emoji " >{{message.text}}</div>
-                       
+                        <div ng-class="{'custom': loggedUser.displayName == message.sender}"  class="text-message"  ng-bind-html="message.text | linky | emoji " >{{message.text}}</div>
                 </div>
                 
             </li>
@@ -39,8 +42,8 @@
 
         <ul class="list-active-users">
             <li ng-repeat="activeuser in roomUsers track by $index">
-                <i class="fa fa-chevron-circle-down green" aria-hidden="true"></i> {{activeuser}} <i ng-show="loggedUsername==roomCreator" ng-click="kick(activeuser)" class="fa fa-trash-o" aria-hidden="true"></i>
-                <span ng-show="activeuser==roomCreator">(Admin)</span>
+                <i class="fa fa-chevron-circle-down green" aria-hidden="true"></i> {{activeuser.displayName}} <i ng-show="loggedUsername.displayName == roomCreator" ng-click="kick(activeuser)" class="fa fa-trash-o" aria-hidden="true"></i>
+                <span ng-show="activeuser.displayName == roomCreator">(Admin)</span>
             </li>
         </ul>
     </div>

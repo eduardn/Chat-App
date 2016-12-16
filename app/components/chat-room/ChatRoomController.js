@@ -24,13 +24,18 @@
     function ChatRoomController($scope, $timeout, $state, $firebaseArray, $firebaseObject, $rootScope, $q, $stateParams, loginService) {
         $scope.room = $stateParams.roomName;
         $scope.userKey = $stateParams.userKey;
-        $scope.user = firebase.database().ref('/users/' + $scope.userKey );
+        var userRef = firebase.database().ref('/users/' + $scope.userKey );
+            userRef.once('value', function(snap){
+                var loggedUser = snap.val();
+                console.log(loggedUser);
+
+                $timeout(function() {
+                    $scope.loggedUser = loggedUser;
+                }, 1);
+            });
 
         $scope.roomCreator = "";
-        console.log($scope.room);
         $scope.roomUsers = [];
-        
-        $scope.loggedUsername = $scope.$storage.loggedUsername;
 
         var usercolor = $scope.$storage.usercolor;
 
@@ -71,7 +76,8 @@
             if (messageText) {
                 $scope.messages = [];
                 var messageObject = {
-                    sender: $scope.userName,
+                    sender: $scope.loggedUser.displayName,
+                    senderPhotoURL: $scope.loggedUser.photoURL,
                     text: messageText
                 };
                 // Get a key for a new Post.
@@ -88,7 +94,8 @@
         var roomUsersArray;
 
         var roomUsersRef = firebase.database().ref('rooms/' + $scope.room + '/users/');
-        roomUsersRef.on('value', function(snap) {
+        roomUsersRef.orderByChild('uid').on('value', function(snap) {
+            console.log(snap.val());
             roomUsersArray = snap.val();
             var roomusers = [];
             $scope.roomUsers = [];
@@ -121,7 +128,7 @@
                     }
                 }
             });
-            $state.go('chat', {} , { reload: true });
+            $state.go('chat',{userKey:$scope.userKey });
         };
 
          $scope.kick = function(user){
@@ -144,8 +151,9 @@
 
         var userKeysRef = firebase.database().ref('rooms/' + $scope.room + '/users/');
         userKeysRef.on('value', function(snap) {
-            var usersKeys = snap.val();
-            if(usersKeys.indexOf($scope.userKey) == -1){
+            var userKeys = snap.val();
+            console.log("Users", userKeys);
+            if(userKeys.indexOf($scope.userKey) == -1){
                 console.log("You have been disconnected");
                 $state.go('chat',{userKey: $scope.userKey});
             }

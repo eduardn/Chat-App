@@ -32,15 +32,21 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <li ng-repeat=\"message in messages\" >\r" +
     "\n" +
-    "                <div class=\"sender\" ng-class=\"{'floatright': loggedUsername == message.sender }\">\r" +
+    "                <div class=\"sender-photo\"><img width=\"40px\" height=\"40px\" ng-src=\"{{message.senderPhotoURL}}\"></div>\r" +
     "\n" +
-    "                    <div class=\"sender-message\"><div class=\"test\"><span class=\"white\" >{{message.sender}}</span></div></div>\r" +
+    "                <div class=\"sender\" ng-class=\"{'floatright': loggedUser.displayName == message.sender }\">\r" +
+    "\n" +
+    "                    <div class=\"sender-message\">\r" +
+    "\n" +
+    "                        <div class=\"test\"><span class=\"white\" >{{message.sender}}</span></div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                    </div>\r" +
     "\n" +
     "    \r" +
     "\n" +
-    "                        <div ng-class=\"{'custom': loggedUsername == message.sender}\"  class=\"text-message\"  ng-bind-html=\"message.text | linky | emoji \" >{{message.text}}</div>\r" +
-    "\n" +
-    "                       \r" +
+    "                        <div ng-class=\"{'custom': loggedUser.displayName == message.sender}\"  class=\"text-message\"  ng-bind-html=\"message.text | linky | emoji \" >{{message.text}}</div>\r" +
     "\n" +
     "                </div>\r" +
     "\n" +
@@ -84,9 +90,9 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <li ng-repeat=\"activeuser in roomUsers track by $index\">\r" +
     "\n" +
-    "                <i class=\"fa fa-chevron-circle-down green\" aria-hidden=\"true\"></i> {{activeuser}} <i ng-show=\"loggedUsername==roomCreator\" ng-click=\"kick(activeuser)\" class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>\r" +
+    "                <i class=\"fa fa-chevron-circle-down green\" aria-hidden=\"true\"></i> {{activeuser.displayName}} <i ng-show=\"loggedUsername.displayName == roomCreator\" ng-click=\"kick(activeuser)\" class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>\r" +
     "\n" +
-    "                <span ng-show=\"activeuser==roomCreator\">(Admin)</span>\r" +
+    "                <span ng-show=\"activeuser.displayName == roomCreator\">(Admin)</span>\r" +
     "\n" +
     "            </li>\r" +
     "\n" +
@@ -120,15 +126,15 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "        <div class=\"col-sm-6\">\r" +
     "\n" +
-    "            <img class=\"pull-left white logo\" src=\"http://www.meetmecorp.com/wp-content/uploads/2015/08/mm_app_icon.png\" alt=\"logo\" />\r" +
+    "            <img class=\"pull-left white logo\" ng-src={{loggedUser.photoURL}} alt=\"logo\" />\r" +
     "\n" +
-    "            <h4 class=\"intro\"> Hello, {{userName}}!</h4>\r" +
+    "            <h4 class=\"intro\"> Hello, {{loggedUser.displayName}}!</h4>\r" +
     "\n" +
     "        </div>\r" +
     "\n" +
     "        <div class=\"pull-right\">\r" +
     "\n" +
-    "            <button class=\"btn btn-default btn-xs logout\" ng-click=\"logout()\"> <i class=\"fa fa-sign-out\" aria-hidden=\"true\" ></i>  LOG OUT </button>\r" +
+    "            <button class=\"btn btn-default btn-xs logout\" ng-click=\"fblogout()\"> <i class=\"fa fa-sign-out\" aria-hidden=\"true\" ></i>  LOG OUT </button>\r" +
     "\n" +
     "        </div>\r" +
     "\n" +
@@ -373,7 +379,7 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <div fb-root></div>\r" +
     "\n" +
-    "            <button class=\"btn btn-block btn-lg btn-social btn-facebook\" ng-click=\"fblogin()\"><i class=\"fa fa-facebook\"></i>Facebook Login</button>\r" +
+    "            <button class=\"btn btn-block btn-lg btn-social btn-facebook\" ng-click=\"fblogin(uid)\"><i class=\"fa fa-facebook\"></i>Facebook Login</button>\r" +
     "\n" +
     "          <button class=\"btnbtn\" id=\"btnLogin\" ng-click=\"login(username)\"> Login</button>\r" +
     "\n" +

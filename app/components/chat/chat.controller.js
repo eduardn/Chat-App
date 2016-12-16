@@ -15,11 +15,13 @@
 
 
     function ChatController($scope, $state, $location, loginService, $localStorage, $stateParams, $firebaseObject, $timeout, $rootScope, $q) {
-        var userKey = $stateParams.userKey;
+        var loggedUserKey = $stateParams.userKey;
+        console.log("loggedUserKey:", loggedUserKey);
 
-        var userRef = firebase.database().ref('/users/' + userKey);
-            userRef.once('value', function(snap){
-                $scope.user = snap.val();
+        var loggedUserRef = firebase.database().ref('/users/' + loggedUserKey);
+            loggedUserRef.once('value', function(snap){
+                $scope.loggedUser = snap.val();
+                console.log("Logged User", $scope.loggedUser)
             });
 
 
@@ -28,7 +30,7 @@
         console.log($scope.hideRooms);
         $scope.$storage = $localStorage.$default();
         $scope.userName = $scope.$storage.loggedUsername;
-        if (!$scope.userName) {
+        if (!$scope.loggedUser) {
             console.log("should redirect to login");
             $location.path('/home');
         }
@@ -55,7 +57,7 @@
                 for (var ukey in usersArray) {
                     for (var ukeyUser in usersArray[ukey].users) {
                         console.log(usersArray[ukey].users[ukeyUser] +  ukeyUser);
-                        if (usersArray[ukey].users[ukeyUser] == $scope.userName) {
+                        if (usersArray[ukey].users[ukeyUser] == loggedUserKey) {
                             firebase.database().ref('/rooms/' + ukey + '/users/' + ukeyUser ).remove();
 
                         }
@@ -68,7 +70,7 @@
             userLoggedUserRef.once('value', function(snap){
                 var users = snap.val();
                 for(var ukeyUser in users){
-                    if(users[ukeyUser] == $scope.userName){
+                    if(users[ukeyUser] == loggedUserKey){
                         console.log(users[ukeyUser] +  ukeyUser);
                         firebase.database().ref('/users/'+ ukeyUser).remove();
                         $state.go('home');
@@ -140,6 +142,7 @@
 
             var messageObject = {
                 sender: "RoomBot",
+                senderPhotoURL: "https://avatars1.githubusercontent.com/u/6422482?v=3&s=400",
                 text: "Welcome to this room!"
             };
             // Get a key for a new Post.
@@ -148,7 +151,7 @@
             var updates = {};
             updates['/rooms/' + $scope.roomNameCreate + '/roomName'] = $scope.roomNameCreate;
             updates['/rooms/' + $scope.roomNameCreate + '/messageObj/' + newPostKey] = messageObject;
-            updates['/rooms/' + $scope.roomNameCreate + '/creator'] = $scope.userName;
+            updates['/rooms/' + $scope.roomNameCreate + '/creator'] = $scope.loggedUser.displayName;
             updates['/rooms/' + $scope.roomNameCreate + '/imageUrl'] = $scope.roomImage;
 
 
@@ -222,10 +225,10 @@
                 //write user to room
 
                 var updateUser = {};
-                updateUser['/rooms/' + room + '/users/' + userKey] = $scope.user;
+                updateUser['/rooms/' + room + '/users/' + loggedUserKey] = $scope.loggedUser;
                 firebase.database().ref().update(updateUser);
 
-                $state.go('chat.room', { roomName: room, userKey: userKey});
+                $state.go('chat.room', { roomName: room, userKey: loggedUserKey});
             };
 
         }
