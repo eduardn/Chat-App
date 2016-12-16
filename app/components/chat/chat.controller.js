@@ -26,8 +26,8 @@
 
 
 
-        $scope.hideRooms = (localStorage.getItem('hidenList') === 'false');
-        console.log($scope.hideRooms);
+        $scope.hideRooms = $stateParams.hideRooms || false;
+        console.log("First hide rooms: ", $scope.hideRooms);
         $scope.$storage = $localStorage.$default();
         $scope.userName = $scope.$storage.loggedUsername;
         if (!$scope.loggedUser) {
@@ -40,47 +40,70 @@
 
         $scope.fblogout = function(){
             firebase.auth().signOut().then(function() {
-                // Sign-out successful.
+                var userLoggedUserRef = firebase.database().ref('/users');
+                console.log(userLoggedUserRef);
+                userLoggedUserRef.child(loggedUserKey).remove();
+
+                var  userRef  = firebase.database().ref('/rooms/');
+                userRef.once('value',  function(snap) {
+                    var usersArray = snap.val();
+                    console.log("usersArray: ", usersArray);
+                    for (var ukey in usersArray) {
+                        console.log("ukey: ", ukey);
+                        for (var ukeyUser in usersArray[ukey].users) {
+                            console.log("ukeyUser: ", ukeyUser);
+                            if (ukeyUser == loggedUserKey) {
+                                firebase.database().ref('/rooms/' + ukey + '/users/' + ukeyUser ).remove();
+                            }
+                        }
+                    }
+                });
+
                 console.log("User logged out");
+                $state.go('home');
             }, function(error) {
                 // An error happened.
             });
         };
 
 
-        $scope.logout = function() {
-            //$scope.$storage = $localStorage.$reset();
-            var  userRef  = firebase.database().ref('/rooms/');
-
-            userRef.once('value',  function(snap) {
-                var usersArray = snap.val();
-                for (var ukey in usersArray) {
-                    for (var ukeyUser in usersArray[ukey].users) {
-                        console.log(usersArray[ukey].users[ukeyUser] +  ukeyUser);
-                        if (usersArray[ukey].users[ukeyUser] == loggedUserKey) {
-                            firebase.database().ref('/rooms/' + ukey + '/users/' + ukeyUser ).remove();
-
-                        }
-                    }
-                }
-            });
-
-
-            var userLoggedUserRef = firebase.database().ref('/users/');
-            userLoggedUserRef.once('value', function(snap){
-                var users = snap.val();
-                for(var ukeyUser in users){
-                    if(users[ukeyUser] == loggedUserKey){
-                        console.log(users[ukeyUser] +  ukeyUser);
-                        firebase.database().ref('/users/'+ ukeyUser).remove();
-                        $state.go('home');
-                    }
-
-                }
-            });
-          //  localStorage.clear();
-            console.log("Logged out");
-        };
+        // $scope.logout = function() {
+        //     //$scope.$storage = $localStorage.$reset();
+        //     var  userRef  = firebase.database().ref('/rooms/');
+        //     userRef.once('value',  function(snap) {
+        //         var usersArray = snap.val();
+        //         for (var ukey in usersArray) {
+        //             for (var ukeyUser in usersArray[ukey].users) {
+        //                 console.log(usersArray[ukey].users[ukeyUser] +  ukeyUser);
+        //                 if (usersArray[ukey].users[ukeyUser] == loggedUserKey) {
+        //                     firebase.database().ref('/rooms/' + ukey + '/users/' + ukeyUser ).remove();
+        //
+        //                 }
+        //             }
+        //         }
+        //     });
+        //
+        //     var userLoggedUserRef = firebase.database().ref('/users');
+        //     console.log(userLoggedUserRef);
+        //     userLoggedUserRef.child(loggedUserKey).remove();
+        //     userLoggedUserRef.once('value', function(snap){
+        //         var users = snap.val();
+        //         console.log(users);
+        //         console.log(loggedUserKey);
+        //         for(var ukeyUser in users){
+        //             if(ukeyUser == loggedUserKey){
+        //                 console.log(ukeyUser, loggedUserKey);
+        //                 firebase.database().ref('/users/'+ ukeyUser).remove();
+        //                 $state.go('home');
+        //             }
+        //
+        //         }
+        //     });
+        //
+        //   //  localStorage.clear();
+        //     $scope.fblogout();
+        //     console.log("Logged out");
+        // };
 
 
 
@@ -107,7 +130,7 @@
                     $scope.roomNames = roomNames;
                     $scope.roomImages = roomImages;
                 }, 0);
-
+                $scope.hideRooms = $stateParams.hideRooms || false;
             });
         };
 
@@ -116,6 +139,7 @@
          *list users
          */
         $scope.listRooms();
+        console.log("hideRooms after listrooms: ",$scope.hideRooms);
 
         /*
          * https://firebase.google.com/docs/database/web/read-and-write
@@ -163,7 +187,7 @@
             $scope.roomNameCreate = null;
             $scope.listRooms();
             return firebase.database().ref().update(updates);
-        }
+        };
 
         /*
          *count users in a room
@@ -193,8 +217,8 @@
                 var roomUsers = snapshot.val();
                 for (var counter in roomUsers) {
                     if ($scope.userName == roomUsers[counter]) {
-                        $scope.ok = true
-                        //localStorage.setItem('lockJoin', true);
+                        $scope.ok = true;
+                        //localStorage.setItem('lock.', true);
                     }
                 }
                 return $scope.ok;
@@ -209,14 +233,11 @@
          *user, from the available rooms
          */
         $scope.joinRoom = function(room) {
-            //$scope.hideRooms = true;
-            localStorage.setItem('hidenList', true);
-            $scope.hideRooms = (localStorage.getItem('hidenList') === 'true');
+
             localStorage.setItem('roomJoined', room);
             if ($scope.checkUnique()) {
                 console.log('problem');
                 $scope.userInRomm = true;
-                return;
             } else {
                 console.log('here');
                 $scope.ok = false;
@@ -227,11 +248,13 @@
                 var updateUser = {};
                 updateUser['/rooms/' + room + '/users/' + loggedUserKey] = $scope.loggedUser;
                 firebase.database().ref().update(updateUser);
+                $scope.hideRooms = true;
+                console.log("When Join: ", $scope.hideRooms);
+                $state.go('chat.room', { roomName: room, userKey: loggedUserKey, hideRooms: $scope.hideRooms});
 
-                $state.go('chat.room', { roomName: room, userKey: loggedUserKey});
-            };
+            }
 
-        }
+        };
 
 
         /*  $scope.$on('toggleRooms', function(event, arg) {

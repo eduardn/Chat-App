@@ -23,8 +23,8 @@
 
     function ChatRoomController($scope, $timeout, $state, $firebaseArray, $firebaseObject, $rootScope, $q, $stateParams, loginService) {
         $scope.room = $stateParams.roomName;
-        $scope.userKey = $stateParams.userKey;
-        var userRef = firebase.database().ref('/users/' + $scope.userKey );
+        $scope.loggedUserKey = $stateParams.userKey;
+        var userRef = firebase.database().ref('/users/' + $scope.loggedUserKey );
             userRef.once('value', function(snap){
                 var loggedUser = snap.val();
                 console.log(loggedUser);
@@ -117,9 +117,14 @@
             var  userRef  = firebase.database().ref('/rooms/' + $scope.room + '/users');
             userRef.once('value',  function(snap) {
                 usersArray = snap.val();
+                console.log("leave room users: ", usersArray);
                 for (var ukey in usersArray) {
-                    if (usersArray[ukey] === user) {
-                        userRef.child(ukey).remove();
+                    console.log("my key: ", $scope.loggedUserKey)
+                    console.log("current key: ", ukey);
+                    console.log("user key: ", usersArray[ukey]);
+                    if (ukey == $scope.loggedUserKey) {
+
+                        userRef.child($scope.loggedUserKey).remove();
                         console.log(ukey + " Removed");
                         // var  otherRef = firebase.database().ref('/rooms/' + $scope.room + '/users/' + ukey).set(null);
                         /*otherRef.on('value',  function(snap) {
@@ -128,7 +133,8 @@
                     }
                 }
             });
-            $state.go('chat',{userKey:$scope.userKey });
+            //localStorage.setItem('hidenList', false);
+            $state.go('chat',{ userKey: $scope.loggedUserKey, hideRooms: false });
         };
 
          $scope.kick = function(user){
