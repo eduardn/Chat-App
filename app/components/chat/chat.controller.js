@@ -11,10 +11,18 @@
         });
 
 
-    ChatController.$inject = ['$scope', '$state', '$location', 'loginService', '$localStorage', '$firebaseArray', '$firebaseObject', '$timeout', '$rootScope', '$q'];
+    ChatController.$inject = ['$scope', '$state', '$location', 'loginService', '$localStorage', '$stateParams', '$firebaseObject', '$timeout', '$rootScope', '$q'];
 
 
-    function ChatController($scope, $state, $location, loginService, $localStorage, $firebaseArray, $firebaseObject, $timeout, $rootScope, $q) {
+    function ChatController($scope, $state, $location, loginService, $localStorage, $stateParams, $firebaseObject, $timeout, $rootScope, $q) {
+        var userKey = $stateParams.userKey;
+
+        var userRef = firebase.database().ref('/users/' + userKey);
+            userRef.once('value', function(snap){
+                $scope.user = snap.val();
+            });
+
+
 
         $scope.hideRooms = (localStorage.getItem('hidenList') === 'false');
         console.log($scope.hideRooms);
@@ -27,6 +35,15 @@
         //console.log("loggedUsername: ", $scope.userName);
         $scope.name = "";
         $scope.rooms = [];
+
+        $scope.fblogout = function(){
+            firebase.auth().signOut().then(function() {
+                // Sign-out successful.
+                console.log("User logged out");
+            }, function(error) {
+                // An error happened.
+            });
+        };
 
 
         $scope.logout = function() {
@@ -59,10 +76,8 @@
 
                 }
             });
-
           //  localStorage.clear();
             console.log("Logged out");
-
         };
 
 
@@ -203,13 +218,14 @@
                 console.log('here');
                 $scope.ok = false;
                 $scope.userInRomm = false;
-                var newUserKey = firebase.database().ref('/users/').push().key;
+
+                //write user to room
 
                 var updateUser = {};
-                updateUser['/rooms/' + room + '/users/' + newUserKey] = $scope.userName;
+                updateUser['/rooms/' + room + '/users/' + userKey] = $scope.user;
                 firebase.database().ref().update(updateUser);
 
-                $state.go('chat.room', { roomName: room });
+                $state.go('chat.room', { roomName: room, userKey: userKey});
             };
 
         }

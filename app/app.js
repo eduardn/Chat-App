@@ -17,12 +17,18 @@
 
             .state('chat', {
                 url: '/chat',
+                params:{
+                    userKey: null
+                },
                 templateUrl: 'components/chat/chat.html',
                 controller: 'ChatController'
             })
 
             .state('chat.room', {
-                url: '/chat/:roomName',
+                url: '/:roomName',
+                params:{
+                    userKey: null
+                },
                 templateUrl: 'components/chat-room/chat.room.html',
                 controller: 'ChatRoomController'
             })
@@ -33,4 +39,5 @@
             img_dir: 'http://hassankhan.github.io/emojify.js/images/emoji'
         })
     }]);
+
 })();

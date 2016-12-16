@@ -11,6 +11,56 @@
 
     function HomeController($scope, $state, $rootScope, $stateParams, loginService, $localStorage) {
 
+        //facebook login setup
+        var provider = new firebase.auth.FacebookAuthProvider();
+        provider.addScope('user_birthday');
+        provider.addScope('user_photos');
+        provider.addScope('user_about_me');
+
+        provider.setCustomParameters({
+            'display': 'popup'
+        });
+
+
+        $scope.fblogin = function(){
+
+            firebase.auth().signInWithPopup(provider).then(function(result) {
+                // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+                var token = result.credential.accessToken;
+                // The signed-in user info.
+                var user = result.user.providerData[0];
+                console.log(user);
+                console.log("display name: ", user.displayName);
+
+                //save user in firebase
+                    //Save user to firebase
+                    var newUserKey = firebase.database().ref().child('users').push().key;
+                    //console.log(newUserKey);
+                    var updateUser = {};
+                    updateUser['/users/' + newUserKey] = user;
+                    firebase.database().ref().update(updateUser);
+                    $state.go('chat',{userKey: newUserKey});
+
+
+            }).catch(function(error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // The email of the user's account used.
+                var email = error.email;
+                // The firebase.auth.AuthCredential type that was used.
+                var credential = error.credential;
+                // ...
+            });
+        };
+
+        $scope.signOut = function(){
+            firebase.auth().signOut().then(function() {
+                // Sign-out successful.
+            }, function(error) {
+                // An error happened.
+            });
+        };
 
 
         $scope.addButton = function() {
@@ -19,7 +69,7 @@
                     el.classList.toggle('profile--open');
                 });
             });
-        }
+        };
 
         var database = firebase.database();
 
@@ -63,8 +113,6 @@
             }
             return color;
         }
-
-
 
     }
 

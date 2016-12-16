@@ -31,6 +31,7 @@
     <script src="../bower_components/ng-scroll-glue/dist/ng-scroll-glue.js"></script>
     <script src="components/emoji/emojify.js"></script>
     <script src="components/emoji/ng-emoji.min.js"></script>
+
     <!-- endbuild -->
 
     <!-- build:js app.min.js -->
@@ -44,13 +45,17 @@
     <!-- build:css app.min.css -->
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="bootstrap-social.css">
     <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="components/chat-room/chat.room.css">
     <!-- endbuild -->
 
+    <script src="//connect.facebook.net/en_US/sdk.js"></script>
+
 </head>
 
     <body ng-app="chatApp" class="container-fluid">
+
 
         <div ui-view>
 

@@ -34,7 +34,7 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "                <div class=\"sender\" ng-class=\"{'floatright': loggedUsername == message.sender }\">\r" +
     "\n" +
-    "                    <div class=\"sender-message\"><span class=\"white\" >{{message.sender}}</span></div>\r" +
+    "                    <div class=\"sender-message\"><div class=\"test\"><span class=\"white\" >{{message.sender}}</span></div></div>\r" +
     "\n" +
     "    \r" +
     "\n" +
@@ -370,6 +370,10 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "       \r" +
     "\n" +
     "        <div class=\"profile__footer\">\r" +
+    "\n" +
+    "            <div fb-root></div>\r" +
+    "\n" +
+    "            <button class=\"btn btn-block btn-lg btn-social btn-facebook\" ng-click=\"fblogin()\"><i class=\"fa fa-facebook\"></i>Facebook Login</button>\r" +
     "\n" +
     "          <button class=\"btnbtn\" id=\"btnLogin\" ng-click=\"login(username)\"> Login</button>\r" +
     "\n" +

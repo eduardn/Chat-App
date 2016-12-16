@@ -23,6 +23,9 @@
 
     function ChatRoomController($scope, $timeout, $state, $firebaseArray, $firebaseObject, $rootScope, $q, $stateParams, loginService) {
         $scope.room = $stateParams.roomName;
+        $scope.userKey = $stateParams.userKey;
+        $scope.user = firebase.database().ref('/users/' + $scope.userKey );
+
         $scope.roomCreator = "";
         console.log($scope.room);
         $scope.roomUsers = [];
@@ -119,7 +122,7 @@
                 }
             });
             $state.go('chat', {} , { reload: true });
-        }
+        };
 
          $scope.kick = function(user){
             if($scope.loggedUsername == $scope.roomCreator){
@@ -139,17 +142,12 @@
             }
         };
 
-        var userInRoom = firebase.database().ref('rooms/' + $scope.room + '/users/');
-        userInRoom.on('value', function(snap) {
-            roomUsersArray = snap.val();
-            var roomusers = [];
-            for (var key in roomUsersArray) {
-                var rooomuser = roomUsersArray[key];
-                roomusers.push(rooomuser);
-            }
-            if(roomusers.indexOf($scope.loggedUsername)== -1){
+        var userKeysRef = firebase.database().ref('rooms/' + $scope.room + '/users/');
+        userKeysRef.on('value', function(snap) {
+            var usersKeys = snap.val();
+            if(usersKeys.indexOf($scope.userKey) == -1){
                 console.log("You have been disconnected");
-                $state.go('chat');
+                $state.go('chat',{userKey: $scope.userKey});
             }
         });
     }
