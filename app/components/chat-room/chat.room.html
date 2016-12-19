@@ -5,7 +5,7 @@
     <div class="col-sm-9">
 
         <div class="btnLeave">
-         <div class="textRoom"> Welcome to {{room}}!
+         <div class="textRoom"> Welcome to  {{room}}! 
             <!--Messages from {{room}} Room-->
                 <button class="btn btn-success leave" ng-click="leaveRoom(loggedUsername)"><i class="fa fa-plane" aria-hidden="true" ></i> LEAVE </button>
         </div>
@@ -13,12 +13,15 @@
 
        <ul class="messages" schroll-bottom="messages" id="rawText">
             <li ng-repeat="message in messages" >
-                <div class="sender-photo"><img width="40px" height="40px" ng-src="{{message.senderPhotoURL}}"></div>
-                <div class="sender" ng-class="{'floatright': loggedUser.displayName == message.sender }">
+                <!--<div class="sender-photo"></div>-->
+                <div class="sender" ng-class="{'floatright': loggedUser.displayName == message.sender  }"> <div class="sender-photoUrl"><img ng-src="{{message.senderPhotoURL}}">
                     <div class="sender-message">
+                       
                         <div class="test"><span class="white" >{{message.sender}}</span></div>
+                      
 
                     </div>
+                      </div>
     
                         <div ng-class="{'custom': loggedUser.displayName == message.sender}"  class="text-message"  ng-bind-html="message.text | linky | emoji " >{{message.text}}</div>
                 </div>

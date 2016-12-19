@@ -38,7 +38,7 @@
         $scope.name = "";
         $scope.rooms = [];
 
-        $scope.fblogout = function(){
+         function fblogout(){
             firebase.auth().signOut().then(function() {
                 var userLoggedUserRef = firebase.database().ref('/users');
                 console.log(userLoggedUserRef);
@@ -65,6 +65,43 @@
                 // An error happened.
             });
         };
+
+
+    function githublogout(){
+            firebase.auth().signOut().then(function() {
+                var userLoggedUserRef = firebase.database().ref('/users');
+                console.log(userLoggedUserRef);
+                userLoggedUserRef.child(loggedUserKey).remove();
+
+                var  userRef  = firebase.database().ref('/rooms/');
+                userRef.once('value',  function(snap) {
+                    var usersArray = snap.val();
+                    console.log("usersArray: ", usersArray);
+                    for (var ukey in usersArray) {
+                        console.log("ukey: ", ukey);
+                        for (var ukeyUser in usersArray[ukey].users) {
+                            console.log("ukeyUser: ", ukeyUser);
+                            if (ukeyUser == loggedUserKey) {
+                                firebase.database().ref('/rooms/' + ukey + '/users/' + ukeyUser ).remove();
+                            }
+                        }
+                    }
+                });
+
+                console.log("User logged out GitHub");
+                $state.go('home');
+            }, function(error) {
+                // An error happened.
+            });
+        };
+
+        $scope.runBoth = function(){
+            fblogout();
+            githublogout();
+        }
+
+
+
 
 
         // $scope.logout = function() {
@@ -166,7 +203,7 @@
 
             var messageObject = {
                 sender: "RoomBot",
-                senderPhotoURL: "https://avatars1.githubusercontent.com/u/6422482?v=3&s=400",
+                senderBotsPhotoURL: "https://avatars1.githubusercontent.com/u/6422482?v=3&s=400",
                 text: "Welcome to this room!"
             };
             // Get a key for a new Post.

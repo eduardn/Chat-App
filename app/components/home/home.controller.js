@@ -54,22 +54,51 @@
             });
         };
 
-        $scope.signOut = function(){
-            firebase.auth().signOut().then(function() {
-                // Sign-out successful.
-            }, function(error) {
-                // An error happened.
-            });
-        };
+
+//github Login setup
+var provider2 = new firebase.auth.GithubAuthProvider();
+
+//github Login
+$scope.githublogin = function(){
+
+firebase.auth().signInWithPopup(provider2).then(function(result) {
+  // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+  var token = result.credential.accessToken;
+  // The signed-in user info.
+  var user = result.user.providerData[0];
+    console.log(user);
+       var newUserGit = firebase.database().ref().child('users').push().key;
+               
+                    
+                    var updateUser = {};
+                    updateUser['/users/' + newUserGit] = user;
+                      
+                    firebase.database().ref().update(updateUser);
+                      console.log("key: ", newUserGit); 
+                             
+                    $state.go('chat',{userKey: newUserGit});
+                
+               
+
+  // ...
+}).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // The email of the user's account used.
+  var email = error.email;
+  // The firebase.auth.AuthCredential type that was used.
+  var credential = error.credential;
+  // ...
+});
+};
 
 
-        $scope.addButton = function() {
-            document.getElementById('$toggleProfile').addEventListener('click', function() {
-                [].map.call(document.querySelectorAll('.profile'), function(el) {
-                    el.classList.toggle('profile--open');
-                });
-            });
-        };
+
+
+
+
+   
 
         var database = firebase.database();
 

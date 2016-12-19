@@ -29,11 +29,14 @@
           <label for="fieldUser" class="label">Username</label>
         </div>
 		
-       
+    
         <div class="profile__footer">
-            <div fb-root></div>
-            <button class="btn btn-block btn-lg btn-social btn-facebook" ng-click="fblogin(uid)"><i class="fa fa-facebook"></i>Facebook Login</button>
-          <button class="btnbtn" id="btnLogin" ng-click="login(username)"> Login</button>
+               <button class="btnbtn" id="btnLogin" ng-click="login(username)"> Login</button>
+            <div class="fb-root"> <button class="btn btn-block btn-lg btn-social btn-facebook" ng-click="fblogin(uid)"><i class="fa fa-facebook"></i>Facebook Login</button></div>
+            
+       <div class="github-root">
+                 <button class="btn btn-block btn-lig btn-social btn-github" id="btnLogin" ng-click="githublogin(uid)"><i class="fa fa-github"></i> GitHub</button>
+                 </div>
         </div>
 		
       </div>
