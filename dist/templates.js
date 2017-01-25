@@ -32,19 +32,17 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <li ng-repeat=\"message in messages\" >\r" +
     "\n" +
-    "                <div class=\"sender-photo\"><img width=\"40px\" height=\"40px\" ng-src=\"{{message.senderPhotoURL}}\"></div>\r" +
-    "\n" +
-    "                <div class=\"sender\" ng-class=\"{'floatright': loggedUser.displayName == message.sender }\">\r" +
-    "\n" +
-    "                    <div class=\"sender-message\">\r" +
-    "\n" +
-    "                        <div class=\"test\"><span class=\"white\" >{{message.sender}}</span></div>\r" +
+    "                <div class=\"sender\" ng-class=\"{'floatright': loggedUser.displayName == message.sender, 'roomBotImg': message.sender == 'RoomBot' }\">\r" +
     "\n" +
     "\r" +
     "\n" +
-    "                    </div>\r" +
+    "                    <div class=\"sender-message\">\r" +
     "\n" +
-    "    \r" +
+    "                        <div class=\"sender-photoURL\"><img ng-src=\"{{message.senderPhotoURL}}\"></div>\r" +
+    "\n" +
+    "                        <div class=\"test\"><span class=\"white\" >{{message.sender}}</span></div>\r" +
+    "\n" +
+    "                    </div>\r" +
     "\n" +
     "                        <div ng-class=\"{'custom': loggedUser.displayName == message.sender}\"  class=\"text-message\"  ng-bind-html=\"message.text | linky | emoji \" >{{message.text}}</div>\r" +
     "\n" +
@@ -90,7 +88,7 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "            <li ng-repeat=\"activeuser in roomUsers track by $index\">\r" +
     "\n" +
-    "                <i class=\"fa fa-chevron-circle-down green\" aria-hidden=\"true\"></i> {{activeuser.displayName}} <i ng-show=\"loggedUsername.displayName == roomCreator\" ng-click=\"kick(activeuser)\" class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>\r" +
+    "                <i class=\"fa fa-chevron-circle-down green\" aria-hidden=\"true\"></i> <a ng-click=\"userDetails(activeuser)\">{{activeuser.displayName}}</a> <i ng-show=\"loggedUser.displayName == roomCreator && activeuser.displayName != roomCreator\" ng-click=\"kick(activeuser)\" class=\"fa fa-trash-o\" aria-hidden=\"true\"></i>\r" +
     "\n" +
     "                <span ng-show=\"activeuser.displayName == roomCreator\">(Admin)</span>\r" +
     "\n" +
@@ -116,6 +114,15 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "\r" +
     "\n"
+  );
+
+
+  $templateCache.put('components/chat-room/user-details.html',
+    "<h2>User Details:</h2>\r" +
+    "\n" +
+    "<div class=\"user.displayName\">{{user.displayName}}</div>\r" +
+    "\n" +
+    "<div class=\"user.photoURL\"> <img ng-src=\"{{user.photoURL}}\"></div>"
   );
 
 
@@ -184,7 +191,7 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "                            </span> &nbsp;\r" +
     "\n" +
-    "                            <button class=\"btn btn-xs pull-right roz\" ng-click=\"joinRoom(room.roomName); listRooms()\" ng-hide=\"hideRooms\">\r" +
+    "                            <button class=\"btn btn-xs pull-right roz\" ng-click=\"joinRoom(room.roomName); listRooms();\" ng-hide=\"config.hideRooms\">\r" +
     "\n" +
     "                                <i class=\"fa fa-user-plus\" aria-hidden=\"true\"></i>\r" +
     "\n" +

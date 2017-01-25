@@ -33,6 +33,7 @@
                     loggedUser: ['$localStorage', function($localStorage) {
                         console.log("LocalStorage User: ", $localStorage.currentUser);
                         return $localStorage.currentUser;
+
                     }]
                         // ['loginService', function (loginService) {
                         // console.log("State resolve: ", loginService.isLoggedIn());

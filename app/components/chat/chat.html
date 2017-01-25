@@ -5,7 +5,9 @@
             <h4 class="intro"> Hello, {{loggedUser.displayName}}!</h4>
         </div>
         <div class="pull-right">
+
             <button class="btn btn-default btn-xs logout" ng-click="runBoth()" > <i class="fa fa-sign-out" aria-hidden="true" ></i>  LOG OUT </button>
+
         </div>
 
     </nav>
@@ -30,7 +32,7 @@
                             <span class="badge">
                                 {{getCount(room.users)}}
                             </span> &nbsp;
-                            <button class="btn btn-xs pull-right roz" ng-click="joinRoom(room.roomName); listRooms();" ng-hide="hideRooms">
+                            <button class="btn btn-xs pull-right roz" ng-click="joinRoom(room.roomName); listRooms();" ng-hide="config.hideRooms">
                                 <i class="fa fa-user-plus" aria-hidden="true"></i>
                                 join
                             </button>&nbsp;&nbsp;

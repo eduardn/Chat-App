@@ -10,47 +10,9 @@
     HomeController.$inject = ['$scope', '$state', '$rootScope', '$stateParams', 'loginService', '$localStorage'];
 
     function HomeController($scope, $state, $rootScope, $stateParams, loginService, $localStorage) {
-
-        //facebook login setup
-        var provider = new firebase.auth.FacebookAuthProvider();
-        provider.addScope('user_birthday');
-        provider.addScope('user_photos');
-        provider.addScope('user_about_me');
-
-        provider.setCustomParameters({
-            'display': 'popup'
-        });
-
-
         $scope.fblogin = function(){
-
-            firebase.auth().signInWithPopup(provider).then(function(result) {
-                // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-                var token = result.credential.accessToken;
-                // The signed-in user info.
-                var user = result.user.providerData[0];
-                console.log(user);
-                console.log("display name: ", user.displayName);
-
-                //save user in firebase
-                    //Save user to firebase
-                    var newUserKey = firebase.database().ref().child('users').push().key;
-                    //console.log(newUserKey);
-                    var updateUser = {};
-                    updateUser['/users/' + newUserKey] = user;
-                    firebase.database().ref().update(updateUser);
-                    $state.go('chat',{userKey: newUserKey});
-
-
-            }).catch(function(error) {
-                // Handle Errors here.
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                // The email of the user's account used.
-                var email = error.email;
-                // The firebase.auth.AuthCredential type that was used.
-                var credential = error.credential;
-                // ...
+            loginService.login().then(function () {
+                $state.go('chat');
             });
         };
 
@@ -104,7 +66,7 @@ firebase.auth().signInWithPopup(provider2).then(function(result) {
 
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
-        $scope.$storage = $localStorage.$reset();
+        // $scope.$storage = $localStorage.$reset();
         $scope.username = "";
         $scope.usercolor = getRandomColor();
         console.log($scope.usercolor);
