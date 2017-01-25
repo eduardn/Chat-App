@@ -1,51 +1,36 @@
-<!--<div class="container">
-    <div class="row">
-        <div role="alert">
-            <span class="error" ng-show="loginError">
-                Username Required!</span>
-        </div>
-        <div class="login">
-            <form class="form-inline" name="loginForm">
-                <div class="form-group">
-                    <input type="text" name="username" ng-model="username" class="form-control" placeholder="Username" required/>
-                </div>
-            </form>
-            <button class="btn btn-md purple" ng-click="login(username)"> <i class="fa fa-sign-in" aria-hidden="true"></i> Log in</button>
-    </div>
-</div>-->
-
-
-
 <div class="container-fluid login-container">
 
-  <div class="profile">
-    <!--<button class="profile__avatar" id="toggleProfile">
-     <img src="delasusan.ico"> 
-    </button>-->
-    <!--<div class="profile__form">
-      <div class="profile__fields">-->
-        <div class="field">
-          <input type="text" id="fieldUser" class="login-input"  onkeydown="if(event.keyCode == 13) document.getElementById('btnLogin').click();" ng-model="username" required pattern=.*\S.* />
-          <label for="fieldUser" class="label">Username</label>
-        </div>
-		
-       
-        <div class="profile__footer">
-            <div fb-root></div>
-            <button class="btn btn-block btn-lg btn-social btn-facebook" ng-click="fblogin(uid)"><i class="fa fa-facebook"></i>Facebook Login</button>
-          <button class="btnbtn" id="btnLogin" ng-click="login(username)"> Login</button>
-        </div>
-		
-      </div>
-     </div>
-  </div>
-</div>
-  
+    <div class="facebook">
+        <a  ng-click="fblogin(uid)"><span class="hb hb-md hb-custom"><i class="fa fa-facebook"></i></span></a>
+    </div>
+    <div class="github">
+        <a  ng-click="githublogin(uid)"><span class="hb hb-md hb-custom"><i class="fa fa-github"></i></span></a>
+    </div>
 
-<!--<script>
-    document.getElementById('toggleProfile').addEventListener('click', function () {
-  [].map.call(document.querySelectorAll('.profile'), function(el) {
-    el.classList.toggle('profile--open');
-  });
-});
-</script>-->
+
+</div>
+
+<script>
+    jQuery(function(){
+        jQuery(".hb-lg").parent().addClass("hb-lg-margin");
+        jQuery(".hb-md").parent().addClass("hb-md-margin");
+        jQuery(".hb-sm").parent().addClass("hb-sm-margin");
+        jQuery(".hb-xs").parent().addClass("hb-xs-margin");
+    })
+
+    jQuery(function(){
+        //Facebook
+        jQuery( ".hb .fa-facebook,.hb .fa-facebook-square").parent().addClass("hb-facebook");
+        jQuery( ".hb.inv .fa-facebook,.hb.inv .fa-facebook-square").parent().addClass("hb-facebook-inv").removeClass("hb-facebook");
+
+
+
+        //Github
+        jQuery( ".hb .fa-github,.hb .fa-github-square, .hb .fa-github-alt").parent().addClass("hb-github");
+        jQuery( ".hb.inv .fa-github,.hb.inv .fa-github-square, .hb.inv .fa-github-alt").parent().addClass("hb-github-inv").removeClass("hb-github");
+
+
+
+    });
+
+</script>

@@ -11,62 +11,45 @@
         });
 
 
-    ChatController.$inject = ['$scope', '$state', '$location', 'loginService', '$localStorage', '$stateParams', '$firebaseObject', '$timeout', '$rootScope', '$q'];
+    ChatController.$inject = ['$scope', '$state', '$location', 'loggedUser', '$localStorage', '$stateParams', '$firebaseObject', '$timeout', '$rootScope', '$q', 'loginService'];
 
 
-    function ChatController($scope, $state, $location, loginService, $localStorage, $stateParams, $firebaseObject, $timeout, $rootScope, $q) {
-        var loggedUserKey = $stateParams.userKey;
-        console.log("loggedUserKey:", loggedUserKey);
+    function ChatController($scope, $state, $location, loggedUser, $localStorage, $stateParams, $firebaseObject, $timeout, $rootScope, $q, loginService) {
 
+        var loggedUserKey = loggedUser.firebaseUserKey;
+        console.log("loggedUser:", loggedUser);
+         $scope.loggedUser = loggedUser;
+         console.log(loggedUser);
+        if(loggedUser == null){
         var loggedUserRef = firebase.database().ref('/users/' + loggedUserKey);
-            loggedUserRef.once('value', function(snap){
+            loggedUserRef.on('value', function(snap){
                 $scope.loggedUser = snap.val();
                 console.log("Logged User", $scope.loggedUser)
             });
+        }
 
+        $rootScope.config.hideRooms = false;
 
-
-        $scope.hideRooms = $stateParams.hideRooms || false;
+        //$scope.hideRooms = $stateParams.hideRooms || false;
         console.log("First hide rooms: ", $scope.hideRooms);
         $scope.$storage = $localStorage.$default();
         $scope.userName = $scope.$storage.loggedUsername;
-        if (!$scope.loggedUser) {
-            console.log("should redirect to login");
-            $location.path('/home');
-        }
+        // if (!$scope.loggedUser) {
+        //     console.log("should redirect to login");
+        //     $location.path('/home');
+        // }
         //console.log("loggedUsername: ", $scope.userName);
         $scope.name = "";
         $scope.rooms = [];
 
-        $scope.fblogout = function(){
-            firebase.auth().signOut().then(function() {
-                var userLoggedUserRef = firebase.database().ref('/users');
-                console.log(userLoggedUserRef);
-                userLoggedUserRef.child(loggedUserKey).remove();
-
-                var  userRef  = firebase.database().ref('/rooms/');
-                userRef.once('value',  function(snap) {
-                    var usersArray = snap.val();
-                    console.log("usersArray: ", usersArray);
-                    for (var ukey in usersArray) {
-                        console.log("ukey: ", ukey);
-                        for (var ukeyUser in usersArray[ukey].users) {
-                            console.log("ukeyUser: ", ukeyUser);
-                            if (ukeyUser == loggedUserKey) {
-                                firebase.database().ref('/rooms/' + ukey + '/users/' + ukeyUser ).remove();
-                            }
-                        }
-                    }
-                });
-
-                console.log("User logged out");
+        $scope.logout = function(){
+            loginService.logout().then(function() {
+                console.log(loginService);
                 $state.go('home');
-            }, function(error) {
-                // An error happened.
             });
+
+
         };
-
-
         // $scope.logout = function() {
         //     //$scope.$storage = $localStorage.$reset();
         //     var  userRef  = firebase.database().ref('/rooms/');
@@ -130,7 +113,7 @@
                     $scope.roomNames = roomNames;
                     $scope.roomImages = roomImages;
                 }, 0);
-                $scope.hideRooms = $stateParams.hideRooms || false;
+                //$scope.hideRooms = $stateParams.hideRooms || false;
             });
         };
 
@@ -233,7 +216,7 @@
          *user, from the available rooms
          */
         $scope.joinRoom = function(room) {
-
+            $rootScope.config.hideRooms = true;
             localStorage.setItem('roomJoined', room);
             if ($scope.checkUnique()) {
                 console.log('problem');
@@ -248,17 +231,13 @@
                 var updateUser = {};
                 updateUser['/rooms/' + room + '/users/' + loggedUserKey] = $scope.loggedUser;
                 firebase.database().ref().update(updateUser);
-                $scope.hideRooms = true;
+
                 console.log("When Join: ", $scope.hideRooms);
-                $state.go('chat.room', { roomName: room, userKey: loggedUserKey, hideRooms: $scope.hideRooms});
+                $state.go('.room', { roomName: room });
 
             }
 
         };
 
-
-        /*  $scope.$on('toggleRooms', function(event, arg) {
-         $scope.hideRooms = arg;
-         });*/
     }
 })();

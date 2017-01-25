@@ -49,11 +49,38 @@
     border:15px solid transparent;
     border-bottom-color:#eee;
     display:block;
-    width:0;
+    /*width:0;*/
 }
 
 div.sender-message{
     margin-top: -40px;
+}
+
+.messages .sender .sender-photoURL img{
+    width: 40px;
+    height: 40px;
+    position: relative;
+    top:45px;
+    left:80px;
+    right: 35px;
+}
+
+.messages .floatright .sender-photoURL img{
+    width: 40px;
+    height: 40px;
+    position: relative;
+    top: 45px;
+    left: 80px;
+    right: 70px;
+}
+
+.messages .roomBotImg .sender-photoURL img{
+    width: 40px;
+    height: 40px;
+    position: relative;
+    top: 25px;
+    left: 80px;
+    right: 70px;
 }
 
 .messages > li .floatright .sender-message{
@@ -63,7 +90,7 @@ div.sender-message{
     border:15px solid transparent;
     border-bottom-color:#847ec7;
     display:block;
-    width:0;
+    /*width:0;*/
 
 }
 

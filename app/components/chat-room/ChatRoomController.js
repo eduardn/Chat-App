@@ -11,7 +11,7 @@
                 link: function(scope, element) {
                     scope.$watchCollection('schrollBottom', function(newValue) {
                         if (newValue) {
-                            $(element).scrollTop($(element)[0].scrollHeight + 20);
+                            $(element).scrollTop($(element)[0].scrollHeight + 100);
                         }
                     });
                 }
@@ -19,20 +19,13 @@
         })
         .controller('ChatRoomController', ChatRoomController);
 
-    ChatRoomController.$inject = ['$scope', '$timeout', '$state', '$firebaseArray', '$firebaseObject', '$rootScope', '$q', '$stateParams', 'loginService'];
+    ChatRoomController.$inject = ['$scope', '$timeout', '$state', '$firebaseArray', '$firebaseObject', '$rootScope', '$q', '$stateParams', 'loggedUser','$uibModal'];
 
-    function ChatRoomController($scope, $timeout, $state, $firebaseArray, $firebaseObject, $rootScope, $q, $stateParams, loginService) {
+    function ChatRoomController($scope, $timeout, $state, $firebaseArray, $firebaseObject, $rootScope, $q, $stateParams, loggedUser, $uibModal) {
         $scope.room = $stateParams.roomName;
-        $scope.loggedUserKey = $stateParams.userKey;
-        var userRef = firebase.database().ref('/users/' + $scope.loggedUserKey );
-            userRef.once('value', function(snap){
-                var loggedUser = snap.val();
-                console.log(loggedUser);
-
-                $timeout(function() {
-                    $scope.loggedUser = loggedUser;
-                }, 1);
-            });
+        $scope.loggedUserKey = loggedUser.firebaseUserKey;
+        $scope.loggedUser = loggedUser;
+        $rootScope.config.hideRooms = true;
 
         $scope.roomCreator = "";
         $scope.roomUsers = [];
@@ -73,6 +66,10 @@
         });
 
         $scope.sendMessage = function(messageText) {
+            var date = new Date();
+            console.log("Date: ", date);
+            var momentDate = moment(date).format("hh:mm");
+            console.log("Moment Date: ", momentDate);
             if (messageText) {
                 $scope.messages = [];
                 var messageObject = {
@@ -111,6 +108,7 @@
         });
 
         $scope.leaveRoom  =   function(user) {
+            $rootScope.config.hideRooms = false;
             // $rootScope.$broadcast('toggleRooms', false);
             var  usersArray  = [];
             var  users  = [];
@@ -122,9 +120,9 @@
                     console.log("my key: ", $scope.loggedUserKey)
                     console.log("current key: ", ukey);
                     console.log("user key: ", usersArray[ukey]);
-                    if (ukey == $scope.loggedUserKey) {
+                    if ($scope.loggedUser.uid == usersArray[ukey].uid) {
 
-                        userRef.child($scope.loggedUserKey).remove();
+                        userRef.child(ukey).remove();
                         console.log(ukey + " Removed");
                         // var  otherRef = firebase.database().ref('/rooms/' + $scope.room + '/users/' + ukey).set(null);
                         /*otherRef.on('value',  function(snap) {
@@ -134,21 +132,46 @@
                 }
             });
             //localStorage.setItem('hidenList', false);
-            $state.go('chat',{ userKey: $scope.loggedUserKey, hideRooms: false });
+            $state.go('chat');
+        };
+
+        $scope.userDetails = function(user){
+            console.log("User details: ", user);
+            var modalInsance = $uibModal.open({
+                ariaLabeledBy: 'User Details',
+                ariaDescribedBy: 'Body',
+                windowClass: 'app-modal-window',
+                templateUrl: 'components/chat-room/user-details.html',
+                controller: 'ModalInstanceCtrl',
+                resolve: {
+                    user: function(){
+                        return user;
+                    }
+                }
+            })
         };
 
          $scope.kick = function(user){
-            if($scope.loggedUsername == $scope.roomCreator){
-                $rootScope.$broadcast('kick',{user: user});
+             console.log("kicked user: ", user);
+            if($scope.loggedUser.displayName == $scope.roomCreator){
+                $rootScope.$broadcast('kick', {user: user});
                 var  usersArray  = [];
                 var  users  = [];
                 var  userRef  = firebase.database().ref('/rooms/' + $scope.room + '/users');
                 userRef.once('value',  function(snap) {
                     usersArray = snap.val();
+                    console.log("Users array: ", usersArray);
                     for (var ukey in usersArray) {
-                        if (usersArray[ukey] === user) {
+                        console.log("cheile ",ukey);
+                        console.log("usersArray.userid: ", usersArray[ukey]);
+                        console.log("usersArray[ukey].uid: ", usersArray[ukey].uid);
+                        console.log("usersArray[ukey].displayName: ", usersArray[ukey].displayName);
+
+                        console.log("user uid: YOLO ", user.uid, usersArray[ukey].uid);
+                        if (usersArray[ukey].uid == user.uid) {
+                            console.log("user uid: ", user.uid, usersArray[ukey].uid);
+                            console.log(usersArray[ukey].displayName + " Removed");
                             userRef.child(ukey).remove();
-                            console.log(usersArray[ukey] + " Removed");
                         }
                     }
                 });
@@ -159,9 +182,14 @@
         userKeysRef.on('value', function(snap) {
             var userKeys = snap.val();
             console.log("Users", userKeys);
-            if(userKeys.indexOf($scope.userKey) == -1){
+            var usersIDs = [];
+            for(var ukey in userKeys){
+                usersIDs.push(userKeys[ukey].uid);
+            }
+            console.log("userIDS: ", usersIDs, $scope.loggedUser.uid);
+            if(usersIDs.indexOf($scope.loggedUser.uid) == -1){
                 console.log("You have been disconnected");
-                $state.go('chat',{userKey: $scope.userKey});
+                $state.go('chat');
             }
         });
     }
