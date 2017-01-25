@@ -4,19 +4,42 @@
 (function() {
     'use strict';
 
-    angular.module('chatApp', ['ui.router', 'firebase', 'ngStorage', 'ngEmoji', 'ngSanitize', 'ngScrollGlue','angularMoment'])
+    angular.module('chatApp', ['ui.router','ui.bootstrap', 'firebase', 'ngStorage', 'ngEmoji', 'ngSanitize', 'ngScrollGlue'])
         .config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
+
+
             $urlRouterProvider.otherwise('/home');
 
             $stateProvider
                 .state('home', {
                     url: '/home',
                     templateUrl: 'components/home/home.html',
-                    controller: 'HomeController'
+                    controller: 'HomeController',
+                    onEnter: ['loginService', '$state', function (loginService, $state) {
+                        if (loginService.isLoggedIn()) {
+                            console.log("From Home state: ", loginService.isLoggedIn());
+                            $state.go('chat');
+                        }
+                    }]
                 })
-
             .state('chat', {
                 url: '/chat',
+                onEnter: ['loginService', '$state', function (loginService, $state) {
+                    if (!loginService.isLoggedIn()) {
+                        $state.go('home');
+                    }
+                }],
+                resolve: {
+                    loggedUser: ['$localStorage', function($localStorage) {
+                        console.log("LocalStorage User: ", $localStorage.currentUser);
+                        return $localStorage.currentUser;
+                    }]
+                        // ['loginService', function (loginService) {
+                        // console.log("State resolve: ", loginService.isLoggedIn());
+                        // var user = loginService.isLoggedIn();
+                        // return user;
+                    // }]
+                },
                 params:{
                     userKey: null
                 },
@@ -34,13 +57,15 @@
             })
         }])
 
-    .run(['$emoji', function($emoji) {
+    .run(['$emoji', '$rootScope', function($emoji,$rootScope) {
+        //$rootScope.config.hideRooms = false;
+        $rootScope.config = {
+            hideRooms: false
+        };
+
         $emoji.setConfig({
             img_dir: 'http://hassankhan.github.io/emojify.js/images/emoji'
         })
     }]);
-//     myapp.run(function(amMoment) {
-//     amMoment.changeLocale('de');
-// });
 
 })();
