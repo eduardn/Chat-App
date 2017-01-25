@@ -4,7 +4,7 @@
 (function() {
     'use strict';
 
-    angular.module('chatApp', ['ui.router', 'firebase', 'ngStorage', 'ngEmoji', 'ngSanitize', 'ngScrollGlue'])
+    angular.module('chatApp', ['ui.router', 'firebase', 'ngStorage', 'ngEmoji', 'ngSanitize', 'ngScrollGlue','angularMoment'])
         .config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider) {
             $urlRouterProvider.otherwise('/home');
 
@@ -39,5 +39,8 @@
             img_dir: 'http://hassankhan.github.io/emojify.js/images/emoji'
         })
     }]);
+//     myapp.run(function(amMoment) {
+//     amMoment.changeLocale('de');
+// });
 
 })();

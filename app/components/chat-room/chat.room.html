@@ -11,7 +11,7 @@
         </div>
         </div>
 
-       <ul class="messages" schroll-bottom="messages" id="rawText">
+       <ul scroll-glue  class="messages" schroll-bottom="messages" id="rawText">
             <li ng-repeat="message in messages" >
                 <!--<div class="sender-photo"></div>-->
                 <div class="sender" ng-class="{'floatright': loggedUser.displayName == message.sender  }"> <div class="sender-photoUrl"><img ng-src="{{message.senderPhotoURL}}">
@@ -23,7 +23,7 @@
                     </div>
                       </div>
     
-                        <div ng-class="{'custom': loggedUser.displayName == message.sender}"  class="text-message"  ng-bind-html="message.text | linky | emoji " >{{message.text}}</div>
+                        <div  ng-class="{'custom': loggedUser.displayName == message.sender}"  class="text-message"  ng-bind-html="message.text | linky | emoji " >{{message.text}}</div>
                 </div>
                 
             </li>

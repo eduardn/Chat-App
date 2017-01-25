@@ -3,25 +3,14 @@
 
     angular.module('chatApp')
 
-    .directive('schrollBottom', function() {
-            return {
-                scope: {
-                    schrollBottom: "="
-                },
-                link: function(scope, element) {
-                    scope.$watchCollection('schrollBottom', function(newValue) {
-                        if (newValue) {
-                            $(element).scrollTop($(element)[0].scrollHeight + 20);
-                        }
-                    });
-                }
-            }
-        })
+
         .controller('ChatRoomController', ChatRoomController);
 
-    ChatRoomController.$inject = ['$scope', '$timeout', '$state', '$firebaseArray', '$firebaseObject', '$rootScope', '$q', '$stateParams', 'loginService'];
+    ChatRoomController.$inject = ['$scope', '$timeout', '$state', '$firebaseArray', '$firebaseObject', '$rootScope', '$q', '$stateParams', 'loginService','moment'];
 
-    function ChatRoomController($scope, $timeout, $state, $firebaseArray, $firebaseObject, $rootScope, $q, $stateParams, loginService) {
+
+    function ChatRoomController($scope, $timeout, $state, $firebaseArray, $firebaseObject, $rootScope, $q, $stateParams, loginService,moment) {
+            $scope.exampleDate = moment().hour(8).minute(0).second(0).toDate();
         $scope.room = $stateParams.roomName;
         $scope.loggedUserKey = $stateParams.userKey;
         var userRef = firebase.database().ref('/users/' + $scope.loggedUserKey );

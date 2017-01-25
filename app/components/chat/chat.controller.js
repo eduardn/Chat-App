@@ -186,7 +186,7 @@
         $scope.imagesUrls = ['http://www.imarijuana.com/wp-content/uploads/2011/10/Romania-Marijuana-Laws.png',
             'http://pix.iemoji.com/images/emoji/apple/ios-9/256/christmas-tree.png',
             'http://icons.veryicon.com/png/Sport/Sport/Basketball.png',
-            'https://65.media.tumblr.com/avatar_ee6f82e163e3_128.png',
+         
             'http://pix.iemoji.com/images/emoji/apple/ios-9/256/beer-mug.png',
             'http://pix.iemoji.com/images/emoji/apple/ios-9/256/party-popper.png',
             'https://s-media-cache-ak0.pinimg.com/564x/36/92/52/36925231de3dea90fd0d3c8fd9510d74.jpg',
