@@ -223,7 +223,7 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "\r" +
     "\n" +
-    "            <button class=\"btn btn-default btn-xs logout\" ng-click=\"runBoth()\" > <i class=\"fa fa-sign-out\" aria-hidden=\"true\" ></i>  LOG OUT </button>\r" +
+    "            <button class=\"btn btn-default btn-xs logout\" ng-click=\"logout()\" > <i class=\"fa fa-sign-out\" aria-hidden=\"true\" ></i>  LOG OUT </button>\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -406,17 +406,19 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "<div class=\"container-fluid login-container\">\r" +
     "\n" +
-    "\r" +
+    "    <div class=\"login-options\">\r" +
     "\n" +
-    "    <div class=\"facebook\">\r" +
+    "        <div >\r" +
     "\n" +
-    "        <a  ng-click=\"fblogin(uid)\"><span class=\"hb hb-md hb-custom\"><i class=\"fa fa-facebook\"></i></span></a>\r" +
+    "            <a  ng-click=\"fblogin(uid)\"><span class=\"hb hb-md hb-custom\"><i class=\"fa fa-facebook\"></i></span></a>\r" +
     "\n" +
-    "    </div>\r" +
+    "        </div>\r" +
     "\n" +
-    "    <div class=\"github\">\r" +
+    "        <div >\r" +
     "\n" +
-    "        <a  ng-click=\"githublogin(uid)\"><span class=\"hb hb-md hb-custom\"><i class=\"fa fa-github\"></i></span></a>\r" +
+    "            <a  ng-click=\"githublogin(uid)\"><span class=\"hb hb-md hb-custom\"><i class=\"fa fa-github\"></i></span></a>\r" +
+    "\n" +
+    "        </div>\r" +
     "\n" +
     "    </div>\r" +
     "\n" +

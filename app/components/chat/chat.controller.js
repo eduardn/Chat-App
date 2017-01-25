@@ -16,47 +16,6 @@
 
 
     function ChatController($scope, $state, $location, loggedUser, $localStorage, $stateParams, $firebaseObject, $timeout, $rootScope, $q, loginService) {
-            // $scope.messages = [];
-            // $scope.message = "asdasdasdasdasd";
-            // $scope.sendMessage = function () {
-            //     var isYouTubelink = isYouTubeLink($scope.message);
-            //     if (!isYouTubelink) {
-            //         // push to firebase
-            //         $scope.messages.push($scope.message);
-            //         $scope.message = ''
-            //     } else {
-            //         getYouTubeInfo(isYouTubelink).then(function (data) {
-            //             console.log(data.data)
-            //             if (data.data) {
-            //                 var mess = {
-            //                     src: $scope.message,
-            //                     title: data.data.items[0].snippet.title,
-            //                     imgSrc: data.data.items[0].snippet.thumbnails.default.url
-            //
-            //                 };
-            //                 // push to firebase
-            //                 $scope.messages.push(mess);
-            //                 $scope.message = ''
-            //             }
-            //         })
-            //     }
-            // };
-            //
-            // function isYouTubeLink(mess) {
-            //     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-            //     var match = mess.match(regExp);
-            //     return (match && match[7].length == 11) ? match[7] : false;
-            //
-            // }
-            // function getYouTubeInfo(videoId, mess) {
-            //     return $http({
-            //         method: 'GET',
-            //         url: 'https://www.googleapis.com/youtube/v3/videos?id=' + videoId + '&key=AIzaSyA4cUuZAoU-3FFNdt5SZDaL1SpTjzQ3XSk&fields=items(snippet(title,thumbnails))&part=snippet'
-            //     })
-            //
-            // }
-
-
 
         var loggedUserKey = loggedUser.firebaseUserKey;
         console.log("loggedUser:", loggedUser);
@@ -224,7 +183,7 @@
 
             var messageObject = {
                 sender: "RoomBot",
-                senderBotsPhotoURL: "https://avatars1.githubusercontent.com/u/6422482?v=3&s=400",
+                senderPhotoURL: "https://avatars1.githubusercontent.com/u/6422482?v=3&s=400",
                 text: "Welcome to this room!"
             };
             // Get a key for a new Post.

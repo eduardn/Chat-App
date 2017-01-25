@@ -670,6 +670,16 @@ html {
     transform: translate(-50%,-50%);
     animation: intro .7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
+
+.login-options{
+    margin-top: 200px;
+    padding-bottom: 50px;
+    text-align: center;
+}
+
+.login-options div{
+    margin-bottom: 50px;
+}
 img {
     vertical-align: middle;
     max-width: 100%;
