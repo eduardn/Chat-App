@@ -103,8 +103,7 @@ div.sender-message{
 }
 
 
-
-.floatright img{
+.floatright .sender-message .sender-photoURL img{
     width: 40px;
     height: 40px;
 }
@@ -137,7 +136,26 @@ span.white{
 -webkit-border-radius:10px;
     -moz-border-radius:10px;
     border-radius:10px;
-
-
-
 }
+
+.floatright .text-message a img.youtube-img{
+    width: 300px;
+    height: 200px;
+}
+
+.floatright .text-message a img.link-img{
+    width: 40%;
+    height: 40%;
+}
+
+.sender .text-message a img.youtube-img{
+    width: 300px;
+    height: 200px;
+}
+
+.sender .text-message a img.link-img{
+    width: 40%;
+    height: 40%;
+}
+
+

@@ -50,6 +50,26 @@
 
         });
 
+        $scope.checkIfImg = function(mess) {
+            return !(mess.indexOf('.jpg') == -1 && mess.indexOf('.jpeg') == -1 && mess.indexOf('.png') == -1)
+            // pentru formatele https://youtube.com/watch?v=VUkUi260Sn8
+        };
+
+            $scope.checkIfYoutubelink = function(mess) {
+                return !(mess.indexOf('youtube.com') == -1 && mess.indexOf('youtu.be') == -1 )
+                // pentru formatele https://youtube.com/watch?v=VUkUi260Sn8
+            };
+
+            $scope.getYouTubeId = function(mess){
+                if(mess.indexOf('youtube.com') != -1){
+                    return mess.split('=')[1]
+
+                }else{
+                    return mess.split('youtu.be/')[1]
+                }
+            };
+
+
         $scope.sendMessage = function(messageText) {
             var date = new Date();
             console.log("Date: ", date);

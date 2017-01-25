@@ -16,7 +16,7 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "        <div class=\"btnLeave\">\r" +
     "\n" +
-    "         <div class=\"textRoom\"> Welcome to {{room}}!\r" +
+    "         <div class=\"textRoom\"> Welcome to  {{room}}! \r" +
     "\n" +
     "            <!--Messages from {{room}} Room-->\r" +
     "\n" +
@@ -28,11 +28,47 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "\r" +
     "\n" +
-    "       <ul class=\"messages\" schroll-bottom=\"messages\" id=\"rawText\">\r" +
+    "       <!--<ul scroll-glue  class=\"messages\" schroll-bottom=\"messages\" id=\"rawText\">-->\r" +
     "\n" +
-    "            <li ng-repeat=\"message in messages\" >\r" +
+    "            <!--<li ng-repeat=\"message in messages\" >-->\r" +
     "\n" +
-    "                <div class=\"sender\" ng-class=\"{'floatright': loggedUser.displayName == message.sender, 'roomBotImg': message.sender == 'RoomBot' }\">\r" +
+    "\r" +
+    "\n" +
+    "                <!--<div class=\"sender\" ng-class=\"{'floatright': loggedUser.displayName == message.sender, 'roomBotImg': message.sender == 'RoomBot' }\">-->\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                    <!--<div class=\"sender-message\">-->\r" +
+    "\n" +
+    "                        <!--<div class=\"sender-photoURL\"><img ng-src=\"{{message.senderPhotoURL}}\"></div>-->\r" +
+    "\n" +
+    "                        <!--<div class=\"test\"><span class=\"white\" >{{message.sender}}</span></div>-->\r" +
+    "\n" +
+    "                    <!--</div>-->\r" +
+    "\n" +
+    "                        <!--<div ng-class=\"{'custom': loggedUser.displayName == message.sender}\"  class=\"text-message\"  ng-bind-html=\"message.text | linky | emoji \" >{{message.text}}</div>-->\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                <!--</div>-->\r" +
+    "\n" +
+    "                <!---->\r" +
+    "\n" +
+    "            <!--</li>-->\r" +
+    "\n" +
+    "        <!--</ul>-->\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        <ul scroll-glue class=\"\r" +
+    "\n" +
+    "        messages\" id=\"rawText\">\r" +
+    "\n" +
+    "            <li ng-repeat=\"message in messages\">\r" +
+    "\n" +
+    "                <div class=\"sender\"\r" +
+    "\n" +
+    "                     ng-class=\"{'floatright': loggedUser.displayName == message.sender, 'roomBotImg': message.sender == 'RoomBot' }\">\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -40,19 +76,63 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "                        <div class=\"sender-photoURL\"><img ng-src=\"{{message.senderPhotoURL}}\"></div>\r" +
     "\n" +
-    "                        <div class=\"test\"><span class=\"white\" >{{message.sender}}</span></div>\r" +
+    "                        <div class=\"test\"><span class=\"white\">{{message.sender}}</span></div>\r" +
     "\n" +
     "                    </div>\r" +
     "\n" +
-    "                        <div ng-class=\"{'custom': loggedUser.displayName == message.sender}\"  class=\"text-message\"  ng-bind-html=\"message.text | linky | emoji \" >{{message.text}}</div>\r" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                    <div ng-if=\"checkIfYoutubelink(message.text)\"\r" +
+    "\n" +
+    "                         ng-class=\"{'custom': loggedUser.displayName == message.sender}\"\r" +
+    "\n" +
+    "                         class=\"text-message\">\r" +
+    "\n" +
+    "                        <a target=\"_blank\" href=\"{{message.text}}\">\r" +
+    "\n" +
+    "                            <img class=\"youtube-img\" src=\" https://img.youtube.com/vi/{{getYouTubeId(message.text)}}/1.jpg\">\r" +
+    "\n" +
+    "                        </a>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                    <div ng-if=\"checkIfImg(message.text)\"\r" +
+    "\n" +
+    "                         ng-class=\"{'custom': loggedUser.displayName == message.sender}\"\r" +
+    "\n" +
+    "                         class=\"text-message\">\r" +
+    "\n" +
+    "                        <a target=\"_blank\" href=\"{{message.text}}\">\r" +
+    "\n" +
+    "                            <img class=\"link-img\" ng-src=\"{{message.text}}\">\r" +
+    "\n" +
+    "                        </a>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                    <div ng-if=\"!checkIfYoutubelink(message.text) && !checkIfImg(message.text)\"\r" +
+    "\n" +
+    "                         ng-class=\"{'custom': loggedUser.displayName == message.sender}\" class=\"text-message\"\r" +
+    "\n" +
+    "                         ng-bind-html=\"message.text | linky | emoji \">{{message.text}}\r" +
+    "\n" +
+    "                    </div>\r" +
     "\n" +
     "                </div>\r" +
     "\n" +
-    "                \r" +
+    "\r" +
     "\n" +
     "            </li>\r" +
     "\n" +
     "        </ul>\r" +
+    "\n" +
+    "\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -141,7 +221,11 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "        <div class=\"pull-right\">\r" +
     "\n" +
-    "            <button class=\"btn btn-default btn-xs logout\" ng-click=\"fblogout()\"> <i class=\"fa fa-sign-out\" aria-hidden=\"true\" ></i>  LOG OUT </button>\r" +
+    "\r" +
+    "\n" +
+    "            <button class=\"btn btn-default btn-xs logout\" ng-click=\"runBoth()\" > <i class=\"fa fa-sign-out\" aria-hidden=\"true\" ></i>  LOG OUT </button>\r" +
+    "\n" +
+    "\r" +
     "\n" +
     "        </div>\r" +
     "\n" +
@@ -318,107 +402,78 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('components/home/home.html',
-    "<!--<div class=\"container\">\r" +
-    "\n" +
-    "    <div class=\"row\">\r" +
-    "\n" +
-    "        <div role=\"alert\">\r" +
-    "\n" +
-    "            <span class=\"error\" ng-show=\"loginError\">\r" +
-    "\n" +
-    "                Username Required!</span>\r" +
-    "\n" +
-    "        </div>\r" +
-    "\n" +
-    "        <div class=\"login\">\r" +
-    "\n" +
-    "            <form class=\"form-inline\" name=\"loginForm\">\r" +
-    "\n" +
-    "                <div class=\"form-group\">\r" +
-    "\n" +
-    "                    <input type=\"text\" name=\"username\" ng-model=\"username\" class=\"form-control\" placeholder=\"Username\" required/>\r" +
-    "\n" +
-    "                </div>\r" +
-    "\n" +
-    "            </form>\r" +
-    "\n" +
-    "            <button class=\"btn btn-md purple\" ng-click=\"login(username)\"> <i class=\"fa fa-sign-in\" aria-hidden=\"true\"></i> Log in</button>\r" +
-    "\n" +
-    "    </div>\r" +
-    "\n" +
-    "</div>-->\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
     "\r" +
     "\n" +
     "<div class=\"container-fluid login-container\">\r" +
     "\n" +
     "\r" +
     "\n" +
-    "  <div class=\"profile\">\r" +
+    "    <div class=\"facebook\">\r" +
     "\n" +
-    "    <!--<button class=\"profile__avatar\" id=\"toggleProfile\">\r" +
+    "        <a  ng-click=\"fblogin(uid)\"><span class=\"hb hb-md hb-custom\"><i class=\"fa fa-facebook\"></i></span></a>\r" +
     "\n" +
-    "     <img src=\"delasusan.ico\"> \r" +
+    "    </div>\r" +
     "\n" +
-    "    </button>-->\r" +
+    "    <div class=\"github\">\r" +
     "\n" +
-    "    <!--<div class=\"profile__form\">\r" +
+    "        <a  ng-click=\"githublogin(uid)\"><span class=\"hb hb-md hb-custom\"><i class=\"fa fa-github\"></i></span></a>\r" +
     "\n" +
-    "      <div class=\"profile__fields\">-->\r" +
-    "\n" +
-    "        <div class=\"field\">\r" +
-    "\n" +
-    "          <input type=\"text\" id=\"fieldUser\" class=\"login-input\"  onkeydown=\"if(event.keyCode == 13) document.getElementById('btnLogin').click();\" ng-model=\"username\" required pattern=.*\\S.* />\r" +
-    "\n" +
-    "          <label for=\"fieldUser\" class=\"label\">Username</label>\r" +
-    "\n" +
-    "        </div>\r" +
-    "\n" +
-    "		\r" +
-    "\n" +
-    "       \r" +
-    "\n" +
-    "        <div class=\"profile__footer\">\r" +
-    "\n" +
-    "            <div fb-root></div>\r" +
-    "\n" +
-    "            <button class=\"btn btn-block btn-lg btn-social btn-facebook\" ng-click=\"fblogin(uid)\"><i class=\"fa fa-facebook\"></i>Facebook Login</button>\r" +
-    "\n" +
-    "          <button class=\"btnbtn\" id=\"btnLogin\" ng-click=\"login(username)\"> Login</button>\r" +
-    "\n" +
-    "        </div>\r" +
-    "\n" +
-    "		\r" +
-    "\n" +
-    "      </div>\r" +
-    "\n" +
-    "     </div>\r" +
-    "\n" +
-    "  </div>\r" +
+    "    </div>\r" +
     "\n" +
     "</div>\r" +
     "\n" +
-    "  \r" +
+    "\r" +
+    "\n" +
+    "<script>\r" +
+    "\n" +
+    "  jQuery(function(){ \r" +
+    "\n" +
+    "	jQuery(\".hb-lg\").parent().addClass(\"hb-lg-margin\");\r" +
+    "\n" +
+    "	jQuery(\".hb-md\").parent().addClass(\"hb-md-margin\");\r" +
+    "\n" +
+    "	jQuery(\".hb-sm\").parent().addClass(\"hb-sm-margin\");\r" +
+    "\n" +
+    "	jQuery(\".hb-xs\").parent().addClass(\"hb-xs-margin\");\r" +
+    "\n" +
+    "})\r" +
     "\n" +
     "\r" +
     "\n" +
-    "<!--<script>\r" +
+    "jQuery(function(){ \r" +
     "\n" +
-    "    document.getElementById('toggleProfile').addEventListener('click', function () {\r" +
+    "	//Facebook\r" +
     "\n" +
-    "  [].map.call(document.querySelectorAll('.profile'), function(el) {\r" +
+    "	jQuery( \".hb .fa-facebook,.hb .fa-facebook-square\").parent().addClass(\"hb-facebook\");\r" +
     "\n" +
-    "    el.classList.toggle('profile--open');\r" +
+    "	jQuery( \".hb.inv .fa-facebook,.hb.inv .fa-facebook-square\").parent().addClass(\"hb-facebook-inv\").removeClass(\"hb-facebook\");\r" +
     "\n" +
-    "  });\r" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "	//Github\r" +
+    "\n" +
+    "	jQuery( \".hb .fa-github,.hb .fa-github-square, .hb .fa-github-alt\").parent().addClass(\"hb-github\");\r" +
+    "\n" +
+    "	jQuery( \".hb.inv .fa-github,.hb.inv .fa-github-square, .hb.inv .fa-github-alt\").parent().addClass(\"hb-github-inv\").removeClass(\"hb-github\");\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "	\r" +
+    "\n" +
+    "\r" +
     "\n" +
     "});\r" +
     "\n" +
-    "</script>-->"
+    "\r" +
+    "\n" +
+    "</script>\r" +
+    "\n" +
+    "\r" +
+    "\n"
   );
 
 }]);

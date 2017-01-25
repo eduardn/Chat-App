@@ -8,6 +8,7 @@
     function loginService($q, $localStorage){
         var service = this;
         var provider = new firebase.auth.FacebookAuthProvider();
+        var provider2 = new firebase.auth.GithubAuthProvider();
 
         provider.addScope('user_birthday');
         provider.addScope('user_photos');
@@ -39,7 +40,7 @@
             return currentUser
         };
 
-        service.login = function(){
+        service.fblogin = function(){
 
             return firebase.auth().signInWithPopup(provider).then(function(result) {
                 // The signed-in user info.
@@ -67,8 +68,44 @@
             });
         };
 
+        service.githublogin = function() {
+            var deferred = $q.defer();
+
+            firebase.auth().signInWithPopup(provider2).then(function(result) {
+                // The signed-in user info.
+                var user = result.user.providerData[0];
+                console.log(result);
+                //Save user to firebase
+                var newUserKey = firebase.database().ref().child('users').push().key;
+                //console.log(newUserKey);
+                var updateUser = {};
+                updateUser['/users/' + newUserKey] = user;
+                user.firebaseUserKey = newUserKey;
+                service.currentUser = user;
+                console.log("Login user: ", service.currentUser);
+                $localStorage.currentUser = service.currentUser;
+
+                firebase.database().ref().update(updateUser);
+
+                deferred.resolve();
+            }).catch(function(error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // The email of the user's account used.
+                var email = error.email;
+                // The firebase.auth.AuthCredential type that was used.
+                var credential = error.credential;
+                // ...
+            });
+
+            return deferred.promise;
+        };
+
         service.logout = function() {
-            return removeFromUsers()
+            var deferred = $q.defer();
+
+            removeFromUsers()
                 .then(removeFromRooms)
                 .then(function(){
                     return firebase.auth().signOut()
@@ -77,11 +114,12 @@
                             service.currentUser = null;
                             $localStorage.currentUser = null;
 
+                            deferred.resolve();
                         }, function(error) {
                             console.log("An error happened")
                         });
                 });
-
+            return deferred.promise;
         };
 
 

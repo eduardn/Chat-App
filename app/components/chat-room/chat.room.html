@@ -11,21 +11,59 @@
         </div>
         </div>
 
-       <ul scroll-glue  class="messages" schroll-bottom="messages" id="rawText">
-            <li ng-repeat="message in messages" >
+       <!--<ul scroll-glue  class="messages" schroll-bottom="messages" id="rawText">-->
+            <!--<li ng-repeat="message in messages" >-->
 
-                <div class="sender" ng-class="{'floatright': loggedUser.displayName == message.sender, 'roomBotImg': message.sender == 'RoomBot' }">
+                <!--<div class="sender" ng-class="{'floatright': loggedUser.displayName == message.sender, 'roomBotImg': message.sender == 'RoomBot' }">-->
+
+                    <!--<div class="sender-message">-->
+                        <!--<div class="sender-photoURL"><img ng-src="{{message.senderPhotoURL}}"></div>-->
+                        <!--<div class="test"><span class="white" >{{message.sender}}</span></div>-->
+                    <!--</div>-->
+                        <!--<div ng-class="{'custom': loggedUser.displayName == message.sender}"  class="text-message"  ng-bind-html="message.text | linky | emoji " >{{message.text}}</div>-->
+
+                <!--</div>-->
+                <!---->
+            <!--</li>-->
+        <!--</ul>-->
+
+        <ul scroll-glue class="
+        messages" id="rawText">
+            <li ng-repeat="message in messages">
+                <div class="sender"
+                     ng-class="{'floatright': loggedUser.displayName == message.sender, 'roomBotImg': message.sender == 'RoomBot' }">
 
                     <div class="sender-message">
                         <div class="sender-photoURL"><img ng-src="{{message.senderPhotoURL}}"></div>
-                        <div class="test"><span class="white" >{{message.sender}}</span></div>
+                        <div class="test"><span class="white">{{message.sender}}</span></div>
                     </div>
-                        <div ng-class="{'custom': loggedUser.displayName == message.sender}"  class="text-message"  ng-bind-html="message.text | linky | emoji " >{{message.text}}</div>
 
+
+                    <div ng-if="checkIfYoutubelink(message.text)"
+                         ng-class="{'custom': loggedUser.displayName == message.sender}"
+                         class="text-message">
+                        <a target="_blank" href="{{message.text}}">
+                            <img class="youtube-img" src=" https://img.youtube.com/vi/{{getYouTubeId(message.text)}}/1.jpg">
+                        </a>
+                    </div>
+
+                    <div ng-if="checkIfImg(message.text)"
+                         ng-class="{'custom': loggedUser.displayName == message.sender}"
+                         class="text-message">
+                        <a target="_blank" href="{{message.text}}">
+                            <img class="link-img" ng-src="{{message.text}}">
+                        </a>
+                    </div>
+
+                    <div ng-if="!checkIfYoutubelink(message.text) && !checkIfImg(message.text)"
+                         ng-class="{'custom': loggedUser.displayName == message.sender}" class="text-message"
+                         ng-bind-html="message.text | linky | emoji ">{{message.text}}
+                    </div>
                 </div>
-                
+
             </li>
         </ul>
+
 
         <div class="footer">
             
