@@ -23,7 +23,6 @@
         };
 
 
-
         var database = firebase.database();
 
         $rootScope.$state = $state;

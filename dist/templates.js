@@ -198,11 +198,14 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('components/chat-room/user-details.html',
-    "<h2>User Details:</h2>\r" +
+    "<div>\r" +
     "\n" +
-    "<div class=\"user.displayName\">{{user.displayName}}</div>\r" +
+    "    <div class=\"userDisplayName\"><h1>{{user.displayName}}</h1></div>\r" +
     "\n" +
-    "<div class=\"user.photoURL\"> <img ng-src=\"{{user.photoURL}}\"></div>"
+    "    <div class=\"userPhotoURL\"> <img ng-src=\"{{user.photoURL}}\"></div>\r" +
+    "\n" +
+    "</div>\r" +
+    "\n"
   );
 
 
@@ -221,11 +224,7 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "        <div class=\"pull-right\">\r" +
     "\n" +
-    "\r" +
-    "\n" +
     "            <button class=\"btn btn-default btn-xs logout\" ng-click=\"logout()\" > <i class=\"fa fa-sign-out\" aria-hidden=\"true\" ></i>  LOG OUT </button>\r" +
-    "\n" +
-    "\r" +
     "\n" +
     "        </div>\r" +
     "\n" +
@@ -234,6 +233,8 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "    </nav>\r" +
     "\n" +
     "</div>\r" +
+    "\n" +
+    "<!--rooms-->\r" +
     "\n" +
     "<div class=\"container-fluid chatroom-body\">\r" +
     "\n" +
@@ -298,6 +299,8 @@ angular.module('chatApp').run(['$templateCache', function($templateCache) {
     "                </div>\r" +
     "\n" +
     "            </div>\r" +
+    "\n" +
+    "\r" +
     "\n" +
     "            <div class=\"col-sm-9\">\r" +
     "\n" +

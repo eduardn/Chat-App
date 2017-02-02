@@ -41,21 +41,23 @@
         };
 
         service.fblogin = function(){
+            var deferred = $q.defer();
 
-            return firebase.auth().signInWithPopup(provider).then(function(result) {
+             firebase.auth().signInWithPopup(provider).then(function(result) {
                 // The signed-in user info.
                 var user = result.user.providerData[0];
                 //Save user to firebase
                 var newUserKey = firebase.database().ref().child('users').push().key;
                 //console.log(newUserKey);
                 var updateUser = {};
-                updateUser['/users/' + newUserKey] = user;
                 user.firebaseUserKey = newUserKey;
+                updateUser['/users/' + newUserKey] = user;
                 service.currentUser = user;
                 console.log("Login user: ", service.currentUser);
                 $localStorage.currentUser = service.currentUser;
 
-                return firebase.database().ref().update(updateUser);
+                firebase.database().ref().update(updateUser);
+                deferred.resolve();
             }).catch(function(error) {
                 // Handle Errors here.
                 var errorCode = error.code;
@@ -66,6 +68,8 @@
                 var credential = error.credential;
                 // ...
             });
+
+            return deferred.promise;
         };
 
         service.githublogin = function() {
@@ -79,8 +83,8 @@
                 var newUserKey = firebase.database().ref().child('users').push().key;
                 //console.log(newUserKey);
                 var updateUser = {};
-                updateUser['/users/' + newUserKey] = user;
                 user.firebaseUserKey = newUserKey;
+                updateUser['/users/' + newUserKey] = user;
                 service.currentUser = user;
                 console.log("Login user: ", service.currentUser);
                 $localStorage.currentUser = service.currentUser;

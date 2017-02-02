@@ -544,6 +544,12 @@ ul li {
 .list-active-users{
     height: 600px;
 }
+
+
+.modal-content h1{
+    color: #6fc582;
+}
+
 .col-sm-9{
     background: white;
     

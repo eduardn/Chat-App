@@ -158,4 +158,71 @@ span.white{
     height: 40%;
 }
 
+.modal-content{
+    text-align:center;
+}
+.modal-content .userPhotoURL img{
+    width:80%;
+}
+
+.sender a{
+    color: #847ec7;
+    cursor: pointer;
+}
+
+.sender a:visited{
+    color: #847ec7;
+    cursor: pointer;
+}
+
+.sender a:hover{
+    color: #6fc582;
+    cursor: pointer;
+}
+
+.sender a:active{
+    color: #847ec7;
+}
+
+.floatright a{
+    color: white;
+    cursor: pointer;
+}
+
+.floatright a:visited{
+    color: white;
+    cursor: pointer;
+}
+
+.floatright a:hover{
+    color: #6fc582;
+    cursor: pointer;
+}
+
+.floatright a:active{
+    color: white;
+}
+
+.list-active-users a{
+    text-decoration: none;
+    color: white;
+}
+
+.list-active-users a:link{
+    text-decoration: none;
+    color: white;
+}
+.list-active-users a:visited{
+    text-decoration: none;
+    color: white;
+}
+.list-active-users a:hover{
+    text-decoration: none;
+    color: #6fc582;
+    cursor: pointer;
+}
+.list-active-users a:active{
+    text-decoration: none;
+    color: white;
+}
 
